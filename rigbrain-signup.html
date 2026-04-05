@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RigBrain — Get Early Access</title>
+  <meta name="description" content="Join the RigBrain early access waitlist. AI-powered equipment marketplace for contractors and dealers.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --amber: #f59e0b;
+      --amber-dark: #d97706;
+      --bg: #0a0a0a;
+      --bg-card: #111111;
+      --text: #e0e0e0;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border: #1f1f1f;
+      --border-focus: #f59e0b;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .form-container {
+      max-width: 580px;
+      width: 100%;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .logo a {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .logo span:first-child { color: var(--amber); }
+    .logo span:last-child { color: #fff; }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .form-header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+    .form-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Step indicator */
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.3s, width 0.3s;
+    }
+    .step-dot.active {
+      background: var(--amber);
+      width: 24px;
+      border-radius: 4px;
+    }
+    .step-dot.done {
+      background: var(--amber);
+    }
+
+    /* Form steps */
+    .form-step {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .form-step.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-label {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+
+    /* Option cards (for role, equipment type, etc.) */
+    .option-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .option-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .option-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: #1a1a1a;
+    }
+    .option-card.selected {
+      border-color: var(--amber);
+      background: rgba(245, 158, 11, 0.06);
+    }
+    .option-card input { display: none; }
+    .option-card .option-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .option-card .option-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Multi-select cards */
+    .multi-select .option-card.selected::before {
+      content: "\2713 ";
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    /* Text inputs */
+    .text-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .text-input:focus { border-color: var(--amber); }
+    .text-input::placeholder { color: var(--text-dim); }
+
+    select.text-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%239ca3af' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    select.text-input option { background: var(--bg-card); color: var(--text); }
+
+    /* Navigation buttons */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-next {
+      background: var(--amber);
+      color: var(--bg);
+      margin-left: auto;
+    }
+    .btn-next:hover { background: var(--amber-dark); }
+    .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-back {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-back:hover { border-color: var(--text-muted); }
+
+    /* Success screen */
+    .success-screen {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+    .success-screen.active { display: block; }
+    .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .success-screen h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .success-screen p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .success-screen a {
+      color: var(--amber);
+      text-decoration: none;
+    }
+    .success-screen a:hover { text-decoration: underline; }
+
+    .helper-text {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-top: -0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1.25rem; }
+      .form-header h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="logo">
+      <a href="https://rigbrain.io"><span>Rig</span><span>Brain</span></a>
+    </div>
+
+    <div class="form-header">
+      <h1>Get Early Access</h1>
+      <p>Tell us a bit about your business so we can tailor RigBrain to your needs. Takes about 60 seconds.</p>
+    </div>
+
+    <div class="steps" id="steps">
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+    </div>
+
+    <form id="rigbrain-form" method="POST" action="https://formspree.io/f/xdkgjqzl">
+      <!-- Step 1: Role -->
+      <div class="form-step active" data-step="0">
+        <p class="question-label">Which best describes you?</p>
+        <div class="option-cards" data-field="role">
+          <label class="option-card">
+            <input type="radio" name="role" value="contractor" required>
+            <div class="option-title">General Contractor</div>
+            <div class="option-desc">I buy, rent, or lease heavy equipment for construction projects</div>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="role" value="dealer">
+            <div class="option-title">Equipment Dealer</div>
+            <div class="option-desc">I sell or rent heavy equipment to contractors and companies</div>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="role" value="fleet_manager">
+            <div class="option-title">Fleet / Equipment Manager</div>
+            <div class="option-desc">I manage equipment fleets for a construction company or rental house</div>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="role" value="other_role">
+            <div class="option-title">Other</div>
+            <div class="option-desc">Investor, vendor, or just curious about RigBrain</div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 2: Company & Scale -->
+      <div class="form-step" data-step="1">
+        <p class="question-label">Tell us about your company</p>
+        <input class="text-input" type="text" name="company" placeholder="Company name" required>
+        <input class="text-input" type="text" name="name" placeholder="Your name" required>
+        <select class="text-input" name="company_size" required>
+          <option value="" disabled selected>Annual revenue range</option>
+          <option value="under_1m">Under $1M</option>
+          <option value="1m_5m">$1M - $5M</option>
+          <option value="5m_25m">$5M - $25M</option>
+          <option value="25m_100m">$25M - $100M</option>
+          <option value="100m_plus">$100M+</option>
+        </select>
+        <select class="text-input" name="region">
+          <option value="" disabled selected>Primary market (optional)</option>
+          <option value="houston">Houston / Gulf Coast</option>
+          <option value="dallas">Dallas / Fort Worth</option>
+          <option value="austin">Austin / Central Texas</option>
+          <option value="san_antonio">San Antonio</option>
+          <option value="other_texas">Other Texas</option>
+          <option value="southeast">Southeast U.S.</option>
+          <option value="other_us">Other U.S.</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Equipment & Pain Points -->
+      <div class="form-step" data-step="2">
+        <p class="question-label">What equipment types do you work with most?</p>
+        <p class="helper-text">Select all that apply</p>
+        <div class="option-cards multi-select" data-field="equipment_types">
+          <label class="option-card">
+            <input type="checkbox" name="equipment_types" value="earthmoving">
+            <span class="option-title">Earthmoving</span>
+            <span class="option-desc">Excavators, dozers, loaders, graders</span>
+          </label>
+          <label class="option-card">
+            <input type="checkbox" name="equipment_types" value="cranes_lifting">
+            <span class="option-title">Cranes & Lifting</span>
+            <span class="option-desc">Mobile cranes, tower cranes, telehandlers</span>
+          </label>
+          <label class="option-card">
+            <input type="checkbox" name="equipment_types" value="concrete_paving">
+            <span class="option-title">Concrete & Paving</span>
+            <span class="option-desc">Mixers, pumps, pavers, compactors</span>
+          </label>
+          <label class="option-card">
+            <input type="checkbox" name="equipment_types" value="aerial">
+            <span class="option-title">Aerial / Access</span>
+            <span class="option-desc">Boom lifts, scissor lifts, scaffolding</span>
+          </label>
+        </div>
+
+        <p class="question-label" style="margin-top: 1.5rem;">Biggest equipment headache?</p>
+        <div class="option-cards" data-field="pain_point">
+          <label class="option-card">
+            <input type="radio" name="pain_point" value="finding">
+            <span class="option-title">Finding what I need fast</span>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="pain_point" value="pricing">
+            <span class="option-title">Knowing if I'm getting a fair price</span>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="pain_point" value="logistics">
+            <span class="option-title">Coordinating delivery & logistics</span>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="pain_point" value="buyers">
+            <span class="option-title">Finding buyers/renters for my inventory</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 4: Contact -->
+      <div class="form-step" data-step="3">
+        <p class="question-label">Where should we reach you?</p>
+        <input class="text-input" type="email" name="email" placeholder="Work email" required>
+        <input class="text-input" type="tel" name="phone" placeholder="Phone (optional)">
+
+        <p class="question-label" style="margin-top: 1.5rem;">How do you prefer to buy/rent equipment today?</p>
+        <select class="text-input" name="current_method">
+          <option value="" disabled selected>Select one</option>
+          <option value="phone_dealers">Call dealers directly</option>
+          <option value="online_listings">Browse online listings (MachineryTrader, etc.)</option>
+          <option value="auctions">Auctions (Ritchie Bros, IronPlanet)</option>
+          <option value="rental_companies">Rental companies (United, Sunbelt)</option>
+          <option value="relationships">Existing relationships / word of mouth</option>
+          <option value="mix">Mix of everything</option>
+        </select>
+
+        <input type="hidden" name="_subject" value="RigBrain Early Access Signup">
+        <input type="hidden" name="source" value="qualifying_form">
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-back" id="btn-back" style="display:none;">Back</button>
+        <button type="button" class="btn btn-next" id="btn-next">Next</button>
+      </div>
+    </form>
+
+    <div class="success-screen" id="success">
+      <div class="success-icon">&#9889;</div>
+      <h2>You're on the list</h2>
+      <p>We'll be in touch soon with early access details. Launching in Texas Q2 2026.</p>
+      <a href="https://rigbrain.io">&larr; Back to rigbrain.io</a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('rigbrain-form');
+    const steps = document.querySelectorAll('.form-step');
+    const dots = document.querySelectorAll('.step-dot');
+    const btnNext = document.getElementById('btn-next');
+    const btnBack = document.getElementById('btn-back');
+    const success = document.getElementById('success');
+    let current = 0;
+
+    // Option card selection
+    document.querySelectorAll('.option-cards:not(.multi-select) .option-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const group = card.closest('.option-cards');
+        group.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        card.querySelector('input').checked = true;
+      });
+    });
+
+    document.querySelectorAll('.multi-select .option-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('selected');
+        const cb = card.querySelector('input');
+        cb.checked = !cb.checked;
+      });
+    });
+
+    function goTo(step) {
+      steps[current].classList.remove('active');
+      steps[step].classList.add('active');
+      dots.forEach((d, i) => {
+        d.classList.remove('active');
+        d.classList.toggle('done', i < step);
+        if (i === step) d.classList.add('active');
+      });
+      current = step;
+      btnBack.style.display = current === 0 ? 'none' : 'inline-block';
+      btnNext.textContent = current === steps.length - 1 ? 'Submit' : 'Next';
+    }
+
+    btnNext.addEventListener('click', () => {
+      if (current < steps.length - 1) {
+        goTo(current + 1);
+      } else {
+        // Submit
+        btnNext.disabled = true;
+        btnNext.textContent = 'Submitting...';
+        const formData = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(r => {
+          if (r.ok) {
+            form.style.display = 'none';
+            document.getElementById('steps').style.display = 'none';
+            success.classList.add('active');
+          } else {
+            alert('Something went wrong. Please email jim@rigbrain.io instead.');
+            btnNext.disabled = false;
+            btnNext.textContent = 'Submit';
+          }
+        }).catch(() => {
+          alert('Connection error. Please email jim@rigbrain.io instead.');
+          btnNext.disabled = false;
+          btnNext.textContent = 'Submit';
+        });
+      }
+    });
+
+    btnBack.addEventListener('click', () => {
+      if (current > 0) goTo(current - 1);
+    });
+  </script>
+</body>
+</html>

@@ -28,6 +28,8 @@
     }
     a { color: var(--amber); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* Nav */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(10,10,10,0.85);
@@ -45,6 +47,8 @@
       transition: background 0.2s; border: none; cursor: pointer;
     }
     .nav-cta:hover { background: var(--amber-dark); text-decoration: none; }
+
+    /* Hero */
     .hero {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
@@ -74,6 +78,8 @@
     }
     .hero-cta:hover { background: var(--amber-dark); text-decoration: none; }
     .hero-note { font-size: 0.85rem; color: var(--text-dim); }
+
+    /* Search Demo */
     .search-demo {
       max-width: 680px; width: 100%; margin: 3rem auto 0;
       background: var(--bg-card); border: 1px solid var(--border);
@@ -85,6 +91,8 @@
       font-size: 1.05rem; color: var(--text-muted); font-style: italic;
       border-left: 3px solid var(--amber); padding-left: 1rem;
     }
+
+    /* Sections */
     section { padding: 5rem 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
@@ -98,6 +106,8 @@
     .section-desc {
       font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem;
     }
+
+    /* Problem */
     .problem { background: var(--bg); border-top: 1px solid var(--border); }
     .stats-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -109,6 +119,8 @@
     }
     .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--amber); line-height: 1; }
     .stat-label { font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+    /* How It Works */
     .how { background: #050505; border-top: 1px solid var(--border); }
     .layers {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -126,6 +138,8 @@
     }
     .layer h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
     .layer p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* Market */
     .market { border-top: 1px solid var(--border); }
     .market-numbers {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -138,6 +152,8 @@
     .market-card h4 { color: var(--amber); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
     .market-card .big { font-size: 2.2rem; font-weight: 800; line-height: 1.1; }
     .market-card p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
+
+    /* Competitive */
     .competitive { background: #050505; border-top: 1px solid var(--border); }
     .diff-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -150,6 +166,8 @@
     .diff-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
     .diff-card p { color: var(--text-muted); font-size: 0.9rem; }
     .checkmark { color: var(--amber); margin-right: 0.4rem; }
+
+    /* Revenue */
     .revenue { border-top: 1px solid var(--border); }
     .revenue-streams {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -162,6 +180,8 @@
     .stream-pct { font-size: 2rem; font-weight: 800; color: var(--amber); }
     .stream h4 { font-size: 1.1rem; font-weight: 700; margin: 0.5rem 0; }
     .stream p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Traction / Projections */
     .traction { background: #050505; border-top: 1px solid var(--border); }
     .proj-table {
       width: 100%; border-collapse: collapse; margin-top: 1rem;
@@ -177,6 +197,8 @@
     .proj-table td { border-bottom: 1px solid var(--border); font-size: 0.95rem; }
     .proj-table tr:last-child td { border-bottom: none; }
     .proj-table td:first-child { color: var(--text-muted); font-weight: 600; }
+
+    /* Why Now */
     .why-now { border-top: 1px solid var(--border); }
     .reasons {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -188,6 +210,8 @@
     }
     .reason h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
     .reason p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* CTA */
     .cta-section {
       padding: 6rem 2rem; text-align: center;
       background: radial-gradient(ellipse at 50% 100%, rgba(245,158,11,0.06) 0%, transparent 60%);
@@ -205,16 +229,118 @@
     }
     .cta-btn:hover { background: var(--amber-dark); text-decoration: none; }
     .cta-sub { margin-top: 1rem; font-size: 0.85rem; color: var(--text-dim); }
+
+    /* Waitlist Form */
+    .waitlist-section {
+      padding: 5rem 2rem; background: #050505; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .waitlist-inner {
+      max-width: 600px; margin: 0 auto; text-align: center;
+    }
+    .waitlist-section .section-label {
+      font-size: 0.75rem; color: var(--amber); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .waitlist-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    }
+    .waitlist-desc {
+      font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem;
+    }
+    .social-proof {
+      display: inline-block; background: rgba(245,158,11,0.12); color: var(--amber);
+      font-size: 0.8rem; font-weight: 600; padding: 0.35rem 1rem;
+      border-radius: 20px; margin-bottom: 2rem; letter-spacing: 0.03em;
+      border: 1px solid rgba(245,158,11,0.2);
+    }
+    .waitlist-form {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .form-row.full {
+      grid-template-columns: 1fr;
+    }
+    .form-group {
+      display: flex; flex-direction: column;
+    }
+    .form-group label {
+      font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;
+      text-align: left; font-weight: 500;
+    }
+    .form-group input,
+    .form-group select {
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text); padding: 0.75rem 1rem; border-radius: 6px;
+      font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none; border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(245,158,11,0.1);
+    }
+    .form-group input::placeholder {
+      color: var(--text-dim);
+    }
+    .form-group select {
+      cursor: pointer;
+    }
+    .form-group select option {
+      background: var(--bg); color: var(--text);
+    }
+    .waitlist-submit {
+      background: var(--amber); color: var(--bg); font-weight: 700;
+      padding: 0.85rem 2rem; border-radius: 6px; font-size: 1rem;
+      border: none; cursor: pointer; transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .waitlist-submit:hover {
+      background: var(--amber-dark);
+    }
+    .waitlist-submit:disabled {
+      opacity: 0.6; cursor: not-allowed;
+    }
+    .form-message {
+      font-size: 0.85rem; color: var(--text-dim); margin-top: 0.5rem;
+    }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 8px; margin-top: 1rem;
+    }
+    .form-success.show {
+      display: block;
+    }
+    .form-success h3 {
+      font-size: 1.3rem; color: #22c55e; margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .form-success p {
+      color: var(--text-muted); font-size: 0.95rem;
+    }
+
+    /* Footer */
     footer {
       border-top: 1px solid var(--border); padding: 2rem;
       text-align: center; font-size: 0.85rem; color: var(--text-dim);
     }
+
+    /* Responsive */
     @media (max-width: 640px) {
       nav { padding: 0.75rem 1rem; }
       section { padding: 3.5rem 1.25rem; }
       .search-demo { margin: 2rem auto 0; }
       .proj-table { font-size: 0.85rem; }
       .proj-table th, .proj-table td { padding: 0.75rem; }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .waitlist-section {
+        padding: 3.5rem 1.25rem;
+      }
     }
   </style>
 </head>
@@ -225,6 +351,7 @@
     <a class="nav-cta" href="rigbrain-signup.html">Get Early Access</a>
   </nav>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-badge">AI-Powered Equipment Marketplace</div>
     <h1>Find the right equipment.<br><em>At the right price.</em></h1>
@@ -234,15 +361,68 @@
 
     <div class="search-demo">
       <div class="search-demo-label">Try asking RigBrain</div>
-      <div class="search-demo-text">“I need a 20-ton excavator for a 6-month highway project in Texas, budget under $400K”</div>
+      <div class="search-demo-text">"I need a 20-ton excavator for a 6-month highway project in Texas, budget under $400K"</div>
     </div>
   </section>
 
+  <!-- Waitlist Section (After Hero) -->
+  <section class="waitlist-section">
+    <div class="waitlist-inner">
+      <div class="section-label">Join Early</div>
+      <h2>Get Early Access</h2>
+      <p class="waitlist-desc">Be among the first contractors and dealers to use RigBrain when we launch in Q2 2026.</p>
+      <div class="social-proof">🎯 Join 50+ contractors already on the waitlist</div>
+
+      <form class="waitlist-form" id="waitlist-form-1" method="POST" action="https://formspree.io/f/xdkgjqzl">
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="email1">Email <span style="color: var(--amber);">*</span></label>
+            <input type="email" id="email1" name="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name1">Name</label>
+            <input type="text" id="name1" name="name" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="company1">Company</label>
+            <input type="text" id="company1" name="company" placeholder="Acme Construction">
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="role1">Role <span style="color: var(--amber);">*</span></label>
+            <select id="role1" name="role" required>
+              <option value="">Select your role...</option>
+              <option value="Contractor">Contractor</option>
+              <option value="Equipment Dealer">Equipment Dealer</option>
+              <option value="Fleet Manager">Fleet Manager</option>
+              <option value="Investor">Investor</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="waitlist-submit">Join the Waitlist</button>
+        <p class="form-message">We'll email you updates about our launch.</p>
+      </form>
+
+      <div class="form-success" id="success-1">
+        <h3>✓ You're on the list!</h3>
+        <p>Check your email for early access details. See you in Q2 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
   <section class="problem">
     <div class="section-inner">
       <div class="section-label">The Problem</div>
       <h2 class="section-title">Equipment acquisition is broken</h2>
-      <p class="section-desc">Contractors waste weeks finding equipment. Dealers can’t reach the right buyers. Billions in rental inventory sits idle. There’s no pricing transparency, no data infrastructure, and no single platform that solves it.</p>
+      <p class="section-desc">Contractors waste weeks finding equipment. Dealers can't reach the right buyers. Billions in rental inventory sits idle. There's no pricing transparency, no data infrastructure, and no single platform that solves it.</p>
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-number">15-20 hrs</div>
@@ -254,7 +434,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number">$0</div>
-          <div class="stat-label">Data infrastructure for used equipment pricing — no “Kelley Blue Book” exists</div>
+          <div class="stat-label">Data infrastructure for used equipment pricing — no "Kelley Blue Book" exists</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">$100K+</div>
@@ -264,6 +444,7 @@
     </div>
   </section>
 
+  <!-- How It Works -->
   <section class="how">
     <div class="section-inner">
       <div class="section-label">How It Works</div>
@@ -289,6 +470,7 @@
     </div>
   </section>
 
+  <!-- Market -->
   <section class="market">
     <div class="section-inner">
       <div class="section-label">Market Opportunity</div>
@@ -314,6 +496,7 @@
     </div>
   </section>
 
+  <!-- Competitive Edge -->
   <section class="competitive">
     <div class="section-inner">
       <div class="section-label">Why RigBrain Wins</div>
@@ -348,6 +531,7 @@
     </div>
   </section>
 
+  <!-- Revenue Model -->
   <section class="revenue">
     <div class="section-inner">
       <div class="section-label">Revenue Model</div>
@@ -356,7 +540,7 @@
         <div class="stream">
           <div class="stream-pct">50%</div>
           <h4>Transaction Fees</h4>
-          <p>2-4% on purchases, 5-8% on rentals. On a $250K excavator sale, that’s $5K-$10K per transaction.</p>
+          <p>2-4% on purchases, 5-8% on rentals. On a $250K excavator sale, that's $5K-$10K per transaction.</p>
         </div>
         <div class="stream">
           <div class="stream-pct">30%</div>
@@ -372,6 +556,7 @@
     </div>
   </section>
 
+  <!-- Projections -->
   <section class="traction">
     <div class="section-inner">
       <div class="section-label">Financial Projections</div>
@@ -395,6 +580,7 @@
     </div>
   </section>
 
+  <!-- Why Now -->
   <section class="why-now">
     <div class="section-inner">
       <div class="section-label">Why Now</div>
@@ -416,16 +602,132 @@
     </div>
   </section>
 
+  <!-- Final CTA -->
   <section class="cta-section">
-    <h2>The window is open.<br>Let’s build the standard.</h2>
-    <p>We’re raising a $5M seed round to launch in Texas and the Southeast. If you’re a contractor, dealer, or investor — let’s talk.</p>
-    <a class="cta-btn" href="mailto:jim@rigbrain.io">Get in Touch</a>
-    <p class="cta-sub">jim@rigbrain.io</p>
+    <h2>The window is open.<br>Let's build the standard.</h2>
+    <p>We're raising a $5M seed round to launch in Texas and the Southeast. If you're a contractor, dealer, or investor — let's talk.</p>
+
+    <div style="max-width: 600px; margin: 3rem auto;">
+      <form class="waitlist-form" id="waitlist-form-2" method="POST" action="https://formspree.io/f/xdkgjqzl">
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="email2">Email <span style="color: var(--amber);">*</span></label>
+            <input type="email" id="email2" name="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name2">Name</label>
+            <input type="text" id="name2" name="name" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="company2">Company</label>
+            <input type="text" id="company2" name="company" placeholder="Acme Construction">
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="role2">Role <span style="color: var(--amber);">*</span></label>
+            <select id="role2" name="role" required>
+              <option value="">Select your role...</option>
+              <option value="Contractor">Contractor</option>
+              <option value="Equipment Dealer">Equipment Dealer</option>
+              <option value="Fleet Manager">Fleet Manager</option>
+              <option value="Investor">Investor</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="waitlist-submit">Get Early Access</button>
+        <p class="form-message">Launching Q2 2026 in Texas & Southeast</p>
+      </form>
+
+      <div class="form-success" id="success-2">
+        <h3>✓ You're on the list!</h3>
+        <p>Check your email for early access details. See you in Q2 2026.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 2rem; color: var(--text-dim);">Or reach out directly: <a href="mailto:jim@rigbrain.io">jim@rigbrain.io</a></p>
   </section>
 
   <footer>
     &copy; 2026 RigBrain. All rights reserved.
   </footer>
+
+  <script>
+    // Handle waitlist form submissions
+    function setupFormHandler(formId, successId) {
+      const form = document.getElementById(formId);
+      const successMsg = document.getElementById(successId);
+
+      if (!form || !successMsg) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validate required fields
+        const email = form.querySelector('input[name="email"]');
+        const role = form.querySelector('select[name="role"]');
+
+        if (!email.value.trim() || !role.value.trim()) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        // Collect form data
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+
+        // Send to Formspree
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Hide form and show success message
+            form.style.display = 'none';
+            successMsg.classList.add('show');
+
+            // Optional: Re-enable after 5 seconds
+            setTimeout(() => {
+              form.style.display = 'flex';
+              successMsg.classList.remove('show');
+              form.reset();
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+            }, 5000);
+          } else {
+            alert('Something went wrong. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        })
+        .catch(error => {
+          alert('Error submitting form. Please try again.');
+          console.error('Form submission error:', error);
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        });
+      });
+    }
+
+    // Initialize both forms
+    document.addEventListener('DOMContentLoaded', function() {
+      setupFormHandler('waitlist-form-1', 'success-1');
+      setupFormHandler('waitlist-form-2', 'success-2');
+    });
+  </script>
 
 </body>
 </html>
