@@ -3,60 +3,429 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RigBrain — AI Equipment Advisor for Contractors</title>
+  <title>RigBrain — AI-Powered Equipment Marketplace for Construction</title>
+  <meta name="description" content="Find, compare, negotiate, and acquire heavy construction equipment with AI. Search across dealers, rental fleets, and auctions nationwide.">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --amber: #f59e0b;
+      --amber-dark: #d97706;
+      --amber-light: #fbbf24;
+      --bg: #0a0a0a;
+      --bg-card: #111111;
+      --bg-card-hover: #1a1a1a;
+      --text: #e0e0e0;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border: #1f1f1f;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0a0a;
-      color: #e0e0e0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    .logo {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+    a { color: var(--amber); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .logo span:first-child { color: #f59e0b; }
-    .logo span:last-child { color: #ffffff; }
-    .tagline {
-      font-size: 1.25rem;
-      color: #9ca3af;
-      margin-bottom: 2.5rem;
-      max-width: 500px;
+    .nav-logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+    .nav-logo span:first-child { color: var(--amber); }
+    .nav-logo span:last-child { color: #fff; }
+    .nav-cta {
+      background: var(--amber); color: var(--bg); font-weight: 700;
+      padding: 0.5rem 1.4rem; border-radius: 6px; font-size: 0.9rem;
+      transition: background 0.2s; border: none; cursor: pointer;
     }
-    .cta {
-      display: inline-block;
-      background: #f59e0b;
-      color: #0a0a0a;
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 0.85rem 2.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s;
-      margin-bottom: 1.5rem;
+    .nav-cta:hover { background: var(--amber-dark); text-decoration: none; }
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 60%);
     }
-    .cta:hover { background: #d97706; }
-    .sub {
-      font-size: 0.9rem;
-      color: #6b7280;
+    .hero-badge {
+      display: inline-block; background: rgba(245,158,11,0.12); color: var(--amber);
+      font-size: 0.8rem; font-weight: 600; padding: 0.35rem 1rem;
+      border-radius: 20px; margin-bottom: 1.5rem; letter-spacing: 0.03em;
+      border: 1px solid rgba(245,158,11,0.2);
     }
-    .sub a { color: #f59e0b; text-decoration: none; }
-    .sub a:hover { text-decoration: underline; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+    .hero h1 em { font-style: normal; color: var(--amber); }
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--text-muted);
+      max-width: 620px; margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-block; background: var(--amber); color: var(--bg);
+      font-size: 1.15rem; font-weight: 700; padding: 1rem 2.5rem;
+      border-radius: 8px; transition: background 0.2s; margin-bottom: 1rem;
+    }
+    .hero-cta:hover { background: var(--amber-dark); text-decoration: none; }
+    .hero-note { font-size: 0.85rem; color: var(--text-dim); }
+    .search-demo {
+      max-width: 680px; width: 100%; margin: 3rem auto 0;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      text-align: left;
+    }
+    .search-demo-label { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .search-demo-text {
+      font-size: 1.05rem; color: var(--text-muted); font-style: italic;
+      border-left: 3px solid var(--amber); padding-left: 1rem;
+    }
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; color: var(--amber); text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem;
+    }
+    .problem { background: var(--bg); border-top: 1px solid var(--border); }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-top: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+    }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--amber); line-height: 1; }
+    .stat-label { font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .how { background: #050505; border-top: 1px solid var(--border); }
+    .layers {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .layer {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem; transition: border-color 0.2s;
+    }
+    .layer:hover { border-color: rgba(245,158,11,0.3); }
+    .layer-num {
+      display: inline-block; background: rgba(245,158,11,0.12); color: var(--amber);
+      font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem;
+      border-radius: 12px; margin-bottom: 1rem;
+    }
+    .layer h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .layer p { color: var(--text-muted); font-size: 0.95rem; }
+    .market { border-top: 1px solid var(--border); }
+    .market-numbers {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .market-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+    }
+    .market-card h4 { color: var(--amber); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .market-card .big { font-size: 2.2rem; font-weight: 800; line-height: 1.1; }
+    .market-card p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
+    .competitive { background: #050505; border-top: 1px solid var(--border); }
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .diff-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem;
+    }
+    .diff-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .diff-card p { color: var(--text-muted); font-size: 0.9rem; }
+    .checkmark { color: var(--amber); margin-right: 0.4rem; }
+    .revenue { border-top: 1px solid var(--border); }
+    .revenue-streams {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .stream {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+    }
+    .stream-pct { font-size: 2rem; font-weight: 800; color: var(--amber); }
+    .stream h4 { font-size: 1.1rem; font-weight: 700; margin: 0.5rem 0; }
+    .stream p { color: var(--text-muted); font-size: 0.9rem; }
+    .traction { background: #050505; border-top: 1px solid var(--border); }
+    .proj-table {
+      width: 100%; border-collapse: collapse; margin-top: 1rem;
+      background: var(--bg-card); border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .proj-table th, .proj-table td { padding: 1rem 1.25rem; text-align: left; }
+    .proj-table th {
+      background: rgba(245,158,11,0.06); color: var(--amber);
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em;
+      font-weight: 700; border-bottom: 1px solid var(--border);
+    }
+    .proj-table td { border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .proj-table tr:last-child td { border-bottom: none; }
+    .proj-table td:first-child { color: var(--text-muted); font-weight: 600; }
+    .why-now { border-top: 1px solid var(--border); }
+    .reasons {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .reason {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+    }
+    .reason h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .reason p { color: var(--text-muted); font-size: 0.95rem; }
+    .cta-section {
+      padding: 6rem 2rem; text-align: center;
+      background: radial-gradient(ellipse at 50% 100%, rgba(245,158,11,0.06) 0%, transparent 60%);
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .cta-section p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 2.5rem; max-width: 550px; margin-left: auto; margin-right: auto; }
+    .cta-btn {
+      display: inline-block; background: var(--amber); color: var(--bg);
+      font-size: 1.2rem; font-weight: 700; padding: 1rem 2.5rem;
+      border-radius: 8px; transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--amber-dark); text-decoration: none; }
+    .cta-sub { margin-top: 1rem; font-size: 0.85rem; color: var(--text-dim); }
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem;
+      text-align: center; font-size: 0.85rem; color: var(--text-dim);
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0.75rem 1rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .search-demo { margin: 2rem auto 0; }
+      .proj-table { font-size: 0.85rem; }
+      .proj-table th, .proj-table td { padding: 0.75rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="logo"><span>Rig</span><span>Brain</span></div>
-  <p class="tagline">The AI-powered equipment advisor that helps contractors pick the right gear for every job.</p>
-  <a class="cta" href="mailto:jim@rigbrain.io">Get Early Access</a>
-  <p class="sub">Questions? Reach out at <a href="mailto:jim@rigbrain.io">jim@rigbrain.io</a></p>
+
+  <nav>
+    <div class="nav-logo"><span>Rig</span><span>Brain</span></div>
+    <a class="nav-cta" href="mailto:jim@rigbrain.io">Get Early Access</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">AI-Powered Equipment Marketplace</div>
+    <h1>Find the right equipment.<br><em>At the right price.</em></h1>
+    <p class="hero-sub">RigBrain uses AI to match contractors with heavy equipment across dealers, rental fleets, and auctions nationwide — then handles pricing, negotiation, and the entire transaction.</p>
+    <a class="hero-cta" href="mailto:jim@rigbrain.io">Request Early Access</a>
+    <p class="hero-note">Launching in Texas & Southeast U.S. — 2026</p>
+
+    <div class="search-demo">
+      <div class="search-demo-label">Try asking RigBrain</div>
+      <div class="search-demo-text">“I need a 20-ton excavator for a 6-month highway project in Texas, budget under $400K”</div>
+    </div>
+  </section>
+
+  <section class="problem">
+    <div class="section-inner">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Equipment acquisition is broken</h2>
+      <p class="section-desc">Contractors waste weeks finding equipment. Dealers can’t reach the right buyers. Billions in rental inventory sits idle. There’s no pricing transparency, no data infrastructure, and no single platform that solves it.</p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">15-20 hrs</div>
+          <div class="stat-label">Average time a mid-size contractor spends sourcing a single piece of equipment</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">65-70%</div>
+          <div class="stat-label">Average rental fleet utilization — leaving billions in revenue on the table</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$0</div>
+          <div class="stat-label">Data infrastructure for used equipment pricing — no “Kelley Blue Book” exists</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$100K+</div>
+          <div class="stat-label">Transactions still done via handshake deals with zero digital tooling</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three layers. One platform.</h2>
+      <p class="section-desc">From search to close, RigBrain handles the entire equipment lifecycle.</p>
+      <div class="layers">
+        <div class="layer">
+          <div class="layer-num">Layer 1</div>
+          <h3>AI Search & Matching</h3>
+          <p>Describe what you need in plain language. Our AI matches you with available inventory across dealers, rental fleets, auctions, and private sellers — ranked by fit, price, proximity, and total cost of ownership.</p>
+        </div>
+        <div class="layer">
+          <div class="layer-num">Layer 2</div>
+          <h3>Pricing & Negotiation Intelligence</h3>
+          <p>See real-time fair market values, depreciation curves, and comparable sales. Our AI negotiation agent handles back-and-forth with dealers on your behalf — optimizing price, warranty, delivery, and financing terms.</p>
+        </div>
+        <div class="layer">
+          <div class="layer-num">Layer 3</div>
+          <h3>Transaction & Lifecycle</h3>
+          <p>Financing pre-approval, insurance quotes, inspection coordination, logistics, and documentation — all in one workflow. Post-purchase: predictive maintenance alerts and resale timing recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="market">
+    <div class="section-inner">
+      <div class="section-label">Market Opportunity</div>
+      <h2 class="section-title">Massive market. Zero infrastructure.</h2>
+      <p class="section-desc">Construction equipment is one of the largest underdigitized markets in the world.</p>
+      <div class="market-numbers">
+        <div class="market-card">
+          <h4>Total Addressable Market</h4>
+          <div class="big">$365B</div>
+          <p>Global heavy equipment + rental spend annually</p>
+        </div>
+        <div class="market-card">
+          <h4>U.S. Serviceable Market</h4>
+          <div class="big">$95B</div>
+          <p>Annual U.S. construction equipment buying and renting</p>
+        </div>
+        <div class="market-card">
+          <h4>5-Year Target</h4>
+          <div class="big">$95M</div>
+          <p>Platform revenue at 1-2% market facilitation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="competitive">
+    <div class="section-inner">
+      <div class="section-label">Why RigBrain Wins</div>
+      <h2 class="section-title">No one else combines all four</h2>
+      <p class="section-desc">Existing players cover one slice. RigBrain is the only platform with AI search, negotiation, pricing intelligence, and full transaction facilitation for both buying and renting.</p>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <h4><span class="checkmark">&#10003;</span> AI-Powered Search</h4>
+          <p>Natural language queries across all inventory sources, not static classified listings</p>
+        </div>
+        <div class="diff-card">
+          <h4><span class="checkmark">&#10003;</span> Negotiation Agent</h4>
+          <p>AI handles dealer negotiations on behalf of the buyer — a first in heavy equipment</p>
+        </div>
+        <div class="diff-card">
+          <h4><span class="checkmark">&#10003;</span> Pricing Intelligence</h4>
+          <p>Real-time fair market values, depreciation curves, and comparable sales data</p>
+        </div>
+        <div class="diff-card">
+          <h4><span class="checkmark">&#10003;</span> Full Transaction Stack</h4>
+          <p>Financing, insurance, inspection, logistics, and documentation in one workflow</p>
+        </div>
+        <div class="diff-card">
+          <h4><span class="checkmark">&#10003;</span> Buy + Rent in One Platform</h4>
+          <p>Competitors are auction-only or rental-only. RigBrain covers both.</p>
+        </div>
+        <div class="diff-card">
+          <h4><span class="checkmark">&#10003;</span> Lifecycle Services</h4>
+          <p>Predictive maintenance alerts and optimal resale timing, powered by equipment data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="revenue">
+    <div class="section-inner">
+      <div class="section-label">Revenue Model</div>
+      <h2 class="section-title">Three streams. Built to compound.</h2>
+      <div class="revenue-streams">
+        <div class="stream">
+          <div class="stream-pct">50%</div>
+          <h4>Transaction Fees</h4>
+          <p>2-4% on purchases, 5-8% on rentals. On a $250K excavator sale, that’s $5K-$10K per transaction.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-pct">30%</div>
+          <h4>SaaS Subscriptions</h4>
+          <p>$199-$999/mo for contractors. $499-$2,499/mo for dealers. AI search, pricing intelligence, fleet dashboards. 80%+ gross margin.</p>
+        </div>
+        <div class="stream">
+          <div class="stream-pct">20%</div>
+          <h4>Dealer Services & Financing</h4>
+          <p>Promoted listings, financing referral fees (1-2% of loan value), insurance and inspection commissions, logistics coordination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="traction">
+    <div class="section-inner">
+      <div class="section-label">Financial Projections</div>
+      <h2 class="section-title">Path to $95M revenue</h2>
+      <div style="overflow-x:auto;">
+        <table class="proj-table">
+          <thead>
+            <tr><th>Metric</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 5</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GMV Facilitated</td><td>$50M</td><td>$250M</td><td>$750M</td><td>$1.9B</td></tr>
+            <tr><td>Revenue</td><td>$2.5M</td><td>$12M</td><td>$35M</td><td>$95M</td></tr>
+            <tr><td>Gross Margin</td><td>60%</td><td>68%</td><td>74%</td><td>78%</td></tr>
+            <tr><td>EBITDA Margin</td><td>-80%</td><td>-25%</td><td>5%</td><td>25%</td></tr>
+            <tr><td>Active Buyers</td><td>500</td><td>3,000</td><td>12,000</td><td>40,000</td></tr>
+            <tr><td>Dealer Partners</td><td>100</td><td>500</td><td>2,000</td><td>5,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:var(--text-dim);font-size:0.85rem;margin-top:1rem;">Unit economics at scale: ~$4,500 avg revenue/transaction, ~$800 CAC, ~$18,000 LTV, 22:1 LTV:CAC ratio</p>
+    </div>
+  </section>
+
+  <section class="why-now">
+    <div class="section-inner">
+      <div class="section-label">Why Now</div>
+      <h2 class="section-title">Three forces converging</h2>
+      <div class="reasons">
+        <div class="reason">
+          <h4>$1.2T in Infrastructure Spending</h4>
+          <p>IIJA, CHIPS Act, and data center buildout at $40B/year are creating unprecedented equipment demand across the U.S.</p>
+        </div>
+        <div class="reason">
+          <h4>AI Has Reached the Threshold</h4>
+          <p>LLMs, negotiation agents, and pricing models are now sophisticated enough to handle complex B2B equipment transactions.</p>
+        </div>
+        <div class="reason">
+          <h4>Construction Going Digital</h4>
+          <p>Post-COVID digital adoption has accelerated dramatically. Online equipment platforms are growing at 2x the overall market rate (~10% CAGR).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>The window is open.<br>Let’s build the standard.</h2>
+    <p>We’re raising a $5M seed round to launch in Texas and the Southeast. If you’re a contractor, dealer, or investor — let’s talk.</p>
+    <a class="cta-btn" href="mailto:jim@rigbrain.io">Get in Touch</a>
+    <p class="cta-sub">jim@rigbrain.io</p>
+  </section>
+
+  <footer>
+    &copy; 2026 RigBrain. All rights reserved.
+  </footer>
+
 </body>
 </html>
