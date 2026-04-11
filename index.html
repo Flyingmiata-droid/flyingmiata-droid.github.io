@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RigBrain &mdash; AI-Powered Equipment Marketplace for Construction</title>
-  <meta name="description" content="Find, compare, negotiate, and acquire heavy construction equipment with AI. Search across dealers, rental fleets, and auctions nationwide.">
+  <meta name="description" content="RigBrain is an AI-powered lead generation platform for construction equipment dealers. PermitMatch ingests public building permits, extracts equipment needs with NLP, and matches them to nearby dealers in real time. Launching Q2 2026 in Austin, TX.">
 
   <!-- Open Graph Tags -->
   <meta property="og:title" content="RigBrain &mdash; AI-Powered Equipment Marketplace for Construction">
-  <meta property="og:description" content="Find, compare, negotiate, and acquire heavy construction equipment with AI. Search across dealers, rental fleets, and auctions nationwide.">
+  <meta property="og:description" content="RigBrain is an AI-powered lead generation platform for construction equipment dealers. PermitMatch matches building permits to dealer inventory in real time.">
   <meta property="og:url" content="https://rigbrain.io">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://rigbrain.io/og-image.png">
@@ -406,7 +406,224 @@
         padding: 3.5rem 1.25rem;
       }
     }
+    /* Comparison Table */
+    .compare-section { background: var(--bg); border-top: 1px solid var(--border); }
+    .compare-table {
+      width: 100%; border-collapse: collapse; margin-top: 2rem;
+      background: var(--bg-card); border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); font-size: 0.9rem;
+    }
+    .compare-table th, .compare-table td { padding: 1rem 1.25rem; text-align: left; }
+    .compare-table th {
+      background: rgba(245,158,11,0.06); color: var(--amber);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+      font-weight: 700; border-bottom: 1px solid var(--border);
+    }
+    .compare-table td { border-bottom: 1px solid var(--border); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: var(--text-muted); font-weight: 600; }
+    .compare-table .check { color: #22c55e; }
+    .compare-table .cross { color: #ef4444; }
+    .compare-table .partial { color: var(--amber); }
+    @media (max-width: 640px) {
+      .compare-table { font-size: 0.8rem; }
+      .compare-table th, .compare-table td { padding: 0.6rem 0.5rem; }
+    }
+
+    /* Definition Block */
+    .definition-block {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 4px solid var(--amber); border-radius: 8px;
+      padding: 2rem; max-width: 800px; margin: 2rem auto 0;
+    }
+    .definition-block h2 {
+      font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .definition-block p {
+      color: var(--text-muted); font-size: 1rem; line-height: 1.7;
+    }
+    .last-updated {
+      font-size: 0.75rem; color: var(--text-dim); margin-top: 0.5rem;
+    }
   </style>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RigBrain",
+    "url": "https://rigbrain.io",
+    "logo": "https://rigbrain.io/og-image.png",
+    "description": "RigBrain is an AI-powered lead generation platform for the heavy construction equipment industry. Its core feature, PermitMatch, ingests public building permits, uses NLP to extract equipment needs, and matches them to nearby equipment dealers.",
+    "foundingDate": "2025",
+    "founder": {
+      "@type": "Person",
+      "name": "Jim Krummen"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "jim@rigbrain.io",
+      "contactType": "sales"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "RigBrain PermitMatch",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "AI-powered lead generation tool that matches public building permits to construction equipment dealers. Ingests permits from government APIs, extracts equipment needs using NLP, scores leads by geography, equipment fit, deal size, and historic success, and delivers actionable leads for dealer outreach.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free waitlist access. Annual subscriptions from $3,000 to $8,000 based on region and lead volume. 2-week free trial for pilot partners."
+    },
+    "featureList": [
+      "Real-time building permit ingestion via public APIs",
+      "NLP-based equipment need extraction from permit descriptions",
+      "Geographic dealer-permit matching (5-50km configurable radius)",
+      "Four-factor lead scoring (geography 40%, equipment fit 30%, deal size 20%, historic success 10%)",
+      "Contractor contact info with every lead",
+      "Automated dealer outreach notifications"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is RigBrain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RigBrain is an AI-powered lead generation platform for the heavy construction equipment industry. Its core feature, PermitMatch, ingests public building permits, uses NLP to extract equipment needs from permit descriptions, and matches them to nearby equipment dealers — generating scored, actionable leads for dealer outreach. RigBrain currently tracks over 20,000 real building permits in Austin, Texas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is PermitMatch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PermitMatch is RigBrain's core AI feature that matches public building permits to construction equipment dealers. It ingests permits from government open data portals, classifies them using NLP to determine what equipment is needed, matches permits to dealers within a configurable 5-50km radius, and scores each lead using a four-factor formula: geography fit (40%), equipment fit (30%), deal size (20%), and historic success (10%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does RigBrain match building permits to equipment dealers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RigBrain uses a four-step pipeline: (1) Permit Ingestion — automatically pulls permits from public government APIs, (2) NLP Classification — AI extracts project type and equipment categories from permit descriptions, (3) Dealer Matching — identifies dealers within a configurable radius whose inventory matches the project needs, (4) Lead Scoring — ranks matches using geography fit (40%), equipment fit (30%), deal size (20%), and historic success rate (10%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do equipment dealers find new projects in their area?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditionally, equipment dealers rely on word-of-mouth, manual permit searches, and cold outreach to find new projects. RigBrain automates this by ingesting building permits in real time and matching them to dealers based on geography, equipment inventory, and project type. Each lead includes the contractor's name, phone number, project address, and estimated scope."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can building permits predict equipment rental demand?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Building permits are public records filed before construction begins, making them a leading indicator of equipment demand. A commercial building permit signals potential need for excavators, cranes, and concrete equipment. RigBrain's NLP classifies each permit by project type and extracts specific equipment categories needed, turning permit data into predictive demand signals for equipment dealers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is AI-powered lead generation for construction equipment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI-powered lead generation for construction equipment uses artificial intelligence to identify, score, and deliver sales leads to equipment dealers. RigBrain's approach ingests public building permits, uses NLP to determine what equipment each project needs, matches permits to nearby dealers, and scores leads by geography, equipment fit, deal size, and historic success. This replaces manual permit searching and generic lead aggregators with targeted, project-specific leads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI really handle a $100K+ equipment negotiation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RigBrain's AI doesn't make decisions for you — it handles the repetitive back-and-forth. It gathers quotes, compares terms across dealers, counters based on fair market data, and presents you with the best options. You approve every step. Think of it as having a full-time procurement analyst who never sleeps and knows every comparable sale in the market."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does the pricing data come from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RigBrain aggregates pricing from auction results, dealer transactions, rental rate cards, and public market data to build fair market values for every equipment category. Models factor in age, hours, condition, geography, and seasonal demand — giving you the closest thing to a Kelley Blue Book that exists for heavy equipment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does RigBrain cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Joining the RigBrain waitlist is free. Annual subscriptions range from $3,000 to $8,000 based on region and lead volume. Pilot partners receive a 2-week free trial. Early access members get preferred terms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas does RigBrain cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RigBrain is launching in Q2 2026 starting with Austin, Texas, where it currently tracks over 20,000 real building permits with 281 demo-ready permits that are geocoded, valued, and include contractor contact information. Expansion to Dallas, Houston, and other major US metro areas is planned for 2026-2027."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How RigBrain PermitMatch Generates Equipment Leads from Building Permits",
+    "description": "RigBrain's AI pipeline turns public building permits into scored equipment dealer leads in four steps.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Permit Ingestion",
+        "text": "RigBrain automatically ingests building permits from public government APIs and open data portals, capturing address, GPS coordinates, project scope, cost estimate, permit type, and contractor details."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "NLP Classification",
+        "text": "AI classifies each permit by project type (residential, commercial, industrial, demolition, excavation) and extracts specific equipment categories needed — excavators for demolition, cranes for multi-story commercial, concrete equipment for foundations."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Dealer Matching",
+        "text": "The system identifies equipment dealers within a configurable radius (5-50km) whose inventory matches the project's equipment needs, factoring in dealer specialization and availability."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Lead Scoring and Delivery",
+        "text": "Each match is scored using a four-factor formula: geography fit (40%), equipment fit (30%), deal size (20%), and historic success rate (10%). Scored leads are delivered to the dealer with contractor name, phone number, project address, and estimated scope."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -426,6 +643,15 @@
     <div class="search-demo">
       <div class="search-demo-label">Try asking RigBrain</div>
       <div class="search-demo-text">"I need a 20-ton excavator for a 6-month highway project in Texas, budget under $400K"</div>
+    </div>
+  </section>
+
+  <!-- What is RigBrain? — Definitional block for AI citation extraction -->
+  <section style="padding: 3rem 2rem 0; background: var(--bg);">
+    <div class="definition-block">
+      <h2>What is RigBrain?</h2>
+      <p>RigBrain is an AI-powered lead generation platform for the heavy construction equipment industry. Its core feature, <strong>PermitMatch</strong>, ingests public building permits from government open data portals, uses natural language processing (NLP) to extract equipment needs from permit descriptions, and matches them to nearby equipment dealers &mdash; generating scored, actionable leads for dealer outreach. RigBrain currently tracks over 20,000 real building permits in Austin, Texas, with 281 demo-ready permits that include geocoded locations, project valuations, and contractor contact information. The platform scores each lead using a four-factor formula: geography fit (40%), equipment fit (30%), deal size (20%), and historic success rate (10%).</p>
+      <p class="last-updated">Last updated: April 11, 2026</p>
     </div>
   </section>
 
@@ -569,6 +795,77 @@
     </div>
   </section>
 
+  <!-- Comparison Table — AI-parseable structured comparison -->
+  <section class="compare-section">
+    <div class="section-inner">
+      <div class="section-label">Compare Approaches</div>
+      <h2 class="section-title">How construction equipment lead generation compares</h2>
+      <p class="section-desc">RigBrain PermitMatch vs. traditional methods of finding equipment leads for dealers.</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>RigBrain PermitMatch</th>
+            <th>Manual Permit Search</th>
+            <th>Generic Lead Aggregators</th>
+            <th>Industry Networks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Real-time building permit ingestion</td>
+            <td><span class="check">&#10003;</span> Automated via public APIs</td>
+            <td>Manual, 10-20 hrs/week</td>
+            <td><span class="cross">&#10007;</span> Not permit-specific</td>
+            <td><span class="cross">&#10007;</span> Relationship-based</td>
+          </tr>
+          <tr>
+            <td>Equipment need extraction (NLP)</td>
+            <td><span class="check">&#10003;</span> AI-classified by project type</td>
+            <td><span class="cross">&#10007;</span> Human interpretation</td>
+            <td><span class="cross">&#10007;</span> Generic categories only</td>
+            <td><span class="cross">&#10007;</span> Word of mouth</td>
+          </tr>
+          <tr>
+            <td>Geographic dealer matching</td>
+            <td><span class="check">&#10003;</span> 5-50km configurable radius</td>
+            <td><span class="cross">&#10007;</span> Manual lookup</td>
+            <td><span class="partial">~</span> Zip code level only</td>
+            <td><span class="cross">&#10007;</span> Existing contacts only</td>
+          </tr>
+          <tr>
+            <td>Lead scoring</td>
+            <td><span class="check">&#10003;</span> 4-factor algorithm</td>
+            <td><span class="cross">&#10007;</span> None</td>
+            <td><span class="partial">~</span> Basic volume-based</td>
+            <td><span class="cross">&#10007;</span> None</td>
+          </tr>
+          <tr>
+            <td>Contractor contact info included</td>
+            <td><span class="check">&#10003;</span> Name, phone, address, scope</td>
+            <td><span class="partial">~</span> Varies by county</td>
+            <td><span class="partial">~</span> Often behind paywall</td>
+            <td><span class="check">&#10003;</span> Through relationships</td>
+          </tr>
+          <tr>
+            <td>Typical annual cost</td>
+            <td>$3K &ndash; $8K/year</td>
+            <td>Staff time (10-20 hrs/wk)</td>
+            <td>$5K &ndash; $20K/year</td>
+            <td>Free (limited reach)</td>
+          </tr>
+          <tr>
+            <td>Time to first lead</td>
+            <td>Same day</td>
+            <td>Days to weeks</td>
+            <td>1-2 weeks setup</td>
+            <td>Months to years</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- What Dealers Get -->
   <section class="revenue">
     <div class="section-inner">
@@ -648,6 +945,26 @@
       <div class="section-label">Common Questions</div>
       <h2 class="section-title">FAQ</h2>
       <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">What is PermitMatch?</button>
+          <div class="faq-answer"><p>PermitMatch is RigBrain's core AI feature that matches public building permits to construction equipment dealers. It ingests permits from government open data portals, classifies them using NLP to determine what equipment is needed, matches permits to dealers within a configurable 5-50km radius, and scores each lead using a four-factor formula: geography fit (40%), equipment fit (30%), deal size (20%), and historic success rate (10%). Every lead includes the contractor's name, phone number, project address, and estimated scope.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">What is AI-powered lead generation for construction equipment?</button>
+          <div class="faq-answer"><p>AI-powered lead generation for construction equipment uses artificial intelligence to identify, score, and deliver sales leads to equipment dealers. RigBrain's approach ingests public building permits, uses NLP to determine what equipment each project needs, matches permits to nearby dealers, and scores leads by geography, equipment fit, deal size, and historic success. This replaces manual permit searching and generic lead aggregators with targeted, project-specific leads that include contractor contact information.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">How do equipment dealers find new projects in their area?</button>
+          <div class="faq-answer"><p>Traditionally, equipment dealers rely on word-of-mouth referrals, manually searching county permit databases, cold outreach, and trade shows to find new projects. These methods are time-intensive (10-20 hours per week for manual permit searches) and inconsistent. RigBrain automates this by ingesting building permits in real time from public APIs and matching them to dealers based on geography, equipment inventory, and project type &mdash; delivering scored leads instead of raw data.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Can building permits predict equipment rental demand?</button>
+          <div class="faq-answer"><p>Yes. Building permits are public records filed before construction begins, making them a leading indicator of equipment demand. A commercial building permit signals potential need for excavators, cranes, and concrete equipment. An industrial permit may require specialized heavy machinery. RigBrain's NLP classifies each permit by project type and extracts specific equipment categories needed, turning permit data into predictive demand signals for equipment dealers &mdash; often weeks or months before the contractor starts calling around for quotes.</p></div>
+        </div>
 
         <div class="faq-item">
           <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Can AI really handle a $100K+ equipment negotiation?</button>
@@ -750,6 +1067,7 @@
 
   <footer>
     &copy; 2026 RigBrain. All rights reserved.
+    <br><span style="color: var(--text-dim); font-size: 0.75rem;">Last updated: April 11, 2026</span>
   </footer>
 
   <script>
