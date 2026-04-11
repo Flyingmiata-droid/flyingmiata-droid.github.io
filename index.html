@@ -334,6 +334,58 @@
       color: var(--text-muted); font-size: 0.95rem;
     }
 
+    /* FAQ */
+    .faq { background: #050505; border-top: 1px solid var(--border); }
+    .faq-list { max-width: 700px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question {
+      width: 100%; background: none; border: none; color: var(--text);
+      font-size: 1.05rem; font-weight: 600; text-align: left;
+      padding: 1.25rem 2rem 1.25rem 0; cursor: pointer;
+      font-family: inherit; position: relative; line-height: 1.4;
+    }
+    .faq-question::after {
+      content: '+'; position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%); font-size: 1.4rem; color: var(--amber);
+      transition: transform 0.2s;
+    }
+    .faq-question.open::after { content: '−'; }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+      color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;
+    }
+    .faq-answer.open { max-height: 300px; }
+    .faq-answer p { padding: 0 0 1.25rem 0; }
+
+    /* Founder */
+    .founder-section {
+      border-top: 1px solid var(--border); padding: 4rem 2rem;
+      text-align: center;
+    }
+    .founder-card {
+      max-width: 500px; margin: 0 auto;
+      display: flex; align-items: center; gap: 1.25rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem 2rem; text-align: left;
+    }
+    .founder-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(245,158,11,0.15); color: var(--amber);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 800; flex-shrink: 0;
+    }
+    .founder-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .founder-info p { font-size: 0.9rem; color: var(--text-muted); }
+    .founder-info a { font-size: 0.85rem; }
+
+    /* Dealer CTA */
+    .dealer-cta {
+      display: inline-block; background: var(--amber); color: var(--bg);
+      font-weight: 700; padding: 0.75rem 2rem; border-radius: 8px;
+      font-size: 1rem; margin-top: 1.5rem; transition: background 0.2s;
+    }
+    .dealer-cta:hover { background: var(--amber-dark); text-decoration: none; }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border); padding: 2rem;
@@ -360,15 +412,15 @@
 
   <nav>
     <div class="nav-logo"><span>Rig</span><span>Brain</span></div>
-    <a class="nav-cta" href="rigbrain-signup.html" aria-label="Get early access to RigBrain">Get Early Access</a>
+    <a class="nav-cta" href="#waitlist-1" aria-label="Get early access to RigBrain">Get Early Access</a>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-badge">AI-Powered Equipment Marketplace</div>
-    <h1>Find the right equipment.<br><em>At the right price.</em></h1>
-    <p class="hero-sub">RigBrain uses AI to match contractors with heavy equipment across dealers, rental fleets, and auctions nationwide &mdash; then handles pricing, negotiation, and the entire transaction.</p>
-    <a class="hero-cta" href="rigbrain-signup.html" aria-label="Request early access to RigBrain">Request Early Access</a>
+    <h1>15 hours to find one excavator.<br><em>Or 15 seconds.</em></h1>
+    <p class="hero-sub">RigBrain uses AI to search every dealer, auction, and rental fleet nationwide &mdash; then handles pricing, negotiation, and the entire transaction. So you spend less time sourcing and more time building.</p>
+    <a class="hero-cta" href="#waitlist-1" aria-label="Get early access to RigBrain">Get Early Access</a>
     <p class="hero-note">Launching in Texas & Southeast U.S. &mdash; 2026</p>
 
     <div class="search-demo">
@@ -378,7 +430,7 @@
   </section>
 
   <!-- Waitlist Section (After Hero) -->
-  <section class="waitlist-section">
+  <section class="waitlist-section" id="waitlist-1">
     <div class="waitlist-inner">
       <div class="section-label">Join Early</div>
       <h2>Get Early Access</h2>
@@ -395,19 +447,19 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label for="name1">Name</label>
+            <label for="name1">Name <span style="color: var(--text-dim); font-weight: 400;">(optional)</span></label>
             <input type="text" id="name1" name="name" placeholder="John Doe">
           </div>
           <div class="form-group">
-            <label for="company1">Company</label>
+            <label for="company1">Company <span style="color: var(--text-dim); font-weight: 400;">(optional)</span></label>
             <input type="text" id="company1" name="company" placeholder="Acme Construction">
           </div>
         </div>
 
         <div class="form-row full">
           <div class="form-group">
-            <label for="role1">Role <span style="color: var(--amber);">*</span></label>
-            <select id="role1" name="role" required>
+            <label for="role1">Role <span style="color: var(--text-dim); font-weight: 400;">(helps us personalize your experience)</span></label>
+            <select id="role1" name="role">
               <option value="">Select your role...</option>
               <option value="Contractor">Contractor</option>
               <option value="Equipment Dealer">Equipment Dealer</option>
@@ -418,7 +470,7 @@
           </div>
         </div>
 
-        <button type="submit" class="waitlist-submit" aria-label="Join the RigBrain waitlist">Join the Waitlist</button>
+        <button type="submit" class="waitlist-submit" aria-label="Get early access to RigBrain">Get Early Access</button>
         <p class="form-message">We'll email you updates about our launch.</p>
       </form>
 
@@ -539,6 +591,9 @@
           <p>New permits hit your dashboard within days of filing. Be the first dealer to reach out &mdash; before the contractor starts calling around.</p>
         </div>
       </div>
+      <div style="text-align:center;">
+        <a class="dealer-cta" href="#waitlist-2" aria-label="Get permit leads as a dealer">Get Permit Leads &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -587,8 +642,62 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="section-inner">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Can AI really handle a $100K+ equipment negotiation?</button>
+          <div class="faq-answer"><p>RigBrain's AI doesn't make decisions for you &mdash; it handles the repetitive back-and-forth. It gathers quotes, compares terms across dealers, counters based on fair market data, and presents you with the best options. You approve every step. Think of it as having a full-time procurement analyst who never sleeps and knows every comparable sale in the market.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Where does the pricing data come from?</button>
+          <div class="faq-answer"><p>We aggregate pricing from auction results, dealer transactions, rental rate cards, and public market data to build fair market values for every equipment category. Our models factor in age, hours, condition, geography, and seasonal demand &mdash; giving you the closest thing to a Kelley Blue Book that exists for heavy equipment.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">I already have dealer relationships. Why would I use RigBrain?</button>
+          <div class="faq-answer"><p>We're not here to replace your dealers. RigBrain shows you the full market &mdash; every dealer, auction, and rental fleet &mdash; so you can negotiate from a position of knowledge. Most contractors tell us they're happy with their dealers but have no idea if they're getting a fair price. Now you will.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">What does it cost?</button>
+          <div class="faq-answer"><p>Joining the waitlist is free. We'll share full pricing details before launch, but our goal is to save you significantly more than we charge &mdash; whether that's through better pricing, faster sourcing, or both. Early access members will get preferred terms.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Is my information shared with dealers?</button>
+          <div class="faq-answer"><p>Only when you want it to be. Your search activity and company details stay private until you choose to engage with a dealer or seller. You control what's shared and when.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">When does RigBrain launch?</button>
+          <div class="faq-answer"><p>Q2 2026, starting in Texas and the Southeast U.S. We're already tracking 20,000+ real building permits in Austin and onboarding our first dealer partners. Waitlist members get first access.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="founder-section">
+    <div class="section-label">Built By</div>
+    <div class="founder-card">
+      <div class="founder-avatar">J</div>
+      <div class="founder-info">
+        <h4>Jim Krummen</h4>
+        <p>Founder of RigBrain. Building the data infrastructure the equipment industry never had.</p>
+        <a href="mailto:jim@rigbrain.io">jim@rigbrain.io</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
-  <section class="cta-section">
+  <section class="cta-section" id="waitlist-2">
     <h2>The window is open.<br>Let's build the standard.</h2>
     <p>We're launching in Texas and expanding across the Southeast. Whether you're a contractor, dealer, or investor &mdash; let's talk.</p>
 
@@ -603,19 +712,19 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label for="name2">Name</label>
+            <label for="name2">Name <span style="color: var(--text-dim); font-weight: 400;">(optional)</span></label>
             <input type="text" id="name2" name="name" placeholder="John Doe">
           </div>
           <div class="form-group">
-            <label for="company2">Company</label>
+            <label for="company2">Company <span style="color: var(--text-dim); font-weight: 400;">(optional)</span></label>
             <input type="text" id="company2" name="company" placeholder="Acme Construction">
           </div>
         </div>
 
         <div class="form-row full">
           <div class="form-group">
-            <label for="role2">Role <span style="color: var(--amber);">*</span></label>
-            <select id="role2" name="role" required>
+            <label for="role2">Role <span style="color: var(--text-dim); font-weight: 400;">(helps us personalize your experience)</span></label>
+            <select id="role2" name="role">
               <option value="">Select your role...</option>
               <option value="Contractor">Contractor</option>
               <option value="Equipment Dealer">Equipment Dealer</option>
@@ -656,10 +765,9 @@
 
         // Validate required fields
         const email = form.querySelector('input[name="email"]');
-        const role = form.querySelector('select[name="role"]');
 
-        if (!email.value.trim() || !role.value.trim()) {
-          alert('Please fill in all required fields.');
+        if (!email.value.trim()) {
+          alert('Please enter your email address.');
           return;
         }
 
