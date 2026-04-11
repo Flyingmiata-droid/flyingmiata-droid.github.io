@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PermitMatch for Dealers — RigBrain</title>
+  <meta name="description" content="See 10 real Austin equipment leads with contractor name, phone, and project details. PermitMatch delivers weekly scored leads to equipment dealers for $249/month.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23f59e0b%22>R</text></svg>">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--amber:#f59e0b;--amber-dark:#d97706;--bg:#0a0a0a;--bg-card:#111;--text:#e0e0e0;--text-muted:#9ca3af;--text-dim:#6b7280;--border:#1f1f1f;--green:#10b981}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
+
+    .top-bar{background:var(--amber);color:#000;text-align:center;padding:0.6rem 1rem;font-size:0.85rem;font-weight:600}
+    nav{background:rgba(10,10,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .nav-logo{font-size:1.5rem;font-weight:800;letter-spacing:-0.02em}
+    .nav-logo span:first-child{color:var(--amber)}.nav-logo span:last-child{color:#fff}
+
+    .hero{padding:5rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(245,158,11,0.08) 0%,transparent 60%)}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;max-width:750px;margin:0 auto 1.2rem}
+    .hero h1 em{font-style:normal;color:var(--amber)}
+    .hero-sub{font-size:1.1rem;color:var(--text-muted);max-width:580px;margin:0 auto 2rem}
+
+    .leads-section{padding:3rem 2rem 4rem;max-width:900px;margin:0 auto}
+    .leads-section h2{font-size:1.6rem;font-weight:800;margin-bottom:0.5rem}
+    .leads-section .sub{color:var(--text-muted);font-size:0.95rem;margin-bottom:2rem}
+
+    .lead-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;display:grid;grid-template-columns:60px 1fr;gap:1rem;align-items:start}
+    .lead-card:hover{border-color:rgba(245,158,11,0.3)}
+    .lead-score{text-align:center;padding-top:0.25rem}
+    .lead-score .num{font-size:1.6rem;font-weight:800;line-height:1}
+    .lead-score .label{font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em}
+    .score-high .num{color:var(--green)}
+    .score-med .num{color:var(--amber)}
+    .lead-title{font-size:1rem;font-weight:700;margin-bottom:0.25rem}
+    .lead-meta{font-size:0.8rem;color:var(--text-dim);margin-bottom:0.4rem}
+    .lead-desc{font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem}
+    .lead-details{font-size:0.85rem}
+    .lead-details strong{color:var(--text)}
+    .lead-equip{font-size:0.8rem;color:var(--amber);font-weight:600;margin-top:0.4rem}
+    .lead-contact{display:inline-block;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:6px;padding:0.3rem 0.75rem;font-size:0.85rem;color:var(--green);font-weight:600;margin-top:0.5rem}
+
+    .cta-box{background:var(--bg-card);border:2px solid var(--amber);border-radius:16px;padding:2.5rem;text-align:center;max-width:600px;margin:3rem auto}
+    .cta-box h2{font-size:1.5rem;font-weight:800;margin-bottom:0.5rem}
+    .cta-box .price{font-size:3rem;font-weight:800;color:var(--amber);line-height:1}
+    .cta-box .period{font-size:1rem;color:var(--text-muted)}
+    .cta-box .features{list-style:none;text-align:left;margin:1.5rem auto;max-width:380px}
+    .cta-box .features li{padding:0.4rem 0;color:var(--text-muted);font-size:0.9rem;border-bottom:1px solid var(--border)}
+    .cta-box .features li:last-child{border-bottom:none}
+    .check{color:var(--green);margin-right:0.5rem}
+    .cta-btn{display:inline-block;background:var(--amber);color:var(--bg);font-size:1.1rem;font-weight:700;padding:0.9rem 2.2rem;border-radius:8px;margin-top:1rem;transition:background 0.2s}
+    .cta-btn:hover{background:var(--amber-dark);text-decoration:none}
+    .cta-note{font-size:0.8rem;color:var(--text-dim);margin-top:0.75rem}
+
+    .objections{padding:3rem 2rem;max-width:700px;margin:0 auto}
+    .objections h2{font-size:1.4rem;font-weight:800;margin-bottom:1.5rem}
+    .objection{margin-bottom:1.5rem}
+    .objection .q{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.3rem}
+    .objection .a{font-size:0.9rem;color:var(--text-muted);line-height:1.6}
+
+    .final-cta{padding:4rem 2rem;text-align:center;border-top:1px solid var(--border)}
+    .final-cta h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:0.75rem}
+    .final-cta p{color:var(--text-muted);font-size:1rem;margin-bottom:1.5rem}
+
+    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:0.8rem;color:var(--text-dim)}
+    @media(max-width:640px){.lead-card{grid-template-columns:45px 1fr;gap:0.75rem;padding:1rem}.hero{padding:3rem 1.25rem 2.5rem}}
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">Limited: Free sample lead report for Austin-area dealers &mdash; <a href="#get-report" style="color:#000;text-decoration:underline;font-weight:700;">Get yours now</a></div>
+
+  <nav>
+    <a href="index.html" style="text-decoration:none"><div class="nav-logo"><span>Rig</span><span>Brain</span></div></a>
+    <a href="#get-report" class="cta-btn" style="font-size:0.9rem;padding:0.5rem 1.2rem;">Get Sample Report</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Here are 10 contractors in Austin who need <em>your equipment</em> this month.</h1>
+    <p class="hero-sub">Real building permits. Real contractor phone numbers. Real project details. This is what a weekly PermitMatch lead report looks like.</p>
+  </section>
+
+  <section class="leads-section">
+    <h2>This week's top leads</h2>
+    <p class="sub">From 194 active commercial permits in Austin, TX. Sorted by lead score.</p>
+
+    <div class="lead-card">
+      <div class="lead-score score-high"><div class="num">95</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New 178,517 SF Parking Garage</div>
+        <div class="lead-meta">4812 Gonzales St, Austin 78702 &bull; Permit 2025-160597 &bull; Issued Dec 29</div>
+        <div class="lead-details"><strong>Value:</strong> $50.0M &bull; <strong>Floors:</strong> 6 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Cranes, Concrete Equipment, Boom Lifts</div>
+        <div class="lead-contact">NRP Contractors II, LLC &mdash; (417) 655-0039</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-high"><div class="num">95</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New 67,619 SF Elementary School</div>
+        <div class="lead-meta">2206 Blue Meadow Dr, Austin 78744 &bull; Permit 2025-151791 &bull; Issued Dec 2</div>
+        <div class="lead-details"><strong>Value:</strong> $47.2M &bull; <strong>Floors:</strong> 2 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Cranes, Boom Lifts, Skid Steers</div>
+        <div class="lead-contact">Hill & Wilkinson GC &mdash; (512) 287-6309</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-high"><div class="num">95</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New 4-Story Admin Office Building (56,903 SF)</div>
+        <div class="lead-meta">3505 Montopolis Dr, Austin 78744 &bull; Permit 2026-037893 &bull; Issued Mar 30</div>
+        <div class="lead-details"><strong>Value:</strong> $22.0M &bull; <strong>Floors:</strong> 4 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Cranes, Boom Lifts, Skid Steers</div>
+        <div class="lead-contact">Zapalac/Reed Construction Co., LP &mdash; (512) 306-8888</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">88</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New 5-Story 104-Unit Affordable Housing</div>
+        <div class="lead-meta">5516 Humming Bird Ln, Austin 78745 &bull; Permit 2026-017666 &bull; Issued Feb 17</div>
+        <div class="lead-details"><strong>Value:</strong> $20.0M &bull; <strong>Floors:</strong> 5 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Cranes, Boom Lifts, Concrete Equipment, Skid Steers</div>
+        <div class="lead-contact">ICON Builders, LLC &mdash; (817) 313-1543</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">88</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New Tilt-Wall Warehouse (189,832 SF)</div>
+        <div class="lead-meta">10095 E US 290 Hwy, Austin 78724 &bull; Permit 2025-028280 &bull; Issued Dec 18</div>
+        <div class="lead-details"><strong>Value:</strong> $18.0M &bull; <strong>Floors:</strong> 1 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Cranes, Forklifts, Skid Steers</div>
+        <div class="lead-contact">Pritchard Associates, Inc. &mdash; (214) 849-0011</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">83</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New 36-Room Hotel with Spa & Fitness</div>
+        <div class="lead-meta">811 W Live Oak St, Austin 78704 &bull; Permit 2025-158166 &bull; Issued Dec 15</div>
+        <div class="lead-details"><strong>Value:</strong> $17.0M &bull; <strong>Floors:</strong> 3 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Cranes, Boom Lifts, Skid Steers</div>
+        <div class="lead-contact">La Corsha Hospitality Group &mdash; (512) 748-7828</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">83</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New Retail Building with Convenience Store</div>
+        <div class="lead-meta">7734 McKinney Falls Pkwy, Austin 78744 &bull; Permit 2025-052515 &bull; Issued Mar 18</div>
+        <div class="lead-details"><strong>Value:</strong> $15.0M &bull; <strong>Floors:</strong> 1 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Skid Steers, Boom Lifts</div>
+        <div class="lead-contact">PrimeHaven Development LLC &mdash; (512) 586-1532</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">88</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New Multi-Family Smart Housing (56,251 SF)</div>
+        <div class="lead-meta">6410 FM 969 Rd, Austin 78724 &bull; Permit 2025-142103 &bull; Issued Dec 1</div>
+        <div class="lead-details"><strong>Value:</strong> $14.2M &bull; <strong>Floors:</strong> 4 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Cranes, Boom Lifts, Skid Steers</div>
+        <div class="lead-contact">Bailey Elliott Construction &mdash; (512) 327-3951</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">80</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">New 34,782 SF Fitness Center</div>
+        <div class="lead-meta">3101 E Yager Ln, Austin 78754 &bull; Permit 2026-024610 &bull; Issued Feb 27</div>
+        <div class="lead-details"><strong>Value:</strong> $6.0M &bull; <strong>Floors:</strong> 1 &bull; <strong>Type:</strong> New Construction</div>
+        <div class="lead-equip">Equipment Needs: Excavators, Skid Steers, Boom Lifts</div>
+        <div class="lead-contact">C.E. Gleeson Constructors, Inc. &mdash; (248) 647-5500</div>
+      </div>
+    </div>
+
+    <div class="lead-card">
+      <div class="lead-score score-med"><div class="num">80</div><div class="label">Score</div></div>
+      <div>
+        <div class="lead-title">Remodel of Existing Office Building</div>
+        <div class="lead-meta">625 E 10th St #100, Austin 78701 &bull; Permit 2025-145678 &bull; Issued Nov 17</div>
+        <div class="lead-details"><strong>Value:</strong> $6.8M &bull; <strong>Floors:</strong> 2 &bull; <strong>Type:</strong> Addition &amp; Remodel</div>
+        <div class="lead-equip">Equipment Needs: Mini Excavators, Scissor Lifts, Skid Steers</div>
+        <div class="lead-contact">STR Constructors &mdash; (512) 515-0254</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:1.5rem;">Showing 10 of 194 active commercial permits in Austin. Full subscribers see all matches for their equipment categories and service radius.</p>
+  </section>
+
+  <div class="cta-box" id="get-report">
+    <h2>Get leads like these every week.</h2>
+    <div style="margin:1rem 0"><span class="price">$249</span><span class="period">/month</span></div>
+    <ul class="features">
+      <li><span class="check">&#10003;</span> Weekly lead report matched to your inventory</li>
+      <li><span class="check">&#10003;</span> Contractor name + phone on every lead</li>
+      <li><span class="check">&#10003;</span> AI equipment-need scoring</li>
+      <li><span class="check">&#10003;</span> Lead score (0-100) to prioritize outreach</li>
+      <li><span class="check">&#10003;</span> Austin metro (expanding TX statewide)</li>
+      <li><span class="check">&#10003;</span> Cancel anytime</li>
+    </ul>
+    <a class="cta-btn" href="mailto:jim@rigbrain.io?subject=Send%20me%20a%20sample%20PermitMatch%20report&body=Hi%20Jim%2C%0A%0AI%27d%20like%20to%20see%20a%20sample%20lead%20report%20for%20my%20dealership.%0A%0ACompany%3A%20%0AEquipment%20types%3A%20%0AService%20area%3A%20">Email me for a free sample report</a>
+    <p class="cta-note">Or email jim@rigbrain.io directly. We'll send a custom report within 24 hours.</p>
+  </div>
+
+  <section class="objections">
+    <h2>Common questions from dealers</h2>
+
+    <div class="objection">
+      <div class="q">"I already get leads from my network."</div>
+      <div class="a">Great &mdash; but your network only covers contractors you already know. There are 194 active permits in Austin right now from contractors who have never called you. PermitMatch surfaces those before they start sourcing equipment elsewhere.</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"I can search permits myself."</div>
+      <div class="a">You can &mdash; and it takes 10-20 hours a week to do well. PermitMatch automates the search, the classification, and the scoring. We also extract what equipment each project needs, which you'd have to guess from raw permit descriptions.</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"How do I know these leads convert?"</div>
+      <div class="a">Every lead is from a real, active building permit with a real contractor name and phone number. These are projects that are happening. Whether you close depends on your outreach &mdash; but now you're calling with the project details in hand instead of cold calling.</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"$249/month is a lot for leads."</div>
+      <div class="a">One equipment rental on one lead covers your subscription for a year. A $50K excavator rental from a $47M school build would return 200x your monthly cost. Generic lead aggregators charge $5K-20K/year for lower-quality leads.</div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>These contractors are sourcing equipment right now.</h2>
+    <p>The question is whether they call you or your competitor first.</p>
+    <a class="cta-btn" href="mailto:jim@rigbrain.io?subject=PermitMatch%20-%20interested&body=Hi%20Jim%2C%20I%27d%20like%20to%20learn%20more%20about%20PermitMatch.">Get started &rarr;</a>
+    <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">jim@rigbrain.io &bull; rigbrain.io</p>
+  </section>
+
+  <footer>&copy; 2026 RigBrain. All rights reserved.</footer>
+
+</body>
+</html>

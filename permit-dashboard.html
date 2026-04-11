@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RigBrain PermitMatch — Austin Market Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0F0F1A;
+            --bg-card: #1A1A2E;
+            --accent: #F59E0B;
+            --text-primary: #FFFFFF;
+            --text-secondary: #D1D5DB;
+            --border: #2D2D44;
+            --green: #10B981;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .header-url {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* KPI Row */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Filters */
+        .filter-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .filter-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        select {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            min-width: 160px;
+        }
+
+        select:hover {
+            border-color: var(--accent);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        .results-badge {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Table */
+        .table-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: var(--bg-primary);
+            position: sticky;
+            top: 0;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        tbody tr {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        tbody tr:hover {
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        /* Score badges */
+        .score-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .score-green {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--green);
+        }
+
+        .score-amber {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+        }
+
+        .score-gray {
+            background: rgba(107, 114, 128, 0.2);
+            color: var(--gray);
+        }
+
+        /* Equipment pills */
+        .equipment-pills {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .equipment-pill {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Expanded row */
+        .expanded-row {
+            background: rgba(245, 158, 11, 0.08);
+            border-top: 1px solid var(--border);
+        }
+
+        .expanded-content {
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .expanded-content p {
+            margin-bottom: 1rem;
+        }
+
+        .expanded-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .expanded-value {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Footer */
+        footer {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: var(--bg-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+        }
+
+        /* Scrollbar styling */
+        .table-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            select {
+                width: 100%;
+            }
+
+            .results-badge {
+                width: 100%;
+                text-align: center;
+            }
+
+            th:nth-child(n+5),
+            td:nth-child(n+5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">RigBrain PermitMatch — Austin Market Demo</div>
+        <div class="header-url">rigbrain.io</div>
+    </header>
+
+    <div class="container">
+        <!-- KPI Row -->
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="kpi-label">Active Permits</div>
+                <div class="kpi-value" id="kpi-permits">142</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Total Value</div>
+                <div class="kpi-value" id="kpi-value">$1.85B</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Avg Project</div>
+                <div class="kpi-value" id="kpi-avg">$13M</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Matched Leads</div>
+                <div class="kpi-value" id="kpi-leads">50</div>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label class="filter-label">Equipment Type</label>
+                <select id="equipment-filter">
+                    <option value="">All Equipment</option>
+                    <option value="Excavators">Excavators</option>
+                    <option value="Dozers">Dozers</option>
+                    <option value="Loaders">Loaders</option>
+                    <option value="Boom Lifts">Boom Lifts</option>
+                    <option value="Cranes">Cranes</option>
+                    <option value="Tower Cranes">Tower Cranes</option>
+                    <option value="Scissor Lifts">Scissor Lifts</option>
+                    <option value="Concrete Equipment">Concrete Equipment</option>
+                    <option value="Skid Steers">Skid Steers</option>
+                    <option value="Material Handling">Material Handling</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Min Valuation</label>
+                <select id="valuation-filter">
+                    <option value="">All Values</option>
+                    <option value="1000000">$1M+</option>
+                    <option value="5000000">$5M+</option>
+                    <option value="10000000">$10M+</option>
+                    <option value="20000000">$20M+</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label">Min Score</label>
+                <select id="score-filter">
+                    <option value="">All Scores</option>
+                    <option value="50">50+</option>
+                    <option value="60">60+</option>
+                    <option value="70">70+</option>
+                    <option value="80">80+</option>
+                </select>
+            </div>
+
+            <div class="results-badge" id="results-count">20 Results</div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+            <table id="permits-table">
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">Score</th>
+                        <th style="width: 20%;">Address</th>
+                        <th style="width: 25%;">Description</th>
+                        <th style="width: 10%;">Value</th>
+                        <th style="width: 8%;">SqFt</th>
+                        <th style="width: 5%;">Floors</th>
+                        <th style="width: 12%;">Contractor</th>
+                        <th style="width: 10%;">Phone</th>
+                        <th style="width: 22%;">Equipment</th>
+                        <th style="width: 10%;">Date</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <p>No permits match your filters. Try adjusting your selection.</p>
+            </div>
+        </div>
+
+        <!-- CTA Footer -->
+        <footer>
+            Want this for your dealership? <strong>$249/month</strong> — <a href="mailto:jim@rigbrain.io">jim@rigbrain.io</a>
+        </footer>
+    </div>
+
+    <script>
+        const PERMITS = [{"address":"7817 W SH 71 BLDG CP3","zip":"78736","description":"ePlan: Expedited Review - New Construction of Carport.","valuation":76000000,"sqft":1650,"floors":"1","contractor":"Morgan PRL Construction LLC","phone":"9367774212","work_class":"New","equipment":["Loaders"],"score":75,"lat":30.243,"lon":-97.883,"issue_date":"2025-12-11"},{"address":"4812 GONZALES ST BLDG GAR","zip":"78702","description":"ePlan: Commercial Expedited Review - [APPROVED] New Parking Garage (178517 SF).","valuation":50000000,"sqft":178517,"floors":"6","contractor":"NRP Contractors II, LLC","phone":"4176550039","work_class":"New","equipment":["Concrete Equipment","Boom Lifts","Tower Cranes","Dozers"],"score":95,"lat":30.256,"lon":-97.697,"issue_date":"2025-12-29"},{"address":"2206 BLUE MEADOW DR","zip":"78744","description":"Construction of a new 67619 SF two story elementary school (Building A)","valuation":47183562,"sqft":67619,"floors":"2","contractor":"Hill & Wilkinson GC","phone":"5122876309","work_class":"New","equipment":["Excavators","Dozers","Loaders"],"score":85,"lat":30.182,"lon":-97.764,"issue_date":"2025-12-02"},{"address":"6311 S 1ST ST UNIT DP","zip":"78745","description":"ePlan: Expedited Review - New Construction of Dumpster Enclosure for Multi-Family Mixed Use complex (189 SF)","valuation":32000000,"sqft":189,"floors":"1","contractor":"Marcus Building Company","phone":"6312312106","work_class":"New","equipment":["Loaders","Scissor Lifts"],"score":70,"lat":30.201,"lon":-97.785,"issue_date":"2026-02-09"},{"address":"3505 MONTOPOLIS DR BLDG J","zip":"78744","description":"ePlan: Commercial Expedited Review - New Construction of 4 Story Admin Office Building (56903 SF).","valuation":22000000,"sqft":56903,"floors":"4","contractor":"ZAPALAC/REED CONSTRUCTION CO., LP","phone":"5123068888","work_class":"New","equipment":["Excavators","Boom Lifts","Dozers","Loaders"],"score":85,"lat":30.208,"lon":-97.715,"issue_date":"2026-03-30"},{"address":"5516 HUMMING BIRD LN","zip":"78745","description":"New 5 story 104 unit affordable / supportive housing multi-family residential building with an integral clubhouse.","valuation":20000000,"sqft":77700,"floors":"5","contractor":"ICON Builders, LLC","phone":"8173131543","work_class":"New","equipment":["Boom Lifts","Tower Cranes","Dozers","Loaders"],"score":85,"lat":30.207,"lon":-97.779,"issue_date":"2026-02-17"},{"address":"10095 E US 290 HWY SVRD EB BLDG 4","zip":"78724","description":"New ground-up tilt wall shell warehouse construction with potential future office areas.","valuation":18000000,"sqft":189832,"floors":"1","contractor":"Pritchard Associates, Inc.","phone":"2148490011","work_class":"New","equipment":["Cranes","Excavators","Dozers","Loaders"],"score":85,"lat":30.341,"lon":-97.585,"issue_date":"2025-12-18"},{"address":"811 W LIVE OAK ST BLDG A","zip":"78704","description":"ePlan: Commercial Expedited Review - New Wood and Steel Framed 36 Room Hotel With Spa and Fitness Area.","valuation":17000000,"sqft":34901,"floors":"3","contractor":"La Corsha Hospitality Group","phone":"5127487828","work_class":"New","equipment":["Material Handling","Boom Lifts","Dozers","Loaders"],"score":75,"lat":30.245,"lon":-97.762,"issue_date":"2025-12-15"},{"address":"7734 MC KINNEY FALLS PKWY","zip":"78744","description":"ePlan: Commercial Expedited Review - New Construction of Retail Building including Convenience Store.","valuation":15000000,"sqft":11000,"floors":"1","contractor":"PrimeHaven Development LLC","phone":"5125861532","work_class":"New","equipment":["Dozers","Loaders","Skid Steers"],"score":75,"lat":30.157,"lon":-97.73,"issue_date":"2026-03-18"},{"address":"6410 FM 969 RD","zip":"78724","description":"ePlan: Commercial Expedited Review - [SMART HOUSING] New Construction of Multi Family Bldg (56251SF).","valuation":14175165,"sqft":56251,"floors":"4","contractor":"Bailey Elliott Construction, Inc.","phone":"5123273951","work_class":"New","equipment":["Boom Lifts","Dozers","Loaders","Scissor Lifts"],"score":80,"lat":30.285,"lon":-97.66,"issue_date":"2025-12-01"},{"address":"1307 E BRAKER LN BLDG 2","zip":"78754","description":"ePlan: Commercial Expedited Review - New Construction of 3-Story Worship Learning Center.","valuation":10000000,"sqft":10472,"floors":"3","contractor":"G Creek INC.","phone":"5124525640","work_class":"New","equipment":["Boom Lifts","Dozers","Loaders"],"score":75,"lat":30.373,"lon":-97.667,"issue_date":"2025-12-19"},{"address":"3006 BOWMAN AVE","zip":"78703","description":"Construction of a new building addition and alteration to an existing two-story private club.","valuation":8989991,"sqft":10009,"floors":"3","contractor":"Knight Construction","phone":"5128739777","work_class":"Addition and Remodel","equipment":["Boom Lifts"],"score":60,"lat":30.3,"lon":-97.771,"issue_date":"2026-01-16"},{"address":"3101 E YAGER LN BLDG 1","zip":"78754","description":"Construction of a new single floor 34782 S.F. Fitness Center","valuation":6000000,"sqft":34782,"floors":"1","contractor":"C.E. Gleeson Constructors, Inc.","phone":"2486475500","work_class":"New","equipment":["Dozers","Loaders"],"score":70,"lat":30.378,"lon":-97.632,"issue_date":"2026-02-27"},{"address":"11500 CANVAS LN BLDG 1","zip":"78617","description":"New Construction for retail food and beverage shell buildings.","valuation":6000000,"sqft":8393,"floors":"1","contractor":"John King Construction Company","phone":"5128365464","work_class":"Shell","equipment":["Skid Steers"],"score":60,"lat":30.199,"lon":-97.636,"issue_date":"2025-12-22"},{"address":"5811 PALO BLANCO LN","zip":"78744","description":"New Construction two story building; part Business (offices) and part Education (daycare).","valuation":2000000,"sqft":24038,"floors":"2","contractor":"Spawglass Contractors Inc","phone":"5127195251","work_class":"New","equipment":["Excavators","Dozers","Loaders"],"score":65,"lat":30.189,"lon":-97.738,"issue_date":"2026-01-30"},{"address":"7504 COTA VISTA DR BLDG 4","zip":"78744","description":"ePlan: Expedited Review - New Construction of 7 4-Story Multi-Family Bldg (425647 SF).","valuation":2000000,"sqft":57983,"floors":"4","contractor":"Skybeck Construction, LLC","phone":"5122259343","work_class":"New","equipment":["Boom Lifts","Dozers","Loaders","Scissor Lifts"],"score":70,"lat":30.153,"lon":-97.702,"issue_date":"2026-01-15"},{"address":"1706 PAYTON GIN RD","zip":"78758","description":"ePlan: Commercial Expedited Review - [SMART HOUSING] New Multi-Family Residential Apartments.","valuation":1000000,"sqft":232157,"floors":"6","contractor":"Roers Companies","phone":"7372765046","work_class":"Shell","equipment":["Boom Lifts","Tower Cranes","Scissor Lifts"],"score":70,"lat":30.366,"lon":-97.717,"issue_date":"2026-03-31"},{"address":"12705 CENTER LAKE DR BLDG 2","zip":"78753","description":"ePlan: Commercial Expedited Review - New Construction of Daycare (10206 SF)","valuation":1000000,"sqft":10206,"floors":"1","contractor":"Wytex BTS, Inc.","phone":"5127669991","work_class":"New","equipment":["Dozers","Loaders"],"score":65,"lat":30.406,"lon":-97.668,"issue_date":"2026-04-03"},{"address":"1610 DUNGAN LN","zip":"78754","description":"Changed of Use from Warehouse to Indoor Sports and Recreation.","valuation":2200000,"sqft":20960,"floors":"1","contractor":"IE2 CONSTRUCTION, INC","phone":"5129733930","work_class":"Addition and Remodel","equipment":["Cranes"],"score":55,"lat":30.351,"lon":-97.672,"issue_date":"2026-03-19"},{"address":"1008 W 25TH HALF ST BLDG GAR","zip":"78705","description":"ePlan: Expedited Review - New Construction of Parking Garage (19774SF)","valuation":1666667,"sqft":19774,"floors":"2","contractor":"MDG Construction LLC","phone":"5128397168","work_class":"New","equipment":["Concrete Equipment","Dozers","Loaders"],"score":65,"lat":30.29,"lon":-97.748,"issue_date":"2025-12-09"}];
+
+        let expandedRowId = null;
+
+        // Format helpers
+        function formatValue(val) {
+            if (val >= 1000000) {
+                return '$' + (val / 1000000).toFixed(1) + 'M';
+            }
+            if (val >= 1000) {
+                return '$' + (val / 1000).toFixed(0) + 'K';
+            }
+            return '$' + val;
+        }
+
+        function formatPhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            if (cleaned.length === 10) {
+                return '(' + cleaned.slice(0, 3) + ') ' + cleaned.slice(3, 6) + '-' + cleaned.slice(6);
+            }
+            return phone;
+        }
+
+        function formatSqft(sqft) {
+            return sqft.toLocaleString();
+        }
+
+        function getScoreBadgeClass(score) {
+            if (score >= 80) return 'score-green';
+            if (score >= 60) return 'score-amber';
+            return 'score-gray';
+        }
+
+        function truncateDescription(desc, maxLength = 60) {
+            return desc.length > maxLength ? desc.substring(0, maxLength) + '...' : desc;
+        }
+
+        // Filter logic
+        function applyFilters() {
+            const equipmentFilter = document.getElementById('equipment-filter').value;
+            const valuationFilter = parseFloat(document.getElementById('valuation-filter').value) || 0;
+            const scoreFilter = parseInt(document.getElementById('score-filter').value) || 0;
+
+            let filtered = PERMITS.filter(permit => {
+                let pass = true;
+
+                if (equipmentFilter && !permit.equipment.includes(equipmentFilter)) {
+                    pass = false;
+                }
+
+                if (valuationFilter > 0 && permit.valuation < valuationFilter) {
+                    pass = false;
+                }
+
+                if (scoreFilter > 0 && permit.score < scoreFilter) {
+                    pass = false;
+                }
+
+                return pass;
+            });
+
+            // Sort by score desc, then valuation desc
+            filtered.sort((a, b) => {
+                if (b.score !== a.score) return b.score - a.score;
+                return b.valuation - a.valuation;
+            });
+
+            renderTable(filtered);
+            updateKPIs(filtered);
+            updateResultsCount(filtered.length);
+        }
+
+        function renderTable(permits) {
+            const tbody = document.getElementById('table-body');
+            const emptyState = document.getElementById('empty-state');
+
+            if (permits.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            tbody.innerHTML = permits.map((permit, idx) => {
+                const isExpanded = expandedRowId === idx;
+                const scoreClass = getScoreBadgeClass(permit.score);
+                const equipmentHtml = permit.equipment.map(e =>
+                    `<span class="equipment-pill">${e}</span>`
+                ).join('');
+
+                return `
+                    <tr onclick="toggleExpanded(${idx})" style="cursor: pointer;">
+                        <td><span class="score-badge ${scoreClass}">${permit.score}</span></td>
+                        <td>${permit.address}</td>
+                        <td>${truncateDescription(permit.description)}</td>
+                        <td>${formatValue(permit.valuation)}</td>
+                        <td>${formatSqft(permit.sqft)}</td>
+                        <td>${permit.floors}</td>
+                        <td>${permit.contractor}</td>
+                        <td>${formatPhone(permit.phone)}</td>
+                        <td><div class="equipment-pills">${equipmentHtml}</div></td>
+                        <td>${permit.issue_date}</td>
+                    </tr>
+                    ${isExpanded ? `
+                        <tr class="expanded-row">
+                            <td colspan="10">
+                                <div class="expanded-content">
+                                    <div style="margin-bottom: 1.5rem;">
+                                        <div class="expanded-label">Full Description</div>
+                                        <div class="expanded-value">${permit.description}</div>
+                                    </div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                        <div>
+                                            <div class="expanded-label">Work Class</div>
+                                            <div class="expanded-value">${permit.work_class}</div>
+                                        </div>
+                                        <div>
+                                            <div class="expanded-label">Coordinates</div>
+                                            <div class="expanded-value">${permit.lat.toFixed(3)}, ${permit.lon.toFixed(3)}</div>
+                                        </div>
+                                        <div>
+                                            <div class="expanded-label">Project Value</div>
+                                            <div class="expanded-value">${formatValue(permit.valuation)}</div>
+                                        </div>
+                                        <div>
+                                            <div class="expanded-label">Project Size</div>
+                                            <div class="expanded-value">${formatSqft(permit.sqft)} SF, ${permit.floors} floor(s)</div>
+                                        </div>
+                                        <div>
+                                            <div class="expanded-label">Contractor</div>
+                                            <div class="expanded-value">${permit.contractor}</div>
+                                        </div>
+                                        <div>
+                                            <div class="expanded-label">Contact Phone</div>
+                                            <div class="expanded-value">${formatPhone(permit.phone)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    ` : ''}
+                `;
+            }).join('');
+        }
+
+        function toggleExpanded(idx) {
+            expandedRowId = expandedRowId === idx ? null : idx;
+            applyFilters();
+        }
+
+        function updateResultsCount(count) {
+            document.getElementById('results-count').textContent = `${count} Result${count !== 1 ? 's' : ''}`;
+        }
+
+        function updateKPIs(permits) {
+            const totalValue = permits.reduce((sum, p) => sum + p.valuation, 0);
+            const avgValue = permits.length > 0 ? totalValue / permits.length : 0;
+
+            document.getElementById('kpi-permits').textContent = permits.length;
+            document.getElementById('kpi-value').textContent = formatValue(totalValue);
+            document.getElementById('kpi-avg').textContent = formatValue(avgValue);
+            document.getElementById('kpi-leads').textContent = Math.max(1, Math.floor(permits.length * 0.35));
+        }
+
+        // Event listeners
+        document.getElementById('equipment-filter').addEventListener('change', applyFilters);
+        document.getElementById('valuation-filter').addEventListener('change', applyFilters);
+        document.getElementById('score-filter').addEventListener('change', applyFilters);
+
+        // Initial render
+        applyFilters();
+    </script>
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Your Demo - RigBrain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0F0F1A;
+            color: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-accent {
+            color: #F59E0B;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .pitch {
+            font-size: 16px;
+            color: #D1D5DB;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #F59E0B;
+        }
+
+        /* Time Slot Grid */
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .day-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .day-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: #9CA3AF;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #2D2D44;
+            margin-bottom: 8px;
+        }
+
+        .time-slot {
+            padding: 14px 12px;
+            text-align: center;
+            border: 2px solid #F59E0B;
+            background: #1A1A2E;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .time-slot:hover {
+            background: rgba(245, 158, 11, 0.1);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .time-slot.selected {
+            background: #F59E0B;
+            color: #0F0F1A;
+            font-weight: 600;
+        }
+
+        .time-slot.selected:hover {
+            box-shadow: 0 0 24px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Form Container */
+        .form-container {
+            display: none;
+            background: #1A1A2E;
+            border: 1px solid #2D2D44;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 40px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .selected-time-display {
+            padding: 14px 16px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid #F59E0B;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #E5E7EB;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0F0F1A;
+            border: 1px solid #2D2D44;
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #F59E0B;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .required {
+            color: #F59E0B;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-confirm {
+            background: #F59E0B;
+            color: #0F0F1A;
+            flex: 1;
+        }
+
+        .btn-confirm:hover {
+            background: #FBBF24;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-confirm:disabled {
+            background: #6B7280;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-cancel {
+            background: #2D2D44;
+            color: #FFFFFF;
+        }
+
+        .btn-cancel:hover {
+            background: #3D3D54;
+        }
+
+        /* Confirmation Message */
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+            background: #1A1A2E;
+            border: 1px solid #2D2D44;
+            border-radius: 12px;
+            margin-top: 40px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .confirmation.active {
+            display: block;
+        }
+
+        .confirmation h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #F59E0B;
+        }
+
+        .confirmation p {
+            font-size: 16px;
+            color: #D1D5DB;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            border-top: 1px solid #2D2D44;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #F59E0B;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #FBBF24;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .time-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .day-column {
+                border: 1px solid #2D2D44;
+                border-radius: 8px;
+                padding: 16px;
+            }
+
+            .form-container {
+                padding: 24px 16px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .pitch {
+                font-size: 15px;
+            }
+        }
+
+        .error-message {
+            color: #EF4444;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Rig<span class="logo-accent">Brain</span></div>
+            <h1>Schedule Your Demo</h1>
+            <p class="pitch">See how PermitMatch turns building permits into scored equipment leads — with contractor name, phone, project details, and equipment needs. 15 minutes, no commitment.</p>
+        </header>
+
+        <main>
+            <div id="slot-selection">
+                <h2 class="section-title">Pick a Time</h2>
+                <div class="time-grid" id="timeGrid"></div>
+            </div>
+
+            <div class="form-container" id="formContainer">
+                <h2 class="section-title">Confirm Your Booking</h2>
+                <div class="selected-time-display" id="selectedTimeDisplay"></div>
+
+                <form id="demoForm">
+                    <div class="form-group">
+                        <label for="name">Your Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company <span class="required">*</span></label>
+                        <input type="text" id="company" name="company" required>
+                        <div class="error-message" id="companyError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="equipment">What equipment do you primarily rent/sell? <span class="required">*</span></label>
+                        <select id="equipment" name="equipment" required>
+                            <option value="">-- Select --</option>
+                            <option value="General Full Line">General Full Line</option>
+                            <option value="Earthmoving">Earthmoving</option>
+                            <option value="Aerial/Boom Lifts">Aerial/Boom Lifts</option>
+                            <option value="Cranes">Cranes</option>
+                            <option value="Concrete">Concrete</option>
+                            <option value="Compact">Compact</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="error-message" id="equipmentError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Anything specific you want to see? (optional)</label>
+                        <textarea id="notes" name="notes" placeholder="Tell us what matters most to you..."></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn-cancel" id="cancelBtn">Back</button>
+                        <button type="submit" class="btn-confirm" id="confirmBtn">Confirm Demo</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="confirmation" id="confirmation">
+                <h2>You're Booked!</h2>
+                <p>Jim will send a calendar invite to <strong id="confirmEmail"></strong>.</p>
+                <p style="color: #9CA3AF; font-size: 15px;">Talk soon.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>Questions? <a href="mailto:jim@rigbrain.io">jim@rigbrain.io</a> | <a href="https://rigbrain.io">rigbrain.io</a></p>
+    </footer>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            startDate: new Date(2026, 3, 14), // April 14, 2026 (Monday)
+            daysToShow: 5,
+            timesPerDay: 3,
+            times: ['10:00 AM CT', '1:00 PM CT', '3:00 PM CT'],
+            formspreeUrl: 'https://formspree.io/f/xdkgjqzl'
+        };
+
+        let selectedSlot = null;
+        let selectedDateTime = null;
+
+        // Initialize
+        function init() {
+            renderTimeGrid();
+            attachEventListeners();
+        }
+
+        function renderTimeGrid() {
+            const grid = document.getElementById('timeGrid');
+            grid.innerHTML = '';
+
+            for (let day = 0; day < CONFIG.daysToShow; day++) {
+                const date = new Date(CONFIG.startDate);
+                date.setDate(date.getDate() + day);
+
+                const dayColumn = document.createElement('div');
+                dayColumn.className = 'day-column';
+
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'day-header';
+                dayHeader.textContent = `${dayName} ${dayDate}`;
+                dayColumn.appendChild(dayHeader);
+
+                CONFIG.times.forEach(time => {
+                    const slot = document.createElement('button');
+                    slot.type = 'button';
+                    slot.className = 'time-slot';
+                    slot.textContent = time;
+                    slot.dataset.date = date.toISOString().split('T')[0];
+                    slot.dataset.time = time;
+                    slot.onclick = (e) => selectSlot(e, slot);
+                    dayColumn.appendChild(slot);
+                });
+
+                grid.appendChild(dayColumn);
+            }
+        }
+
+        function selectSlot(e, slotElement) {
+            e.preventDefault();
+
+            // Remove previous selection
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+
+            // Set new selection
+            slotElement.classList.add('selected');
+            selectedSlot = slotElement;
+            selectedDateTime = {
+                date: slotElement.dataset.date,
+                time: slotElement.dataset.time
+            };
+
+            // Show form
+            showForm();
+
+            // Scroll to form
+            setTimeout(() => {
+                document.getElementById('formContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function showForm() {
+            const formContainer = document.getElementById('formContainer');
+            formContainer.classList.add('active');
+
+            const dateObj = new Date(selectedDateTime.date + 'T00:00:00');
+            const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+            const dayDate = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+            document.getElementById('selectedTimeDisplay').textContent = `${dayName}, ${dayDate} at ${selectedDateTime.time}`;
+        }
+
+        function hideForm() {
+            document.getElementById('formContainer').classList.remove('active');
+            document.getElementById('confirmation').classList.remove('active');
+            if (selectedSlot) {
+                selectedSlot.classList.remove('selected');
+            }
+            selectedSlot = null;
+            selectedDateTime = null;
+            document.getElementById('demoForm').reset();
+            clearErrors();
+        }
+
+        function validateForm() {
+            clearErrors();
+            let isValid = true;
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const equipment = document.getElementById('equipment').value;
+
+            if (!name) {
+                showError('nameError', 'Please enter your name');
+                isValid = false;
+            }
+
+            if (!email) {
+                showError('emailError', 'Please enter your email');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email');
+                isValid = false;
+            }
+
+            if (!company) {
+                showError('companyError', 'Please enter your company');
+                isValid = false;
+            }
+
+            if (!equipment) {
+                showError('equipmentError', 'Please select equipment type');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.textContent = '';
+            });
+        }
+
+        function attachEventListeners() {
+            document.getElementById('cancelBtn').onclick = (e) => {
+                e.preventDefault();
+                hideForm();
+            };
+
+            document.getElementById('demoForm').onsubmit = async (e) => {
+                e.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const confirmBtn = document.getElementById('confirmBtn');
+                confirmBtn.disabled = true;
+                confirmBtn.textContent = 'Booking...';
+
+                const formData = new FormData(document.getElementById('demoForm'));
+                formData.append('_subject', `RigBrain Demo Request: ${formData.get('name')}`);
+                formData.append('scheduled_time', `${selectedDateTime.date} at ${selectedDateTime.time}`);
+
+                try {
+                    const response = await fetch(CONFIG.formspreeUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok || response.status === 200) {
+                        showConfirmation(formData.get('email'));
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('nameError', 'There was an error booking your demo. Please try again.');
+                    confirmBtn.disabled = false;
+                    confirmBtn.textContent = 'Confirm Demo';
+                }
+            };
+        }
+
+        function showConfirmation(email) {
+            document.getElementById('formContainer').classList.remove('active');
+            document.getElementById('confirmation').classList.add('active');
+            document.getElementById('confirmEmail').textContent = email;
+
+            // Scroll to confirmation
+            setTimeout(() => {
+                document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>
