@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RigBrain Sample Lead Report — Austin May 2026</title>
+<style>
+  @page { size: letter; margin: 0.6in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a2e;
+    background: #f7f7fa;
+    line-height: 1.45;
+    padding: 24px;
+  }
+  .container { max-width: 880px; margin: 0 auto; background: white; padding: 36px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .header { border-bottom: 3px solid #F59E0B; padding-bottom: 18px; margin-bottom: 24px; }
+  .brand { font-size: 0.85rem; color: #6B7280; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+  h1 { font-size: 1.85rem; color: #1a1a2e; margin-top: 4px; font-weight: 700; }
+  .subtitle { color: #4B5563; margin-top: 6px; font-size: 0.95rem; }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 32px; padding: 20px; background: #f7f7fa; border-radius: 6px; }
+  .summary-item .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6B7280; font-weight: 600; }
+  .summary-item .value { font-size: 1.5rem; font-weight: 700; color: #F59E0B; margin-top: 4px; }
+  .lead { border: 1px solid #E5E7EB; border-radius: 6px; padding: 16px 18px; margin-bottom: 14px; page-break-inside: avoid; }
+  .lead-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .rank { font-weight: 700; color: #6B7280; font-size: 0.95rem; }
+  .score { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3px; }
+  .score-high { background: rgba(16,185,129,0.15); color: #047857; }
+  .score-mid { background: rgba(245,158,11,0.15); color: #B45309; }
+  .score-low { background: rgba(107,114,128,0.15); color: #4B5563; }
+  .value { font-weight: 700; color: #1a1a2e; font-size: 1rem; }
+  .issue-date { color: #6B7280; font-size: 0.8rem; margin-left: auto; }
+  .contractor { font-size: 0.95rem; color: #1a1a2e; margin-bottom: 4px; }
+  .phone { color: #047857; font-weight: 600; }
+  .project { font-size: 0.85rem; color: #4B5563; margin-bottom: 6px; }
+  .description { font-size: 0.85rem; color: #4B5563; font-style: italic; margin-bottom: 8px; }
+  .equipment-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .eq-label { font-size: 0.75rem; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 4px; }
+  .eq-pill { background: #1a1a2e; color: white; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+  .footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #E5E7EB; font-size: 0.85rem; color: #4B5563; }
+  .footer .cta { background: #F59E0B; color: #1a1a2e; padding: 14px 20px; border-radius: 6px; margin-top: 14px; text-align: center; font-weight: 600; }
+  .footer .cta a { color: #1a1a2e; text-decoration: none; }
+  .source-note { font-size: 0.72rem; color: #9CA3AF; margin-top: 14px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">RigBrain &middot; PermitMatch</div>
+    <h1>Austin Equipment Lead Report</h1>
+    <div class="subtitle">Top 14 commercial construction permits issued in Travis County over the last 60 days, scored for equipment-purchase intent.</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-item"><div class="label">Projects</div><div class="value">14</div></div>
+    <div class="summary-item"><div class="label">Total Value</div><div class="value">$160.5M</div></div>
+    <div class="summary-item"><div class="label">Avg Project</div><div class="value">$11.5M</div></div>
+    <div class="summary-item"><div class="label">Unique Contractors</div><div class="value">12</div></div>
+  </div>
+
+  
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#1</span>
+            <span class="score score-high">Score 95</span>
+            <span class="value">$22.0M</span>
+            <span class="issue-date">Permit issued 2026-03-30</span>
+          </div>
+          <div class="contractor">
+            <strong>ZAPALAC/REED CONSTRUCTION CO., LP</strong>
+             &middot; Juan-Carlos Talamantes
+            &middot; <span class="phone">(512) 306-8888</span>
+          </div>
+          <div class="project">
+            <span class="addr">3505 MONTOPOLIS DR BLDG J</span>
+             &middot; 4 floor(s)
+             &middot; 56,903 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - New Construction of 4 Story Admin Office Building (56903 SF).</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#2</span>
+            <span class="score score-high">Score 90</span>
+            <span class="value">$35.6M</span>
+            <span class="issue-date">Permit issued 2026-04-16</span>
+          </div>
+          <div class="contractor">
+            <strong>Adolfson & Peterson Construction</strong>
+             &middot; Lance Bonderer
+            &middot; <span class="phone">(785) 456-3702</span>
+          </div>
+          <div class="project">
+            <span class="addr">5600 SUNSHINE DR BLDG J</span>
+             &middot; 3 floor(s)
+             &middot; 54,572 sqft
+          </div>
+          <div class="description">Construction of a New 3-Story Building to include Science Labs and CTE Spaces Additional Parking and Landscape  PuPR2</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Skid Steers</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#3</span>
+            <span class="score score-high">Score 80</span>
+            <span class="value">$10.4M</span>
+            <span class="issue-date">Permit issued 2026-04-07</span>
+          </div>
+          <div class="contractor">
+            <strong>Cadence McShane Construction Company</strong>
+             &middot; Alexis Stecker
+            &middot; <span class="phone">(512) 328-1411</span>
+          </div>
+          <div class="project">
+            <span class="addr">1715 W CESAR CHAVEZ ST</span>
+             &middot; 3 floor(s)
+             &middot; 21,520 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - [PUBLIC PROJECT] Addition and Remodel to Austin High School. Phase 3. (396761 SF).</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#4</span>
+            <span class="score score-mid">Score 75</span>
+            <span class="value">$22.0M</span>
+            <span class="issue-date">Permit issued 2026-03-30</span>
+          </div>
+          <div class="contractor">
+            <strong>ZAPALAC/REED CONSTRUCTION CO., LP</strong>
+             &middot; Juan-Carlos Talamantes
+            &middot; <span class="phone">(512) 306-8888</span>
+          </div>
+          <div class="project">
+            <span class="addr">3505 MONTOPOLIS DR BLDG DP</span>
+             &middot; 1 floor(s)
+             &middot; 600 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - New Dumpster Enclosure and Irrigation Cistern.</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#5</span>
+            <span class="score score-mid">Score 75</span>
+            <span class="value">$22.0M</span>
+            <span class="issue-date">Permit issued 2026-03-30</span>
+          </div>
+          <div class="contractor">
+            <strong>ZAPALAC/REED CONSTRUCTION CO., LP</strong>
+             &middot; Juan-Carlos Talamantes
+            &middot; <span class="phone">(512) 306-8888</span>
+          </div>
+          <div class="project">
+            <span class="addr">3505 MONTOPOLIS DR BLDG GEN</span>
+             &middot; 1 floor(s)
+             &middot; 1,000 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - New Construction of Genset with Enclosure.</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#6</span>
+            <span class="score score-mid">Score 75</span>
+            <span class="value">$15.0M</span>
+            <span class="issue-date">Permit issued 2026-03-18</span>
+          </div>
+          <div class="contractor">
+            <strong>PrimeHaven Development LLC</strong>
+             &middot; Alim Mahesania
+            &middot; <span class="phone">(512) 586-1532</span>
+          </div>
+          <div class="project">
+            <span class="addr">7734 MC KINNEY FALLS PKWY</span>
+             &middot; 1 floor(s)
+             &middot; 11,000 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - New Construction of Retail Building including Convenience Store and lease Space for Future Tenants (11000 SF).</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#7</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$15.0M</span>
+            <span class="issue-date">Permit issued 2026-04-21</span>
+          </div>
+          <div class="contractor">
+            <strong>Burns & McDonnell Engineering Company, Inc</strong>
+             &middot; Kyle Smith
+            &middot; <span class="phone">(816) 276-1577</span>
+          </div>
+          <div class="project">
+            <span class="addr">2901 S US 183 HWY NB</span>
+             &middot; 1 floor(s)
+             &middot; 640 sqft
+          </div>
+          <div class="description">BAUS - Airport Project: Install Necessary Fuel Infrastructure and Equipment to Support a Future Concourse hydrant fuel system and receipt of jet fuel</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#8</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$7.0M</span>
+            <span class="issue-date">Permit issued 2026-03-24</span>
+          </div>
+          <div class="contractor">
+            <strong>Sturzenbecker Construction Co., Inc.</strong>
+             &middot; James Sturzenbecker
+            &middot; <span class="phone">(843) 626-3500</span>
+          </div>
+          <div class="project">
+            <span class="addr">2220 E M FRANKLIN AVE</span>
+             &middot; 1 floor(s)
+             &middot; 16,169 sqft
+          </div>
+          <div class="description">CONSTRUCT NEW OFFICE BUILDING WITH ACCESORY USES (STORAGE BLOOD DONATION AREAS)</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#9</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$2.1M</span>
+            <span class="issue-date">Permit issued 2026-04-17</span>
+          </div>
+          <div class="contractor">
+            <strong>Engen Contracting, Inc.</strong>
+             &middot; Michael Engen
+            &middot; <span class="phone">(512) 342-2774</span>
+          </div>
+          <div class="project">
+            <span class="addr">912 BASTROP HWY SB</span>
+             &middot; 2 floor(s)
+             &middot; 15,680 sqft
+          </div>
+          <div class="description">Core and shell pre-engineered metal buildings with individual tenant lease spaces.(3 Buildings - Multi-app - Building 2 3 and 4)</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Cranes</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#10</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$1.9M</span>
+            <span class="issue-date">Permit issued 2026-04-14</span>
+          </div>
+          <div class="contractor">
+            <strong>Bailey Construction & Consulting, LLC</strong>
+             &middot; Bill Springer
+            &middot; <span class="phone">(501) 954-9201</span>
+          </div>
+          <div class="project">
+            <span class="addr">7000 METROPOLIS DR UNIT 200</span>
+             &middot; 1 floor(s)
+             &middot; 80,037 sqft
+          </div>
+          <div class="description">App 1. Provide 2 L3 electric vehicle (EV) charging stations for the currently operational delivery van fleet utilizing the existing primary electrical</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#11</span>
+            <span class="score score-mid">Score 65</span>
+            <span class="value">$2.2M</span>
+            <span class="issue-date">Permit issued 2026-03-19</span>
+          </div>
+          <div class="contractor">
+            <strong>IE2 CONSTRUCTION, INC</strong>
+             &middot; Mike Neif
+            &middot; <span class="phone">(512) 973-3930</span>
+          </div>
+          <div class="project">
+            <span class="addr">1610 DUNGAN LN</span>
+             &middot; 1 floor(s)
+             &middot; 20,960 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - Changed of Use from Warehouse to Indoor Sports and Recreation. Scope of Work to Include New Wooden Deck Fence Dra</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Cranes</span><span class="eq-pill">Material Handling</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#12</span>
+            <span class="score score-mid">Score 65</span>
+            <span class="value">$1.5M</span>
+            <span class="issue-date">Permit issued 2026-04-22</span>
+          </div>
+          <div class="contractor">
+            <strong>CTC Contractors, LLC</strong>
+            
+            &middot; <span class="phone">(713) 936-1970</span>
+          </div>
+          <div class="project">
+            <span class="addr">601 RIO GRANDE ST UNIT 300</span>
+             &middot; 3 floor(s)
+             &middot; 7,540 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - Exterior Remodel of an Existing Pool Bar Area and Addition of New Roof Area Over Two Portions of Level 3 (16000 S</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">—</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#13</span>
+            <span class="score score-low">Score 60</span>
+            <span class="value">$2.3M</span>
+            <span class="issue-date">Permit issued 2026-03-30</span>
+          </div>
+          <div class="contractor">
+            <strong>AR Lucas Construction</strong>
+             &middot; Adam Lucas
+            &middot; <span class="phone">(512) 801-7221</span>
+          </div>
+          <div class="project">
+            <span class="addr">1010 E CESAR CHAVEZ ST</span>
+             &middot; 1 floor(s)
+             &middot; 522 sqft
+          </div>
+          <div class="description">Interior remodel to existing restaurant with dining room addition.</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Scissor Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#14</span>
+            <span class="score score-low">Score 60</span>
+            <span class="value">$1.6M</span>
+            <span class="issue-date">Permit issued 2026-04-29</span>
+          </div>
+          <div class="contractor">
+            <strong>Flintrock Commercial</strong>
+             &middot; Tim Edwards
+            &middot; <span class="phone">(512) 813-0700</span>
+          </div>
+          <div class="project">
+            <span class="addr">3101 E YAGER LN BLDG 3</span>
+             &middot; 1 floor(s)
+             &middot; 3,419 sqft
+          </div>
+          <div class="description">New construction of a free standing single story shell building</div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Cranes</span>
+          </div>
+        </div>
+
+  <div class="footer">
+    <div><strong>How this list was built:</strong> Pulled from the City of Austin Open Data permit feed, filtered for commercial new-construction permits over $1M issued in the last 60 days, scored for equipment-purchase intent based on project type, size, and vertical scope. Equipment tags inferred from permit description and project class.</div>
+    <div class="cta">
+      Want this delivered every Monday at 7am?<br>
+      Reply to this email or visit <a href="https://rigbrain.io">rigbrain.io</a> &middot; $299/mo
+    </div>
+    <div class="source-note">
+      Source: City of Austin Open Data Portal, dataset 3syk-w9eu. Public records, free to access. RigBrain handles the pull, scoring, dedupe, equipment tagging, and weekly delivery so your sales team doesn't have to.
+    </div>
+  </div>
+</div>
+</body>
+</html>
