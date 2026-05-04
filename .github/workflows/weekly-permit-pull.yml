@@ -70,4 +70,3 @@ jobs:
             git commit -m "Auto: weekly permit pull $(date -u +%Y-%m-%d)"
             git push
           fi
-
