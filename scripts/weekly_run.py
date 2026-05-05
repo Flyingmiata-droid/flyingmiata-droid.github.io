@@ -157,12 +157,22 @@ def score_class(s: int) -> str:
 
 
 def dedupe_top_n(rows: list[dict], n: int = 15) -> list[dict]:
+    """Collapse satellite permits (genset, dumpster, etc) that share a parent project.
+    Same contractor + valuation + issue date = same project; keep the one with the
+    highest score (which naturally picks the parent — biggest sqft wins).
+    Rows with empty contractor are passed through untouched to avoid over-collapsing."""
     seen = {}
+    passthrough = []
     for r in rows:
-        key = (r["contractor_company"], r["address"])
+        contractor = r.get("contractor_company", "")
+        if not contractor:
+            passthrough.append(r)
+            continue
+        key = (contractor, r.get("valuation", 0), r.get("issue_date", ""))
         if key not in seen or r["score"] > seen[key]["score"]:
             seen[key] = r
-    return sorted(seen.values(), key=lambda x: (-x["score"], -x["valuation"]))[:n]
+    combined = list(seen.values()) + passthrough
+    return sorted(combined, key=lambda x: (-x["score"], -x["valuation"]))[:n]
 
 
 def render_html(leads: list[dict]) -> str:
