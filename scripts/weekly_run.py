@@ -72,27 +72,38 @@ def tag_equipment(description: str, work_class: str) -> list[str]:
     return matches
 
 
-def score(permit: dict) -> int:
+def compute_score(permit: dict) -> tuple[int, list[str]]:
+    """Return (0-100 equipment-purchase intent score, list of contributing signals)."""
     s = 50
+    signals: list[str] = []
     val = float(permit.get("total_job_valuation") or 0)
     sqft = float(permit.get("total_new_add_sqft") or 0)
     floors = int(float(permit.get("number_of_floors") or 1))
     work_class = permit.get("work_class", "")
 
-    if val >= 20_000_000: s += 20
-    elif val >= 10_000_000: s += 15
-    elif val >= 5_000_000: s += 10
-    elif val >= 1_000_000: s += 5
+    if val >= 20_000_000:
+        s += 20; signals.append("$20M+ value")
+    elif val >= 10_000_000:
+        s += 15; signals.append("$10M+ value")
+    elif val >= 5_000_000:
+        s += 10; signals.append("$5M+ value")
+    elif val >= 1_000_000:
+        s += 5; signals.append("$1M+ value")
 
-    if sqft >= 50_000: s += 10
-    elif sqft >= 10_000: s += 5
+    if sqft >= 50_000:
+        s += 10; signals.append("50K+ sqft")
+    elif sqft >= 10_000:
+        s += 5; signals.append("10K+ sqft")
 
-    if floors >= 4: s += 10
-    elif floors >= 2: s += 5
+    if floors >= 4:
+        s += 10; signals.append(f"{floors} floors")
+    elif floors >= 2:
+        s += 5; signals.append(f"{floors} floors")
 
-    if work_class in HIGH_INTENT_CLASSES: s += 5
+    if work_class in HIGH_INTENT_CLASSES:
+        s += 5; signals.append(work_class)
 
-    return min(100, max(0, s))
+    return min(100, max(0, s)), signals
 
 
 def normalize_phone(raw: str) -> str:
@@ -106,8 +117,10 @@ def transform(permits: list[dict]) -> list[dict]:
     rows = []
     for p in permits:
         equipment = tag_equipment(p.get("description", ""), p.get("work_class", ""))
+        s, signals = compute_score(p)
         rows.append({
-            "score": score(p),
+            "score": s,
+            "signals": ", ".join(signals),
             "permit_number": p.get("permit_number", ""),
             "address": p.get("permit_location", ""),
             "zip": p.get("original_zip", ""),
@@ -184,6 +197,10 @@ def render_html(leads: list[dict]) -> str:
             {' &middot; ' + sqft_str if sqft_str else ''}
           </div>
           <div class="description">{desc}</div>
+          {(lambda sigs: f'''<div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            {''.join(f'<span class="sig-pill">{s.strip()}</span>' for s in sigs.split(',') if s.strip())}
+          </div>''' if sigs else '')(lead.get('signals') or '')}
           <div class="equipment-row">
             <span class="eq-label">Likely equipment:</span>
             {''.join(f'<span class="eq-pill">{e.strip()}</span>' for e in eq.split(',') if e.strip())}
@@ -226,6 +243,9 @@ def render_html(leads: list[dict]) -> str:
   .phone {{ color: #047857; font-weight: 600; }}
   .project {{ font-size: 0.85rem; color: #4B5563; margin-bottom: 6px; }}
   .description {{ font-size: 0.85rem; color: #4B5563; font-style: italic; margin-bottom: 8px; }}
+  .signals-row {{ display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }}
+  .sig-label {{ font-size: 0.72rem; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 4px; }}
+  .sig-pill {{ background: rgba(16,185,129,0.12); color: #047857; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }}
   .equipment-row {{ display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }}
   .eq-label {{ font-size: 0.75rem; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 4px; }}
   .eq-pill {{ background: #1a1a2e; color: white; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }}
