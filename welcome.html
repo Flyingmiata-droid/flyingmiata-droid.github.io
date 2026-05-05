@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to RigBrain — You're In</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0F0F1A;
+            --bg-card: #1A1A2E;
+            --accent: #F59E0B;
+            --text-primary: #FFFFFF;
+            --text-secondary: #D1D5DB;
+            --border: #2D2D44;
+            --green: #10B981;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px; }
+        .header-url { font-size: 0.95rem; color: var(--accent); font-weight: 500; }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 4rem 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--green);
+            border-radius: 8px;
+            padding: 2.5rem;
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        h1 span { color: var(--accent); }
+
+        p { color: var(--text-secondary); margin-bottom: 1.25rem; }
+        p strong { color: var(--text-primary); font-weight: 600; }
+
+        .next-steps {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .next-steps h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        .next-steps ol {
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+        .next-steps li { margin-bottom: 0.5rem; }
+        .next-steps li:last-child { margin-bottom: 0; }
+        .next-steps strong { color: var(--text-primary); }
+
+        .cta-block {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .cta-block p { margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .button:hover { opacity: 0.9; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">RigBrain</div>
+        <div class="header-url">rigbrain.io</div>
+    </header>
+
+    <main>
+        <div class="card">
+            <span class="badge">Subscription Active</span>
+            <h1>You're <span>in.</span></h1>
+            <p>Payment confirmed. Your RigBrain Austin subscription is live and your first report is on the way.</p>
+
+            <div class="next-steps">
+                <h2>What happens next</h2>
+                <ol>
+                    <li><strong>Monday, 8:00 AM CT</strong> — your first weekly Austin permit report lands in your inbox.</li>
+                    <li>Each report includes contractor name, phone, project address, and project value for permits pulled in the last 7 days.</li>
+                    <li>Reply to any RigBrain email anytime to cancel, request a refund, or adjust filters.</li>
+                </ol>
+            </div>
+
+            <div class="cta-block">
+                <p>Want me to filter your first report? Reply with equipment type (forklifts, excavators, skid steers, etc.), project value floor, or specific ZIPs. Otherwise you'll get the default Austin metro $1M+ feed.</p>
+                <a class="button" href="mailto:nick@rigbrain.io?subject=My%20RigBrain%20filter%20preferences">Send my preferences</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Questions? <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a> · <a href="https://rigbrain.io">rigbrain.io</a>
+    </footer>
+</body>
+</html>
