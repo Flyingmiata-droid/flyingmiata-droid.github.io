@@ -122,6 +122,18 @@
             font-size: 0.75rem; font-weight: 600; white-space: nowrap;
         }
 
+        .signals-row { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; margin-top: 0.4rem; }
+        .signals-label {
+            font-size: 0.65rem; color: var(--text-secondary);
+            text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;
+            margin-right: 0.2rem;
+        }
+        .signal-pill {
+            background: rgba(16, 185, 129, 0.18); color: var(--green);
+            padding: 0.15rem 0.55rem; border-radius: 10px;
+            font-size: 0.7rem; font-weight: 600; white-space: nowrap;
+        }
+
         .phone-cell { color: var(--green); font-weight: 600; font-feature-settings: "tnum"; }
         .contractor-cell { font-weight: 500; }
 
@@ -263,18 +275,18 @@
         // Live snapshot from data.austintexas.gov dataset 3syk-w9eu, scored by RigBrain.
         // Refreshed by .github/workflows/weekly-permit-pull.yml every Monday.
         const PERMITS = [
-            {"score":95,"address":"3505 MONTOPOLIS DR BLDG J","zip":"78744","description":"New Construction of 4 Story Admin Office Building (56,903 SF).","valuation":22000000,"sqft":56903,"floors":"4","contractor":"ZAPALAC/REED CONSTRUCTION CO., LP","contractor_name":"Juan-Carlos Talamantes","phone":"(512) 306-8888","work_class":"New","equipment":["Boom Lifts","Concrete Equipment","Excavators"],"issue_date":"2026-03-30"},
-            {"score":90,"address":"5600 SUNSHINE DR BLDG J","zip":"78756","description":"New 3-Story Building with Science Labs and CTE Spaces.","valuation":35587000,"sqft":54572,"floors":"3","contractor":"Adolfson & Peterson Construction","contractor_name":"Lance Bonderer","phone":"(785) 456-3702","work_class":"New","equipment":["Boom Lifts","Skid Steers","Excavators"],"issue_date":"2026-04-16"},
-            {"score":85,"address":"2206 BLUE MEADOW DR","zip":"78744","description":"New 67,619 SF two-story elementary school (Building A).","valuation":47183562,"sqft":67619,"floors":"2","contractor":"Cadence McShane Construction Company","contractor_name":"Alexis Stecker","phone":"(512) 328-1411","work_class":"New","equipment":["Excavators","Dozers","Loaders","Cranes"],"issue_date":"2025-12-02"},
-            {"score":80,"address":"1715 W CESAR CHAVEZ ST","zip":"78703","description":"Addition and Remodel to Austin High School. Phase 3 (396,761 SF).","valuation":10357457,"sqft":21520,"floors":"3","contractor":"Cadence McShane Construction Company","contractor_name":"Alexis Stecker","phone":"(512) 328-1411","work_class":"Addition and Remodel","equipment":["Boom Lifts","Excavators"],"issue_date":"2026-04-07"},
-            {"score":75,"address":"7734 MC KINNEY FALLS PKWY","zip":"78744","description":"New Retail Building including Convenience Store and Future Tenant Lease (11,000 SF).","valuation":15000000,"sqft":11000,"floors":"1","contractor":"PrimeHaven Development LLC","contractor_name":"Alim Mahesania","phone":"(512) 586-1532","work_class":"New","equipment":["Excavators","Dozers","Loaders","Skid Steers"],"issue_date":"2026-03-18"},
-            {"score":70,"address":"2901 S US 183 HWY NB","zip":"78719","description":"Airport Project: Hydrant Fuel System for Future Concourse.","valuation":15000000,"sqft":640,"floors":"1","contractor":"Burns & McDonnell Engineering","contractor_name":"Kyle Smith","phone":"(816) 276-1577","work_class":"New","equipment":["Boom Lifts","Excavators","Cranes"],"issue_date":"2026-04-21"},
-            {"score":70,"address":"2220 E M FRANKLIN AVE","zip":"78723","description":"Construct New Office Building with Storage and Blood Donation Areas.","valuation":7000000,"sqft":16169,"floors":"1","contractor":"Sturzenbecker Construction Co.","contractor_name":"James Sturzenbecker","phone":"(843) 626-3500","work_class":"New","equipment":["Excavators","Dozers","Loaders"],"issue_date":"2026-03-24"},
-            {"score":70,"address":"912 BASTROP HWY SB","zip":"78741","description":"Core and shell pre-engineered metal buildings, 3-building multi-app.","valuation":2091600,"sqft":15680,"floors":"2","contractor":"Engen Contracting, Inc.","contractor_name":"Michael Engen","phone":"(512) 342-2774","work_class":"New","equipment":["Cranes","Loaders"],"issue_date":"2026-04-17"},
-            {"score":85,"address":"4812 GONZALES ST BLDG GAR","zip":"78702","description":"New Parking Garage (178,517 SF, 6 floors).","valuation":50000000,"sqft":178517,"floors":"6","contractor":"Flintco LLC","contractor_name":"Mark Patterson","phone":"(512) 343-1700","work_class":"New","equipment":["Concrete Equipment","Tower Cranes","Boom Lifts","Dozers"],"issue_date":"2025-12-29"},
-            {"score":85,"address":"5516 HUMMING BIRD LN","zip":"78745","description":"New 5-story 104-unit affordable housing multi-family with clubhouse.","valuation":20000000,"sqft":77700,"floors":"5","contractor":"Pieper-Houston Electric LP","contractor_name":"Reed Hilburn","phone":"(713) 691-2335","work_class":"New","equipment":["Tower Cranes","Boom Lifts","Concrete Equipment","Loaders"],"issue_date":"2026-02-17"},
-            {"score":85,"address":"10095 E US 290 HWY SVRD","zip":"78724","description":"New ground-up tilt wall shell warehouse with future office areas.","valuation":18000000,"sqft":189832,"floors":"1","contractor":"Bartlett Cocke General Contractors","contractor_name":"Patrick Cocke","phone":"(210) 657-7777","work_class":"New","equipment":["Cranes","Excavators","Concrete Equipment","Loaders"],"issue_date":"2025-12-18"},
-            {"score":75,"address":"811 W LIVE OAK ST BLDG A","zip":"78704","description":"New Wood and Steel Framed 36-Room Hotel with Spa and Fitness Area.","valuation":17000000,"sqft":34901,"floors":"3","contractor":"Harvey-Cleary Builders","contractor_name":"Tim Cleary","phone":"(713) 333-9000","work_class":"New","equipment":["Material Handling","Boom Lifts","Loaders"],"issue_date":"2025-12-15"}
+            {"score":95,"signals":["$20M+ value","50K+ sqft","4 floors","New"],"address":"3505 MONTOPOLIS DR BLDG J","zip":"78744","description":"New Construction of 4 Story Admin Office Building (56,903 SF).","valuation":22000000,"sqft":56903,"floors":"4","contractor":"ZAPALAC/REED CONSTRUCTION CO., LP","contractor_name":"Juan-Carlos Talamantes","phone":"(512) 306-8888","work_class":"New","equipment":["Boom Lifts","Concrete Equipment","Excavators"],"issue_date":"2026-03-30"},
+            {"score":90,"signals":["$20M+ value","50K+ sqft","3 floors","New"],"address":"5600 SUNSHINE DR BLDG J","zip":"78756","description":"New 3-Story Building with Science Labs and CTE Spaces.","valuation":35587000,"sqft":54572,"floors":"3","contractor":"Adolfson & Peterson Construction","contractor_name":"Lance Bonderer","phone":"(785) 456-3702","work_class":"New","equipment":["Boom Lifts","Skid Steers","Excavators"],"issue_date":"2026-04-16"},
+            {"score":90,"signals":["$20M+ value","50K+ sqft","2 floors","New"],"address":"2206 BLUE MEADOW DR","zip":"78744","description":"New 67,619 SF two-story elementary school (Building A).","valuation":47183562,"sqft":67619,"floors":"2","contractor":"Cadence McShane Construction Company","contractor_name":"Alexis Stecker","phone":"(512) 328-1411","work_class":"New","equipment":["Excavators","Dozers","Loaders","Cranes"],"issue_date":"2025-12-02"},
+            {"score":80,"signals":["$10M+ value","10K+ sqft","3 floors","Addition and Remodel"],"address":"1715 W CESAR CHAVEZ ST","zip":"78703","description":"Addition and Remodel to Austin High School. Phase 3 (396,761 SF).","valuation":10357457,"sqft":21520,"floors":"3","contractor":"Cadence McShane Construction Company","contractor_name":"Alexis Stecker","phone":"(512) 328-1411","work_class":"Addition and Remodel","equipment":["Boom Lifts","Excavators"],"issue_date":"2026-04-07"},
+            {"score":75,"signals":["$10M+ value","10K+ sqft","New"],"address":"7734 MC KINNEY FALLS PKWY","zip":"78744","description":"New Retail Building including Convenience Store and Future Tenant Lease (11,000 SF).","valuation":15000000,"sqft":11000,"floors":"1","contractor":"PrimeHaven Development LLC","contractor_name":"Alim Mahesania","phone":"(512) 586-1532","work_class":"New","equipment":["Excavators","Dozers","Loaders","Skid Steers"],"issue_date":"2026-03-18"},
+            {"score":70,"signals":["$10M+ value","New"],"address":"2901 S US 183 HWY NB","zip":"78719","description":"Airport Project: Hydrant Fuel System for Future Concourse.","valuation":15000000,"sqft":640,"floors":"1","contractor":"Burns & McDonnell Engineering","contractor_name":"Kyle Smith","phone":"(816) 276-1577","work_class":"New","equipment":["Boom Lifts","Excavators","Cranes"],"issue_date":"2026-04-21"},
+            {"score":70,"signals":["$5M+ value","10K+ sqft","New"],"address":"2220 E M FRANKLIN AVE","zip":"78723","description":"Construct New Office Building with Storage and Blood Donation Areas.","valuation":7000000,"sqft":16169,"floors":"1","contractor":"Sturzenbecker Construction Co.","contractor_name":"James Sturzenbecker","phone":"(843) 626-3500","work_class":"New","equipment":["Excavators","Dozers","Loaders"],"issue_date":"2026-03-24"},
+            {"score":70,"signals":["$1M+ value","10K+ sqft","2 floors","New"],"address":"912 BASTROP HWY SB","zip":"78741","description":"Core and shell pre-engineered metal buildings, 3-building multi-app.","valuation":2091600,"sqft":15680,"floors":"2","contractor":"Engen Contracting, Inc.","contractor_name":"Michael Engen","phone":"(512) 342-2774","work_class":"New","equipment":["Cranes","Loaders"],"issue_date":"2026-04-17"},
+            {"score":95,"signals":["$20M+ value","50K+ sqft","6 floors","New"],"address":"4812 GONZALES ST BLDG GAR","zip":"78702","description":"New Parking Garage (178,517 SF, 6 floors).","valuation":50000000,"sqft":178517,"floors":"6","contractor":"Flintco LLC","contractor_name":"Mark Patterson","phone":"(512) 343-1700","work_class":"New","equipment":["Concrete Equipment","Tower Cranes","Boom Lifts","Dozers"],"issue_date":"2025-12-29"},
+            {"score":95,"signals":["$20M+ value","50K+ sqft","5 floors","New"],"address":"5516 HUMMING BIRD LN","zip":"78745","description":"New 5-story 104-unit affordable housing multi-family with clubhouse.","valuation":20000000,"sqft":77700,"floors":"5","contractor":"Pieper-Houston Electric LP","contractor_name":"Reed Hilburn","phone":"(713) 691-2335","work_class":"New","equipment":["Tower Cranes","Boom Lifts","Concrete Equipment","Loaders"],"issue_date":"2026-02-17"},
+            {"score":80,"signals":["$10M+ value","50K+ sqft","New"],"address":"10095 E US 290 HWY SVRD","zip":"78724","description":"New ground-up tilt wall shell warehouse with future office areas.","valuation":18000000,"sqft":189832,"floors":"1","contractor":"Bartlett Cocke General Contractors","contractor_name":"Patrick Cocke","phone":"(210) 657-7777","work_class":"New","equipment":["Cranes","Excavators","Concrete Equipment","Loaders"],"issue_date":"2025-12-18"},
+            {"score":80,"signals":["$10M+ value","10K+ sqft","3 floors","New"],"address":"811 W LIVE OAK ST BLDG A","zip":"78704","description":"New Wood and Steel Framed 36-Room Hotel with Spa and Fitness Area.","valuation":17000000,"sqft":34901,"floors":"3","contractor":"Harvey-Cleary Builders","contractor_name":"Tim Cleary","phone":"(713) 333-9000","work_class":"New","equipment":["Material Handling","Boom Lifts","Loaders"],"issue_date":"2025-12-15"}
         ];
 
         let expandedRowId = null;
@@ -319,6 +331,10 @@
             tbody.innerHTML = permits.map((p, idx) => {
                 const scoreClass = getScoreBadgeClass(p.score);
                 const equipmentHtml = p.equipment.map(e => `<span class="equipment-pill">${e}</span>`).join('');
+                const signals = p.signals || [];
+                const signalsHtml = signals.length
+                    ? `<div class="signals-row"><span class="signals-label">Why scored:</span>${signals.map(s => `<span class="signal-pill">${s}</span>`).join('')}</div>`
+                    : '';
                 return `
                     <tr>
                         <td><span class="score-badge ${scoreClass}">${p.score}</span></td>
@@ -326,7 +342,7 @@
                         <td><strong>${formatValue(p.valuation)}</strong><br><span style="color:var(--gray);font-size:0.78rem;">${formatSqft(p.sqft)} SF</span></td>
                         <td class="contractor-cell">${p.contractor}<br><span style="color:var(--gray);font-size:0.78rem;">${p.contractor_name}</span></td>
                         <td class="phone-cell">${p.phone}</td>
-                        <td>${truncateDescription(p.description)}</td>
+                        <td>${truncateDescription(p.description)}${signalsHtml}</td>
                         <td><div class="equipment-pills">${equipmentHtml}</div></td>
                         <td>${p.issue_date}</td>
                     </tr>`;
