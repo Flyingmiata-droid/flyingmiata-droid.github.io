@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RigBrain Lead Report &mdash; Sunbelt Rentals — Austin &mdash; May 2026</title>
+<style>
+  @page { size: letter; margin: 0.4in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #f7f7fa; line-height: 1.35; padding: 12px; }
+  .container { max-width: 880px; margin: 0 auto; background: white; padding: 18px 22px; border-radius: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .header { border-bottom: 2px solid #F59E0B; padding-bottom: 8px; margin-bottom: 10px; position: relative; }
+  .ref-code { position: absolute; top: 0; right: 0; font-size: 0.7rem; color: #9CA3AF; letter-spacing: 0.5px; font-weight: 500; }
+  .brand { font-size: 0.78rem; color: #6B7280; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600; }
+  h1 { font-size: 1.35rem; color: #1a1a2e; margin-top: 2px; font-weight: 700; }
+  .greeting { background: #fffbeb; border-left: 3px solid #F59E0B; padding: 8px 12px; margin: 10px 0 12px; border-radius: 3px; font-size: 0.85rem; line-height: 1.4; }
+  .greeting strong { color: #1a1a2e; }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 12px; padding: 10px 14px; background: #f7f7fa; border-radius: 5px; }
+  .summary-item .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6B7280; font-weight: 600; }
+  .summary-item .value { font-size: 1.15rem; font-weight: 700; color: #F59E0B; margin-top: 2px; }
+  .lead { border: 1px solid #E5E7EB; border-radius: 5px; padding: 7px 11px; margin-bottom: 6px; page-break-inside: avoid; }
+  .lead-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 3px; }
+  .rank { font-weight: 700; color: #6B7280; font-size: 0.85rem; }
+  .score { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.3px; }
+  .score-high { background: rgba(16,185,129,0.15); color: #047857; }
+  .score-mid { background: rgba(245,158,11,0.15); color: #B45309; }
+  .score-low { background: rgba(107,114,128,0.15); color: #4B5563; }
+  .value { font-weight: 700; color: #1a1a2e; font-size: 0.92rem; }
+  .issue-date { color: #6B7280; font-size: 0.7rem; margin-left: auto; }
+  .contractor { font-size: 0.84rem; color: #1a1a2e; margin-bottom: 2px; }
+  .phone { color: #047857; font-weight: 600; }
+  .project { font-size: 0.76rem; color: #4B5563; margin-bottom: 2px; }
+  .description { font-size: 0.74rem; color: #4B5563; font-style: italic; margin-bottom: 3px; }
+  .signals-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 3px; }
+  .sig-label { font-size: 0.66rem; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 3px; }
+  .sig-pill { background: rgba(16,185,129,0.12); color: #047857; padding: 1px 7px; border-radius: 8px; font-size: 0.66rem; font-weight: 600; }
+  .equipment-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .eq-label { font-size: 0.66rem; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 3px; }
+  .eq-pill { background: #1a1a2e; color: white; padding: 1px 7px; border-radius: 8px; font-size: 0.66rem; font-weight: 600; }
+  .footer { margin-top: 12px; padding-top: 10px; border-top: 1px solid #E5E7EB; font-size: 0.76rem; color: #4B5563; line-height: 1.4; }
+  .footer .contact-block { margin-top: 8px; padding: 7px 12px; background: #f7f7fa; border-radius: 5px; font-size: 0.8rem; line-height: 1.4; }
+  .footer .contact-block a { color: #1a1a2e; text-decoration: none; font-weight: 600; }
+  .footer .cta { background: #F59E0B; color: #1a1a2e; padding: 8px 14px; border-radius: 5px; margin-top: 8px; text-align: center; font-weight: 600; font-size: 0.82rem; line-height: 1.35; }
+  .footer .cta a { color: #1a1a2e; text-decoration: none; }
+  @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; padding: 0; max-width: 100%; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="ref-code">REF: H &middot; 2026-05</div>
+    <div class="brand">RigBrain &middot; PermitMatch</div>
+    <h1>Austin Equipment Lead Report</h1>
+  </div>
+
+  <div class="greeting">
+    Sunbelt rents everything — every one of these permits is a potential rental conversation. Ranked by score so you know where to start. 12 projects, $152.9M in declared value, contractors named with phone numbers ready to call. &mdash; Nick Kaufman, RigBrain
+  </div>
+
+  <div class="summary">
+    <div class="summary-item"><div class="label">Projects</div><div class="value">12</div></div>
+    <div class="summary-item"><div class="label">Total Value</div><div class="value">$152.9M</div></div>
+    <div class="summary-item"><div class="label">Avg Project</div><div class="value">$12.7M</div></div>
+    <div class="summary-item"><div class="label">Unique Contractors</div><div class="value">11</div></div>
+  </div>
+
+  
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#1</span>
+            <span class="score score-high">Score 95</span>
+            <span class="value">$22.0M</span>
+            <span class="issue-date">Permit issued 2026-03-30</span>
+          </div>
+          <div class="contractor">
+            <strong>ZAPALAC/REED CONSTRUCTION CO., LP</strong>
+             &middot; Juan-Carlos Talamantes
+            &middot; <span class="phone">(512) 306-8888</span>
+          </div>
+          <div class="project">
+            <span class="addr">3505 MONTOPOLIS DR BLDG J</span>
+             &middot; 4 floor(s)
+             &middot; 56,903 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - New Construction of 4 Story Admin Office Building (56903 SF).</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$20M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">4 floors</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Dozers</span><span class="eq-pill">Excavators</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#2</span>
+            <span class="score score-high">Score 95</span>
+            <span class="value">$20.0M</span>
+            <span class="issue-date">Permit issued 2026-02-17</span>
+          </div>
+          <div class="contractor">
+            <strong>ICON Builders, LLC</strong>
+             &middot; Carlos Kenner
+            &middot; <span class="phone">(817) 313-1543</span>
+          </div>
+          <div class="project">
+            <span class="addr">5516 HUMMING BIRD LN</span>
+             &middot; 5 floor(s)
+             &middot; 77,700 sqft
+          </div>
+          <div class="description">New 5 story 104 unit affordable / supportive housing multi-family residential building with an integral clubhouse. SMART HOUSING</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$20M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">5 floors</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Tower Cranes</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#3</span>
+            <span class="score score-high">Score 90</span>
+            <span class="value">$35.6M</span>
+            <span class="issue-date">Permit issued 2026-04-16</span>
+          </div>
+          <div class="contractor">
+            <strong>Adolfson & Peterson Construction</strong>
+             &middot; Lance Bonderer
+            &middot; <span class="phone">(785) 456-3702</span>
+          </div>
+          <div class="project">
+            <span class="addr">5600 SUNSHINE DR BLDG J</span>
+             &middot; 3 floor(s)
+             &middot; 54,572 sqft
+          </div>
+          <div class="description">Construction of a New 3-Story Building to include Science Labs and CTE Spaces Additional Parking and Landscape  PuPR2</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$20M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">3 floors</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Skid Steers</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#4</span>
+            <span class="score score-high">Score 90</span>
+            <span class="value">$17.0M</span>
+            <span class="issue-date">Permit issued 2026-02-09</span>
+          </div>
+          <div class="contractor">
+            <strong>ICON Builders, LLC</strong>
+             &middot; Carlos Kenner
+            &middot; <span class="phone">(817) 313-1543</span>
+          </div>
+          <div class="project">
+            <span class="addr">6405 BERKMAN DR</span>
+             &middot; 4 floor(s)
+             &middot; 62,047 sqft
+          </div>
+          <div class="description">**SMART HOUSING** A new 4 story 104 unit affordable / supportive housing multi-family residential building with an integral clubhouse. Concurrent Revi</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$10M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">4 floors</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#5</span>
+            <span class="score score-high">Score 80</span>
+            <span class="value">$10.4M</span>
+            <span class="issue-date">Permit issued 2026-04-07</span>
+          </div>
+          <div class="contractor">
+            <strong>Cadence McShane Construction Company</strong>
+             &middot; Alexis Stecker
+            &middot; <span class="phone">(512) 328-1411</span>
+          </div>
+          <div class="project">
+            <span class="addr">1715 W CESAR CHAVEZ ST</span>
+             &middot; 3 floor(s)
+             &middot; 21,520 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - [PUBLIC PROJECT] Addition and Remodel to Austin High School. Phase 3. (396761 SF).</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$10M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">3 floors</span><span class="sig-pill">Addition and Remodel</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#6</span>
+            <span class="score score-high">Score 80</span>
+            <span class="value">$1.0M</span>
+            <span class="issue-date">Permit issued 2026-03-31</span>
+          </div>
+          <div class="contractor">
+            <strong>Roers Companies</strong>
+             &middot; Justin Wright
+            &middot; <span class="phone">(737) 276-5046</span>
+          </div>
+          <div class="project">
+            <span class="addr">1706 PAYTON GIN RD</span>
+             &middot; 6 floor(s)
+             &middot; 232,157 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - [SMART HOUSING] New Multi-Family Residential Apartments with amenities and common area spaces (Shell Only) (23215</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$1M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">6 floors</span><span class="sig-pill">Shell</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Concrete Equipment</span><span class="eq-pill">Cranes</span><span class="eq-pill">Dozers</span><span class="eq-pill">Excavators</span><span class="eq-pill">Loaders</span><span class="eq-pill">Skid Steers</span><span class="eq-pill">Tower Cranes</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#7</span>
+            <span class="score score-mid">Score 75</span>
+            <span class="value">$15.0M</span>
+            <span class="issue-date">Permit issued 2026-03-18</span>
+          </div>
+          <div class="contractor">
+            <strong>PrimeHaven Development LLC</strong>
+             &middot; Alim Mahesania
+            &middot; <span class="phone">(512) 586-1532</span>
+          </div>
+          <div class="project">
+            <span class="addr">7734 MC KINNEY FALLS PKWY</span>
+             &middot; 1 floor(s)
+             &middot; 11,000 sqft
+          </div>
+          <div class="description">ePlan: Commercial Expedited Review - New Construction of Retail Building including Convenience Store and lease Space for Future Tenants (11000 SF).</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$10M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#8</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$15.0M</span>
+            <span class="issue-date">Permit issued 2026-04-21</span>
+          </div>
+          <div class="contractor">
+            <strong>Burns & McDonnell Engineering Company, Inc</strong>
+             &middot; Kyle Smith
+            &middot; <span class="phone">(816) 276-1577</span>
+          </div>
+          <div class="project">
+            <span class="addr">2901 S US 183 HWY NB</span>
+             &middot; 1 floor(s)
+             &middot; 640 sqft
+          </div>
+          <div class="description">BAUS - Airport Project: Install Necessary Fuel Infrastructure and Equipment to Support a Future Concourse hydrant fuel system and receipt of jet fuel</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$10M+ value</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Boom Lifts</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#9</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$7.0M</span>
+            <span class="issue-date">Permit issued 2026-03-24</span>
+          </div>
+          <div class="contractor">
+            <strong>Sturzenbecker Construction Co., Inc.</strong>
+             &middot; James Sturzenbecker
+            &middot; <span class="phone">(843) 626-3500</span>
+          </div>
+          <div class="project">
+            <span class="addr">2220 E M FRANKLIN AVE</span>
+             &middot; 1 floor(s)
+             &middot; 16,169 sqft
+          </div>
+          <div class="description">CONSTRUCT NEW OFFICE BUILDING WITH ACCESORY USES (STORAGE BLOOD DONATION AREAS)</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$5M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Dozers</span><span class="eq-pill">Excavators</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#10</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$6.0M</span>
+            <span class="issue-date">Permit issued 2026-02-27</span>
+          </div>
+          <div class="contractor">
+            <strong>C.E. Gleeson Constructors, Inc.</strong>
+             &middot; Charles Gleeson II
+            &middot; <span class="phone">(248) 647-5500</span>
+          </div>
+          <div class="project">
+            <span class="addr">3101 E YAGER LN BLDG 1</span>
+             &middot; 1 floor(s)
+             &middot; 34,782 sqft
+          </div>
+          <div class="description">Construction of a new single floor 34782 S.F. Fitness Center</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$5M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#11</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$2.1M</span>
+            <span class="issue-date">Permit issued 2026-04-17</span>
+          </div>
+          <div class="contractor">
+            <strong>Engen Contracting, Inc.</strong>
+             &middot; Michael Engen
+            &middot; <span class="phone">(512) 342-2774</span>
+          </div>
+          <div class="project">
+            <span class="addr">912 BASTROP HWY SB</span>
+             &middot; 2 floor(s)
+             &middot; 15,680 sqft
+          </div>
+          <div class="description">Core and shell pre-engineered metal buildings with individual tenant lease spaces.(3 Buildings - Multi-app - Building 2 3 and 4)</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$1M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">2 floors</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Cranes</span>
+          </div>
+        </div>
+        <div class="lead">
+          <div class="lead-header">
+            <span class="rank">#12</span>
+            <span class="score score-mid">Score 70</span>
+            <span class="value">$1.9M</span>
+            <span class="issue-date">Permit issued 2026-04-14</span>
+          </div>
+          <div class="contractor">
+            <strong>Bailey Construction & Consulting, LLC</strong>
+             &middot; Bill Springer
+            &middot; <span class="phone">(501) 954-9201</span>
+          </div>
+          <div class="project">
+            <span class="addr">7000 METROPOLIS DR UNIT 200</span>
+             &middot; 1 floor(s)
+             &middot; 80,037 sqft
+          </div>
+          <div class="description">App 1. Provide 2 L3 electric vehicle (EV) charging stations for the currently operational delivery van fleet utilizing the existing primary electrical</div>
+          <div class="signals-row">
+            <span class="sig-label">Why this scored:</span>
+            <span class="sig-pill">$1M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">New</span>
+          </div>
+          <div class="equipment-row">
+            <span class="eq-label">Likely equipment:</span>
+            <span class="eq-pill">Dozers</span><span class="eq-pill">Excavators</span><span class="eq-pill">Loaders</span>
+          </div>
+        </div>
+
+  <div class="footer">
+    <div><strong>Why I sent this:</strong> RigBrain pulls Austin commercial permits weekly, scores them for equipment-purchase intent, tags them by equipment category, and delivers them with contractor contact info already attached. The version above is filtered to match your equipment lines.</div>
+    <div class="contact-block">
+      <strong>Nick Kaufman</strong> &middot; Founder, RigBrain<br>
+      <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a> &middot; <a href="tel:+17372059886">(737) 205-9886</a> &middot; <a href="https://rigbrain.io">rigbrain.io</a>
+    </div>
+    <div class="cta">
+      Want this every Monday at 7am?<br>
+      Reply to <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a> or visit <a href="https://rigbrain.io">rigbrain.io</a> &middot; $299/mo &middot; Cancel anytime
+    </div>
+  </div>
+</div>
+</body>
+</html>
