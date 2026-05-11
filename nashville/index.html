@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RigBrain &mdash; Nashville Commercial Permit Leads for Equipment Dealers</title>
+  <meta name="description" content="RigBrain delivers scored equipment leads from Nashville commercial building permits. Be the first dealer in Nashville to lock $299/mo for 12 months as a Founding Dealer.">
+  <link rel="canonical" href="https://rigbrain.io/nashville/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230a0a0a%22/><text y=%22.9em%22 font-size=%2290%22 fill=%22%23f59e0b%22 font-family=%22sans-serif%22 font-weight=%22900%22>R</text></svg>">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--hi-vis:#f59e0b;--hi-vis-dark:#d97706;--asphalt:#0a0a0a;--steel:#161616;--steel-card:#1a1a1a;--steel-edge:#262626;--text:#e8e8e8;--text-muted:#a0a0a0;--text-dim:#6b7280;--border:#2a2a2a;--green:#10b981}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--asphalt);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+    a{color:var(--hi-vis);text-decoration:none}
+    a:hover{text-decoration:underline}
+    nav{padding:1rem 2rem;border-bottom:1px solid var(--border);background:var(--asphalt);display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;color:#fff}
+    .nav-logo-mark{width:26px;height:26px;background:var(--hi-vis);display:inline-flex;align-items:center;justify-content:center;color:var(--asphalt);font-weight:900;font-size:1rem;border-radius:4px}
+    .nav-back{font-size:0.9rem;color:var(--text-muted)}
+    .hazard{height:8px;background:repeating-linear-gradient(135deg,var(--hi-vis) 0,var(--hi-vis) 16px,var(--asphalt) 16px,var(--asphalt) 32px)}
+    main{flex:1;padding:4rem 2rem;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 0%,rgba(245,158,11,0.10) 0%,transparent 60%)}
+    .card{max-width:680px;width:100%;text-align:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(245,158,11,0.10);color:var(--hi-vis);font-size:0.78rem;font-weight:700;padding:0.4rem 1rem;border-radius:4px;margin-bottom:1.5rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(245,158,11,0.25)}
+    h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:1.25rem}
+    h1 em{font-style:normal;color:var(--hi-vis)}
+    .sub{font-size:1.1rem;color:var(--text-muted);margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;background:var(--steel-card);border:1px solid var(--steel-edge);border-radius:12px;padding:1.5rem}
+    .stat{text-align:center}
+    .stat-num{font-size:1.6rem;font-weight:900;color:var(--hi-vis);line-height:1;letter-spacing:-0.02em}
+    .stat-lbl{font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.35rem}
+    .founding{background:rgba(245,158,11,0.08);border:1px dashed rgba(245,158,11,0.4);border-radius:10px;padding:1.25rem;margin:1.5rem 0;font-size:0.95rem;color:var(--text-muted);text-align:left}
+    .founding strong{color:var(--hi-vis)}
+    form{display:flex;flex-direction:column;gap:1rem;text-align:left;margin-top:1.5rem}
+    label{font-size:0.85rem;color:var(--text-muted);font-weight:600;margin-bottom:0.4rem;display:block}
+    input,select{width:100%;background:var(--steel-card);border:1px solid var(--steel-edge);color:var(--text);padding:0.85rem 1rem;border-radius:6px;font-size:0.95rem;font-family:inherit}
+    input:focus,select:focus{outline:none;border-color:var(--hi-vis);box-shadow:0 0 0 3px rgba(245,158,11,0.15)}
+    input::placeholder{color:var(--text-dim)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    button{background:var(--hi-vis);color:var(--asphalt);font-weight:800;padding:0.95rem 2rem;border-radius:6px;font-size:1rem;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:0.05em;transition:background 0.2s}
+    button:hover{background:var(--hi-vis-dark)}
+    .live{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--green);font-weight:600}
+    .live-dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    .secondary{display:inline-block;font-size:0.9rem;color:var(--text-muted);margin-top:1.5rem}
+    footer{padding:2rem;text-align:center;font-size:0.85rem;color:var(--text-dim);border-top:1px solid var(--border);background:#050505}
+    @media (max-width:640px){.row{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">R</span>
+      <span>RigBrain</span>
+    </a>
+    <a href="/" class="nav-back">&larr; Home</a>
+  </nav>
+  <div class="hazard"></div>
+  <main>
+    <div class="card">
+      <div class="eyebrow">Nashville &middot; Onboarding</div>
+      <h1>Nashville commercial permits.<br><em>Be the first dealer in.</em></h1>
+      <p class="sub">RigBrain ingests every commercial building permit filed in Nashville, scores it for heavy-equipment-purchase intent, and delivers a weekly contractor-ready report. We activate Nashville as soon as the first Founding Dealer in this metro signs.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">B+</div>
+          <div class="stat-lbl">Healthcare + mixed-use boom</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$299</div>
+          <div class="stat-lbl">/mo, locked 12 mo</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10</div>
+          <div class="stat-lbl">Founding slots open</div>
+        </div>
+      </div>
+
+      <div class="founding">
+        <strong>Founding Dealer offer:</strong> First 10 dealers nationwide lock <strong>$299/mo for 12 months</strong> regardless of when their metro activates. After the cohort closes, list price moves to $499/mo. Founding dealers stay grandfathered for life.
+      </div>
+
+      <form id="form" method="POST" action="https://formspree.io/f/xdkgjqzl">
+        <input type="hidden" name="metro" value="Nashville">
+        <input type="hidden" name="source" value="nashville-stub">
+        <div>
+          <label for="email">Work Email *</label>
+          <input type="email" id="email" name="email" placeholder="you@dealership.com" required>
+        </div>
+        <div class="row">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe">
+          </div>
+          <div>
+            <label for="company">Dealership</label>
+            <input type="text" id="company" name="company" placeholder="Acme Equipment">
+          </div>
+        </div>
+        <div>
+          <label for="equipment">Primary Equipment</label>
+          <select id="equipment" name="equipment_type">
+            <option value="">Select category...</option>
+            <option value="General - Full Line">General / Full Line</option>
+            <option value="Earthmoving">Earthmoving</option>
+            <option value="Aerial">Aerial / Lifts</option>
+            <option value="Cranes">Cranes &amp; Heavy Lift</option>
+            <option value="Concrete">Concrete</option>
+            <option value="Compact">Compact (Skid Steers, Mini Ex)</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="submit">Claim Nashville Founding Slot</button>
+      </form>
+
+      <p class="secondary">Or see the live <a href="/austin/">Austin permit dashboard</a> to preview what your weekly Nashville report will look like.</p>
+    </div>
+  </main>
+  <footer>
+    &copy; 2026 RigBrain. <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
+  </footer>
+</body>
+</html>
