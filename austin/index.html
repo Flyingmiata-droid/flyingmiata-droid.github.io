@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Austin Permit Pulse — Latest Commercial Construction Permits | RigBrain</title>
+<meta name="description" content="The latest week of $1M+ commercial construction permits issued in Austin, Travis County. Pulled from City of Austin Open Data, scored for heavy-equipment-purchase intent, refreshed every Monday.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://rigbrain.io/austin/">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a2e;
+    background: #f7f7fa;
+    line-height: 1.5;
+    padding: 24px 16px;
+  }
+  .container { max-width: 920px; margin: 0 auto; background: white; padding: 32px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+  .header { border-bottom: 3px solid #F59E0B; padding-bottom: 20px; margin-bottom: 24px; }
+  .brand { font-size: 0.85rem; color: #6B7280; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+  .brand a { color: #6B7280; text-decoration: none; }
+  .brand a:hover { color: #F59E0B; }
+  h1 { font-size: 1.95rem; color: #1a1a2e; margin-top: 4px; font-weight: 700; }
+  .subtitle { color: #4B5563; margin-top: 8px; font-size: 1rem; }
+  .updated { font-size: 0.78rem; color: #6B7280; margin-top: 8px; }
+
+  .explainer { background: #fffbeb; border-left: 4px solid #F59E0B; padding: 16px 20px; margin: 24px 0; border-radius: 4px; font-size: 0.95rem; }
+  .explainer p { margin-bottom: 8px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer a { color: #B45309; font-weight: 600; }
+
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; padding: 22px; background: #f7f7fa; border-radius: 6px; }
+  .summary-item .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6B7280; font-weight: 600; }
+  .summary-item .value { font-size: 1.55rem; font-weight: 700; color: #F59E0B; margin-top: 4px; }
+
+  .section-heading { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #E5E7EB; }
+
+  .lead { border: 1px solid #E5E7EB; border-radius: 6px; padding: 16px 18px; margin-bottom: 14px; }
+  .lead-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .rank { font-weight: 700; color: #6B7280; font-size: 0.95rem; }
+  .score { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.3px; }
+  .score-high { background: rgba(16,185,129,0.15); color: #047857; }
+  .score-mid { background: rgba(245,158,11,0.15); color: #B45309; }
+  .score-low { background: rgba(107,114,128,0.15); color: #4B5563; }
+  .value { font-weight: 700; color: #1a1a2e; font-size: 1rem; }
+  .issue-date { color: #6B7280; font-size: 0.8rem; margin-left: auto; }
+  .contractor { font-size: 0.95rem; color: #1a1a2e; margin-bottom: 4px; }
+  .contractor strong { font-weight: 700; }
+  .phone { color: #047857; font-weight: 600; }
+  .project { font-size: 0.85rem; color: #4B5563; margin-bottom: 6px; }
+  .description { font-size: 0.85rem; color: #4B5563; font-style: italic; margin-bottom: 8px; }
+  .signals-row, .equipment-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+  .sig-label, .eq-label { font-size: 0.72rem; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-right: 4px; }
+  .sig-pill { background: rgba(16,185,129,0.12); color: #047857; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+  .eq-pill { background: #1a1a2e; color: white; padding: 3px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+  .permit-link { font-size: 0.78rem; color: #6B7280; margin-top: 6px; }
+  .permit-link a { color: #6B7280; text-decoration: underline; }
+
+  .rubric { background: #f7f7fa; border-radius: 6px; padding: 18px 22px; margin: 28px 0 0; font-size: 0.88rem; }
+  .rubric h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+  .rubric ul { margin-left: 20px; margin-top: 6px; }
+  .rubric li { margin-bottom: 3px; color: #4B5563; }
+  .rubric code { background: #e8e8ee; padding: 1px 6px; border-radius: 3px; font-size: 0.82rem; }
+
+  .footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid #E5E7EB; font-size: 0.88rem; color: #4B5563; }
+  .footer .cta { background: #F59E0B; color: #1a1a2e; padding: 16px 22px; border-radius: 6px; margin-top: 14px; text-align: center; font-weight: 600; font-size: 0.95rem; }
+  .footer .cta a { color: #1a1a2e; text-decoration: none; }
+  .source-note { font-size: 0.78rem; color: #6B7280; margin-top: 16px; line-height: 1.5; }
+  .source-note a { color: #6B7280; }
+
+  @media (max-width: 700px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 22px 18px; }
+    h1 { font-size: 1.55rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="brand"><a href="https://rigbrain.io">RigBrain</a> &middot; Permit Pulse</div>
+    <h1>Austin Commercial Permits</h1>
+    <div class="subtitle">The last 60 days of $1M+ commercial building permits issued in Travis County, scored for heavy-equipment-purchase intent.</div>
+    <div class="updated">Last updated: <strong id="last-updated">2026-05-07</strong> &middot; Refreshes every Monday at 7am Central</div>
+  </div>
+
+  <div class="explainer">
+    <p><strong>This is real data. It's also free.</strong> Pulled from the <a href="https://data.austintexas.gov/Building-and-Development/Issued-Construction-Permits/3syk-w9eu" target="_blank" rel="noopener">City of Austin Open Data Portal</a>, scored by RigBrain's open-source <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">permit puller</a>, refreshed weekly.</p>
+    <p>If you'd rather have this filtered to your equipment lines and delivered to your inbox every Monday with contractor names + phone numbers ready to call, that's <a href="https://rigbrain.io">what we do</a> &mdash; $299/mo, 30-day money-back, no contract.</p>
+  </div>
+
+  <div class="summary">
+    <div class="summary-item"><div class="label">Permits</div><div class="value" id="stat-count">5</div></div>
+    <div class="summary-item"><div class="label">Total Value</div><div class="value" id="stat-total">$59.0M</div></div>
+    <div class="summary-item"><div class="label">Avg Project</div><div class="value" id="stat-avg">$11.8M</div></div>
+    <div class="summary-item"><div class="label">Unique GCs</div><div class="value" id="stat-gcs">5</div></div>
+  </div>
+
+  <div class="section-heading">This week's top permits</div>
+
+  <div id="permits-list">
+    <!-- BEGIN PERMITS -->
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#1</span>
+        <span class="score score-high">Score 95</span>
+        <span class="value">$35.5M</span>
+        <span class="issue-date">Issued 2026-04-30</span>
+      </div>
+      <div class="contractor">
+        <strong>EXAMPLE GENERAL CONTRACTORS LLC</strong>
+        &middot; EXAMPLE PROJECT MANAGER
+        &middot; <span class="phone">(512) 555-0100</span>
+      </div>
+      <div class="project">
+        <span class="addr">1234 EXAMPLE BLVD, 78701</span>
+        &middot; 6 floor(s)
+        &middot; 82,000 sqft
+      </div>
+      <div class="description">New 6-story commercial office building with steel frame and below-grade parking garage</div>
+      <div class="signals-row">
+        <span class="sig-label">Why this scored:</span>
+        <span class="sig-pill">$20M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">6 floors</span><span class="sig-pill">New</span>
+      </div>
+      <div class="equipment-row">
+        <span class="eq-label">Likely equipment:</span>
+        <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Tower Cranes</span><span class="eq-pill">Cranes</span><span class="eq-pill">Concrete Equipment</span>
+      </div>
+    </div>
+
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#2</span>
+        <span class="score score-high">Score 85</span>
+        <span class="value">$12.8M</span>
+        <span class="issue-date">Issued 2026-04-28</span>
+      </div>
+      <div class="contractor">
+        <strong>SAMPLE BUILDERS INC</strong>
+        &middot; DEMO ESTIMATOR
+        &middot; <span class="phone">(512) 555-0142</span>
+      </div>
+      <div class="project">
+        <span class="addr">5678 SAMPLE LN, 78745</span>
+        &middot; 4 floor(s)
+        &middot; 65,000 sqft
+      </div>
+      <div class="description">4-story tilt wall warehouse shell with concrete site work and asphalt paving</div>
+      <div class="signals-row">
+        <span class="sig-label">Why this scored:</span>
+        <span class="sig-pill">$10M+ value</span><span class="sig-pill">50K+ sqft</span><span class="sig-pill">4 floors</span><span class="sig-pill">Shell</span>
+      </div>
+      <div class="equipment-row">
+        <span class="eq-label">Likely equipment:</span>
+        <span class="eq-pill">Boom Lifts</span><span class="eq-pill">Cranes</span><span class="eq-pill">Concrete Equipment</span><span class="eq-pill">Material Handling</span>
+      </div>
+    </div>
+
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#3</span>
+        <span class="score score-high">Score 75</span>
+        <span class="value">$7.2M</span>
+        <span class="issue-date">Issued 2026-04-25</span>
+      </div>
+      <div class="contractor">
+        <strong>PLACEHOLDER CONSTRUCTION CO</strong>
+        &middot; SAMPLE SUPERINTENDENT
+        &middot; <span class="phone">(512) 555-0177</span>
+      </div>
+      <div class="project">
+        <span class="addr">910 PLACEHOLDER DR, 78759</span>
+        &middot; 2 floor(s)
+        &middot; 18,500 sqft
+      </div>
+      <div class="description">New 2-story medical office foundation and earthwork</div>
+      <div class="signals-row">
+        <span class="sig-label">Why this scored:</span>
+        <span class="sig-pill">$5M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">2 floors</span><span class="sig-pill">New</span>
+      </div>
+      <div class="equipment-row">
+        <span class="eq-label">Likely equipment:</span>
+        <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span><span class="eq-pill">Boom Lifts</span><span class="eq-pill">Concrete Equipment</span>
+      </div>
+    </div>
+
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#4</span>
+        <span class="score score-mid">Score 65</span>
+        <span class="value">$2.1M</span>
+        <span class="issue-date">Issued 2026-04-22</span>
+      </div>
+      <div class="contractor">
+        <strong>ILLUSTRATIVE EARTHWORKS</strong>
+        &middot; SAMPLE FOREMAN
+        &middot; <span class="phone">(512) 555-0199</span>
+      </div>
+      <div class="project">
+        <span class="addr">4321 ILLUSTRATIVE WAY, 78704</span>
+        &middot; 12,000 sqft
+      </div>
+      <div class="description">Site work and grading for new commercial pad</div>
+      <div class="signals-row">
+        <span class="sig-label">Why this scored:</span>
+        <span class="sig-pill">$1M+ value</span><span class="sig-pill">10K+ sqft</span><span class="sig-pill">New</span>
+      </div>
+      <div class="equipment-row">
+        <span class="eq-label">Likely equipment:</span>
+        <span class="eq-pill">Excavators</span><span class="eq-pill">Dozers</span><span class="eq-pill">Loaders</span><span class="eq-pill">Skid Steers</span>
+      </div>
+    </div>
+
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#5</span>
+        <span class="score score-low">Score 55</span>
+        <span class="value">$1.5M</span>
+        <span class="issue-date">Issued 2026-04-20</span>
+      </div>
+      <div class="contractor">
+        <strong>DEMO CONTRACTORS</strong>
+        &middot; EXAMPLE PM
+        &middot; <span class="phone">(512) 555-0123</span>
+      </div>
+      <div class="project">
+        <span class="addr">7890 DEMO ST, 78702</span>
+        &middot; 8,200 sqft
+      </div>
+      <div class="description">Interior remodel and finish-out for tenant improvement</div>
+      <div class="signals-row">
+        <span class="sig-label">Why this scored:</span>
+        <span class="sig-pill">$1M+ value</span><span class="sig-pill">Addition and Remodel</span>
+      </div>
+      <div class="equipment-row">
+        <span class="eq-label">Likely equipment:</span>
+        <span class="eq-pill">Scissor Lifts</span>
+      </div>
+    </div>
+    <!-- END PERMITS -->
+  </div>
+
+  <div class="rubric">
+    <h3>How the score works</h3>
+    <p>Rules-based v1 starting at <code>50</code>, capped <code>0&ndash;100</code>. Higher score = stronger heavy-equipment-purchase signal.</p>
+    <ul>
+      <li><code>+20</code> $20M+ project value &middot; <code>+15</code> $10M+ &middot; <code>+10</code> $5M+ &middot; <code>+5</code> $1M+</li>
+      <li><code>+10</code> 50K+ sqft &middot; <code>+5</code> 10K+ sqft</li>
+      <li><code>+10</code> 4+ floors &middot; <code>+5</code> 2&ndash;3 floors</li>
+      <li><code>+5</code> work class is New, Shell, or Addition &amp; Remodel</li>
+    </ul>
+    <p style="margin-top: 10px;">Full source and equipment lexicon: <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">github.com/rigbrain/austin-permit-puller</a></p>
+  </div>
+
+  <div class="footer">
+    <div><strong>Why this exists.</strong> Heavy-equipment dealers want to know which contractors just pulled commercial permits in Austin, ranked by how likely they are to need new iron. The permit data is public; doing the curation, scoring, equipment tagging, and weekly delivery isn't. The version above is the raw weekly pull. Dealers get an equipment-line-filtered version with a curated brief.</div>
+
+    <div class="cta">
+      Want this curated for your dealership and delivered Mondays?<br>
+      <a href="https://rigbrain.io">rigbrain.io</a> &middot; $299/mo &middot; 30-day money-back &middot; cancel anytime
+    </div>
+
+    <div class="source-note">
+      Source: <a href="https://data.austintexas.gov/Building-and-Development/Issued-Construction-Permits/3syk-w9eu" target="_blank" rel="noopener">City of Austin Open Data Portal</a>, dataset 3syk-w9eu (public domain). Pulled and scored by the open-source <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">austin-permit-puller</a>. RigBrain handles weekly delivery, equipment-line filtering, and contractor enrichment so dealer sales teams don't have to. Built by <a href="mailto:nick@rigbrain.io">Nick Kaufman</a>.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
