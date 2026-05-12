@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to RigBrain — You're In</title>
+    <!-- Google Analytics 4 (replace GA_MEASUREMENT_ID with your real measurement ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+      gtag('event', 'conversion', { 'event_category': 'signup', 'event_label': 'paypal_completed' });
+    </script>
+    <!-- Microsoft Clarity (replace CLARITY_PROJECT_ID with your real project ID) -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -141,22 +158,45 @@
         <div class="card">
             <span class="badge">Subscription Active</span>
             <h1>You're <span>in.</span></h1>
-            <p>Payment confirmed. Your RigBrain Austin subscription is live and your first report is on the way.</p>
+            <p>Payment confirmed. Your RigBrain subscription is live and your first report is on the way.</p>
 
             <div class="next-steps">
                 <h2>What happens next</h2>
                 <ol>
-                    <li><strong>Monday, 7:00 AM CT</strong> — your first weekly Austin permit report lands in your inbox.</li>
+                    <li><strong>Monday, 7:00 AM CT</strong> — your first weekly permit report for your metro lands in your inbox.</li>
                     <li>Each report includes contractor name, direct phone, project address, and project value for permits pulled in the last 7 days.</li>
-                    <li>Your <strong>founding-dealer rate is locked at $299/mo for 12 months</strong>. List price moves to $499/mo after the founding cohort closes — you stay grandfathered.</li>
+                    <li>Your <strong>founding-dealer rate is locked at $299/mo for 12 months</strong>. Capped at the first 10 dealers nationwide. List price moves to $499/mo after the founding cohort closes — you stay grandfathered.</li>
                     <li><strong>30-day full refund window starts today.</strong> If you don't get a usable lead in your first 30 days, reply to any email and you get every dollar back, no questions.</li>
                     <li>Reply to any RigBrain email anytime to cancel, request a refund, or adjust filters.</li>
                 </ol>
             </div>
 
             <div class="cta-block">
-                <p>Want me to filter your first report? Reply with equipment type (forklifts, excavators, skid steers, etc.), project value floor, or specific ZIPs. Otherwise you'll get the default Austin metro $1M+ feed.</p>
+                <p>Want me to filter your first report? Reply with your metro (Austin, Houston, Dallas, Phoenix, Atlanta, Charlotte, Nashville, Denver, Tampa, or Orlando), equipment type (forklifts, excavators, skid steers, etc.), project value floor, or specific ZIPs. If you don't reply, I'll ask before the first send.</p>
                 <a class="button" href="mailto:nick@rigbrain.io?subject=My%20RigBrain%20filter%20preferences">Send my preferences</a>
+            </div>
+
+            <!-- 60-second demo (replace LOOM_VIDEO_ID with your real Loom share ID once recorded) -->
+            <div class="cta-block">
+                <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--text-primary);">60-second walkthrough</h2>
+                <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:6px;overflow:hidden;background:var(--bg-primary);border:1px solid var(--border);">
+                    <iframe src="https://www.loom.com/embed/LOOM_VIDEO_ID" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">A quick tour of what you'll get every Monday.</p>
+            </div>
+
+            <!-- Refer-a-dealer (referral economics: $50/mo off both subs for 6mo = $300 cost, new $299 customer = net positive month 2) -->
+            <div class="cta-block">
+                <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--text-primary);">Know another dealer who needs this?</h2>
+                <p>Refer a dealer in any metro who subscribes and you both get <strong>$50/mo off for 6 months</strong>. Just reply with their name and email or forward them rigbrain.io. No code, no tracking link &mdash; I credit it manually.</p>
+                <a class="button" href="mailto:nick@rigbrain.io?subject=RigBrain%20referral&amp;body=Dealer%20name%3A%20%0ADealer%20email%3A%20%0AMetro%3A%20">Send referral</a>
+            </div>
+
+            <!-- 15-min onboarding call (replace CAL_USERNAME with your Cal.com username once created) -->
+            <div class="cta-block">
+                <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--text-primary);">Prefer a 15-min call to dial in filters?</h2>
+                <p>Optional. I'll walk through the sample report, scope your filters, and answer anything in the way of week-1 value.</p>
+                <a class="button" href="https://cal.com/CAL_USERNAME/15min" target="_blank" rel="noopener">Pick a time &rarr;</a>
             </div>
         </div>
     </main>

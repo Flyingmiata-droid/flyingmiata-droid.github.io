@@ -45,6 +45,22 @@
     footer{padding:2rem;text-align:center;font-size:0.85rem;color:var(--text-dim);border-top:1px solid var(--border);background:#050505}
     @media (max-width:640px){.row{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
   </style>
+  <!-- Google Analytics 4 (replace GA_MEASUREMENT_ID with your real measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  <!-- Microsoft Clarity (replace CLARITY_PROJECT_ID with your real project ID) -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+  </script>
 </head>
 <body>
   <nav>
@@ -79,6 +95,11 @@
       <div class="founding">
         <strong>Founding Dealer offer:</strong> First 10 dealers nationwide lock <strong>$299/mo for 12 months</strong> regardless of when their metro activates. After the cohort closes, list price moves to $499/mo. Founding dealers stay grandfathered for life.
       </div>
+
+      <a href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-5WG07371KU091681FNH733HA" target="_blank" rel="noopener" style="display:block;background:var(--hi-vis);color:var(--asphalt);font-weight:800;padding:1rem 2rem;border-radius:6px;font-size:1rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.05em;margin:1.5rem 0 0.5rem;text-align:center;">Lock Founding Rate &mdash; $299/mo &rarr;</a>
+      <p style="font-size:0.82rem;color:var(--text-muted);text-align:center;margin-bottom:1.5rem;">30-day full refund &middot; cancel by reply &middot; first 10 dealers nationwide</p>
+      <p style="font-size:0.82rem;color:var(--text-dim);text-align:center;margin-bottom:0.5rem;">&mdash;&nbsp;or&nbsp;&mdash;</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1rem;">Want a free sample first? Fill out below and we'll send a tailored report in 24 hours.</p>
 
       <form id="form" method="POST" action="https://formspree.io/f/xdkgjqzl">
         <input type="hidden" name="metro" value="Atlanta">

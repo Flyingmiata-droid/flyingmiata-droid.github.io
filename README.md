@@ -2,7 +2,7 @@
 
 [rigbrain.io](https://rigbrain.io) — Dealer-facing permit lead-gen SaaS for heavy-equipment dealers.
 
-Scrapes Austin building permits, scores for equipment-purchase intent, delivers contractor name + phone + project details to subscribing dealers weekly. $299/mo · Austin-first · Pilot stage.
+Scrapes commercial building permits across the top 10 US metros (Austin, Houston, Dallas, Phoenix, Atlanta, Charlotte, Nashville, Denver, Tampa, Orlando), scores for equipment-purchase intent, delivers contractor name + phone + project details to subscribing dealers weekly. $299/mo · Founding-dealer cohort open (first 10 nationwide).
 
 This repo hosts the live marketing + dashboard site (GitHub Pages).
 
