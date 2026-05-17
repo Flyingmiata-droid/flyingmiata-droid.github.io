@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RigBrain Sample Lead Report — Orlando May 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #f7f7fa; line-height: 1.45; padding: 24px; }
+  .container { max-width: 880px; margin: 0 auto; background: white; padding: 36px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .header { border-bottom: 3px solid #F59E0B; padding-bottom: 18px; margin-bottom: 24px; }
+  .brand { font-size: 0.85rem; color: #6B7280; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+  h1 { font-size: 1.85rem; margin-top: 4px; font-weight: 700; }
+  .subtitle { color: #4B5563; margin-top: 6px; font-size: 0.95rem; }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 32px; padding: 20px; background: #f7f7fa; border-radius: 6px; }
+  .summary-item .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6B7280; font-weight: 600; }
+  .summary-item .value { font-size: 1.5rem; font-weight: 700; color: #F59E0B; margin-top: 4px; }
+  .note { background: #FEF3C7; padding: 14px 18px; border-radius: 6px; margin-bottom: 20px; font-size: 0.9rem; color: #78350F; border-left: 3px solid #F59E0B; }
+  .lead { border: 1px solid #E5E7EB; border-radius: 6px; padding: 16px 18px; margin-bottom: 14px; }
+  .lead-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+  .rank { font-weight: 700; color: #6B7280; font-size: 0.95rem; }
+  .score { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3px; }
+  .score-high { background: rgba(16,185,129,0.15); color: #047857; }
+  .score-mid { background: rgba(245,158,11,0.15); color: #B45309; }
+  .score-low { background: rgba(107,114,128,0.15); color: #4B5563; }
+  .proj { font-size: 1.05rem; color: #1a1a2e; }
+  .meta { color: #6B7280; font-size: 0.88rem; margin-bottom: 10px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 10px 0; border-top: 1px solid #F3F4F6; border-bottom: 1px solid #F3F4F6; margin-bottom: 10px; }
+  .row > div { display: flex; flex-direction: column; gap: 2px; }
+  .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4px; color: #9CA3AF; font-weight: 600; }
+  .val { font-size: 0.9rem; color: #1a1a2e; font-weight: 600; }
+  .cost { color: #047857; }
+  .contractor { font-size: 0.85rem; color: #4B5563; }
+  .contractor .label { display: inline; margin-right: 4px; }
+  .contractor .val { display: inline; font-weight: 600; }
+  .phone { color: #047857; font-weight: 600; }
+  .phone-none { color: #9CA3AF; font-style: italic; }
+  .footer { margin-top: 32px; padding-top: 18px; border-top: 1px solid #E5E7EB; color: #6B7280; font-size: 0.85rem; }
+  .footer a { color: #F59E0B; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">RigBrain · Orlando</div>
+    <h1>Orlando Commercial Permit Report — Sample</h1>
+    <div class="subtitle">24 commercial permits over $1M, filed in the City of Orlando, last ~90 days. Live application-stage data — earlier intent than issued permits.</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-item"><div class="label">Permits</div><div class="value">24</div></div>
+    <div class="summary-item"><div class="label">Total Value</div><div class="value">$95.4M</div></div>
+    <div class="summary-item"><div class="label">Total Sqft</div><div class="value">955,098</div></div>
+    <div class="summary-item"><div class="label">New Construction</div><div class="value">8</div></div>
+  </div>
+
+  <div class="note">
+    <strong>What you're looking at:</strong> Real permit applications filed with the City of Orlando, pulled live from <code>data.cityoforlando.net</code>. RigBrain pulls this every Monday morning, scores by equipment-purchase intent, and delivers to subscribing dealers before the lead aggregators catch up. Orlando's feed exposes contractor name on ~70% of records, contractor phone on ~13% — Austin's exposes both on most. Both are public.
+  </div>
+
+  
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#1</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">OUC LAKE HIGHLAND SUBSTATION AND LAKE HIGHLAND</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">1020 HIGHLAND AVE</span> · <span class="hood">North Quarter</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$16.5M</span></div>
+        <div><span class="label">Size</span><span class="val">22,680 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-05</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13968
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#2</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">4 ROOTS STONE BARN</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">1101 N JOHN YOUNG PKWY</span> · <span class="hood">Princeton/Silver Star</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$15.0M</span></div>
+        <div><span class="label">Size</span><span class="val">14,668 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-06</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">JACK JENNINGS and SONS INC</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14032
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#3</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">CAMPING WORLD STADIUM</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">1610 W CHURCH ST</span> · <span class="hood">Lorna Doone</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$9.6M</span></div>
+        <div><span class="label">Size</span><span class="val">129,962 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-16</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">RANDALL MECHANICAL INC</span> · <span class="phone">(407)402-0587</span> · permit MEC2026-11078
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#4</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">THE EMI ON 50</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">650 N HAMPTON AVE</span> · <span class="hood">Colonialtown South</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$7.6M</span></div>
+        <div><span class="label">Size</span><span class="val">580,564 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-23</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">AIREKO ENERGY SOLUTIONS US LLC</span> · <span class="phone">(407)706-2800</span> · permit ELE2026-12103
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#5</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: B261 INTERIOR ENHANCEMENTS</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">6100 UNIVERSAL BLVD</span> · <span class="hood">Florida Center</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$6.0M</span></div>
+        <div><span class="label">Size</span><span class="val">8,641 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-27</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13610
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#6</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">MORNING STAR NEW CLASSROOM BUILDING</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">930 LEIGH AVE</span> · <span class="hood">College Park</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$5.6M</span></div>
+        <div><span class="label">Size</span><span class="val">12,600 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-06</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">RHODES BUILDING COMPANY LLC</span> · <span class="phone">(407)416-4688</span> · permit BLD2026-14004
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#7</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: T-NT01303 - OTG - MAXINE&#x27;S</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">9702 JEFF FUQUA BLVD</span> · <span class="hood">ORLANDO INTERNATIONAL AIRPORT</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$5.0M</span></div>
+        <div><span class="label">Size</span><span class="val">4,874 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-16</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13285
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#8</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SOUTHEASTERN OAKS VILLAGE CENTER BUILD TO RENT</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">14901 NARCOOSSEE RD</span> · <span class="hood">Southeastern Oaks</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$3.2M</span></div>
+        <div><span class="label">Size</span><span class="val">sqft not in feed</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-17</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13359
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#9</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: ADVENT HEALTH LAKE NONA MEDICAL OFF BLD 4TH</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">10925 NARCOOSSEE RD</span> · <span class="hood">Lake Nona Estates</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$3.0M</span></div>
+        <div><span class="label">Size</span><span class="val">12,845 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-28</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">BRASFIELD AND GORRIE LLC</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13663
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#10</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">OMD GRASSLAND COMMERCE LOOP 2501367</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">3754 COMMERCE LOOP</span> · <span class="hood">Princeton/Silver Star</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$3.0M</span></div>
+        <div><span class="label">Size</span><span class="val">11,620 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-21</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13500
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#11</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: T-2149 UNIVERSAL STORE TERMINAL B</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">9403 JEFF FUQUA BLVD</span> · <span class="hood">—</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$2.4M</span></div>
+        <div><span class="label">Size</span><span class="val">3,678 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-12</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14207
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#12</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: T-NT01322 MILKHOUSE + FOXTAIL COFEE</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">9602 JEFF FUQUA BLVD</span> · <span class="hood">ORLANDO INTERNATIONAL AIRPORT</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$2.3M</span></div>
+        <div><span class="label">Size</span><span class="val">2,236 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-16</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13315
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#13</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">OCSO EVIDENCE WAREHOUSE RENOVATION</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">3368 BARTLETT BLVD</span> · <span class="hood">33rd St. Industrial</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.9M</span></div>
+        <div><span class="label">Size</span><span class="val">45,988 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Roof</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-15</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">ATLAS APEX ROOFING LLC</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14358
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#14</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">DMS FDLE CRIME LAB ELEC - MECH REPAIRS AND UPGRADE</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">500 W ROBINSON ST</span> · <span class="hood">Callahan</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.5M</span></div>
+        <div><span class="label">Size</span><span class="val">79,236 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Repair</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-16</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">NORLEE GROUP</span> · <span class="phone-none">no phone in feed</span> · permit ELE2026-11986
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#15</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: ORLANDO HEALTH ORMC MRI #2 REPLACEMENT</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">52 UNDERWOOD ST</span> · <span class="hood">South Orange</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.5M</span></div>
+        <div><span class="label">Size</span><span class="val">1,200 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-27</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">H W DAVIS CONSTRUCTION INC</span> · <span class="phone">(407)849-1212</span> · permit BLD2026-13630
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#16</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: B-4 ELEVATED PLATFORM KW-2522</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">5900 UNIVERSAL BLVD</span> · <span class="hood">Florida Center</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.5M</span></div>
+        <div><span class="label">Size</span><span class="val">9,108 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Accessory</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-24</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-13575
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#17</span>
+        <span class="score score-low">LOW</span>
+        <strong class="proj">SPC: THE KITCHENS OF ORLANDO</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">9702 JEFF FUQUA BLVD</span> · <span class="hood">ORLANDO INTERNATIONAL AIRPORT</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.4M</span></div>
+        <div><span class="label">Size</span><span class="val">sqft not in feed</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-06</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">MODERN PLUMBING INDUSTRIES INC</span> · <span class="phone">(407)327-6000</span> · permit PLM2026-11319
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#18</span>
+        <span class="score score-low">LOW</span>
+        <strong class="proj">SPC: BEHAVIORAL HEALTH COURTYARD</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">601 E ROLLINS ST</span> · <span class="hood">North Orange</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.4M</span></div>
+        <div><span class="label">Size</span><span class="val">2,135 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-13</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">BRASFIELD AND GORRIE LLC</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14060
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#19</span>
+        <span class="score score-low">LOW</span>
+        <strong class="proj">SPC: B254B-RR RENOVATION</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">6100 UNIVERSAL BLVD</span> · <span class="hood">Florida Center</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.3M</span></div>
+        <div><span class="label">Size</span><span class="val">2,300 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-12</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14205
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#20</span>
+        <span class="score score-low">LOW</span>
+        <strong class="proj">SPC: BEACHLINE II &amp; III INDUSTRIAL WAREHOUSE</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">6942 INNOVATION WAY</span> · <span class="hood">Sunbridge/ICP</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.3M</span></div>
+        <div><span class="label">Size</span><span class="val">7,080 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Undergrnd</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-13</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">MIDSOUTH INC</span> · <span class="phone-none">no phone in feed</span> · permit FIR2026-10704
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#21</span>
+        <span class="score score-low">LOW</span>
+        <strong class="proj">SPC: T-NT01321 CABRITA AS4</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">9602 JEFF FUQUA BLVD</span> · <span class="hood">ORLANDO INTERNATIONAL AIRPORT</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.2M</span></div>
+        <div><span class="label">Size</span><span class="val">1,865 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-13</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14276
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#22</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: BEACHLINE II &amp; III</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">6942 INNOVATION WAY</span> · <span class="hood">Sunbridge/ICP</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.1M</span></div>
+        <div><span class="label">Size</span><span class="val">sqft not in feed</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-23</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">CONTROL ELECTRIC SERVICES INC</span> · <span class="phone-none">no phone in feed</span> · permit ELE2026-12110
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#23</span>
+        <span class="score score-low">LOW</span>
+        <strong class="proj">SPC: T-2143 SEA WORLD STORE TERMINAL A</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">9303 JEFF FUQUA BLVD</span> · <span class="hood">ORLANDO INTERNATIONAL AIRPORT</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.1M</span></div>
+        <div><span class="label">Size</span><span class="val">1,818 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Alteration</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-05-12</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">(GC not yet picked — earliest intent)</span> · <span class="phone-none">no phone in feed</span> · permit BLD2026-14210
+      </div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#24</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">SPC: BEACHLINE II &amp; III</strong>
+      </div>
+      <div class="meta">
+        <span class="addr">6954 INNOVATION WAY</span> · <span class="hood">Sunbridge/ICP</span>
+      </div>
+      <div class="row">
+        <div><span class="label">Cost</span><span class="val cost">$1.0M</span></div>
+        <div><span class="label">Size</span><span class="val">sqft not in feed</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Filed</span><span class="val">2026-04-21</span></div>
+      </div>
+      <div class="contractor">
+        <span class="label">Contractor</span> <span class="val">CONTROL ELECTRIC SERVICES INC</span> · <span class="phone-none">no phone in feed</span> · permit ELE2026-12059
+      </div>
+    </div>
+
+  <div class="footer">
+    Sample report generated 2026-05-17. Live URL: <a href="https://rigbrain.io/out/sample_lead_orlando.html">rigbrain.io/out/sample_lead_orlando.html</a><br>
+    Full subscription: $299/mo, weekly delivery, scored + ranked, 30-day money back. First 10 dealers nationwide lock founding rate for 12 months.<br>
+    <a href="https://rigbrain.io">rigbrain.io</a> · <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a> · <a href="https://github.com/rigbrain/austin-permit-puller">github.com/rigbrain/austin-permit-puller</a>
+  </div>
+</div>
+</body>
+</html>
