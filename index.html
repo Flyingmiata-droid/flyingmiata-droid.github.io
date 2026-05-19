@@ -526,27 +526,73 @@
     .faq-answer p { padding: 0 0 1.4rem 0; }
 
     /* Founder */
+    /* Guarantee / risk-reversal block (Stripe-coded: weight-300 numeral, soft glow, generous padding) */
+    .guarantee-block {
+      padding: 5rem 2rem;
+      background: radial-gradient(ellipse at center, rgba(16,185,129,0.05) 0%, transparent 70%), var(--asphalt);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .guarantee-card {
+      max-width: 760px; margin: 0 auto;
+      background: linear-gradient(180deg, var(--steel-card) 0%, var(--steel) 100%);
+      border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .guarantee-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green);
+      background: rgba(16,185,129,0.1);
+      padding: 0.45rem 0.9rem; border-radius: 999px;
+      margin-bottom: 1.75rem;
+    }
+    .guarantee-number {
+      font-size: 5rem; font-weight: 300; line-height: 1;
+      color: var(--text); margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+    .guarantee-headline {
+      font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;
+      color: var(--text); letter-spacing: -0.01em;
+    }
+    .guarantee-body {
+      font-size: 1.05rem; color: var(--text-muted); max-width: 580px;
+      margin: 0 auto 2rem; line-height: 1.65;
+    }
+    .guarantee-row {
+      display: flex; gap: 1.75rem; justify-content: center; flex-wrap: wrap;
+      font-size: 0.9rem; color: var(--text-muted);
+    }
+    .guarantee-row span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
     .founder-section {
       border-top: 1px solid var(--border);
-      background: #050505;
-      padding: 4rem 2rem; text-align: center;
+      background: radial-gradient(ellipse at top, rgba(245,158,11,0.04) 0%, transparent 60%), #050505;
+      padding: 5rem 2rem; text-align: center;
     }
     .founder-card {
-      max-width: 520px; margin: 0 auto;
-      display: flex; align-items: center; gap: 1.25rem;
-      background: var(--steel-card); border: 1px solid var(--steel-edge);
-      border-radius: 12px; padding: 1.5rem 2rem; text-align: left;
+      max-width: 720px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+      background: linear-gradient(180deg, var(--steel-card) 0%, var(--steel) 100%);
+      border: 1px solid var(--steel-edge);
+      border-radius: 16px; padding: 2.5rem 2.5rem; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
     .founder-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
+      width: 84px; height: 84px; border-radius: 50%;
       background: rgba(245,158,11,0.15); color: var(--hi-vis);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: 900; flex-shrink: 0;
+      font-size: 2rem; font-weight: 900; flex-shrink: 0;
       border: 2px solid rgba(245,158,11,0.3);
     }
-    .founder-info h4 { font-size: 1rem; font-weight: 800; margin-bottom: 0.25rem; }
-    .founder-info p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.25rem; }
-    .founder-info a { font-size: 0.85rem; }
+    .founder-info h4 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
+    .founder-role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hi-vis); margin-bottom: 1.25rem; }
+    .founder-bio { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; max-width: 560px; }
+    .founder-links { display: flex; gap: 1.5rem; justify-content: center; font-size: 0.9rem; flex-wrap: wrap; }
+    .founder-links a { color: var(--hi-vis); }
 
     /* CTA / Final */
     .cta-section {
@@ -1004,6 +1050,22 @@
     </div>
   </section>
 
+  <!-- Risk-Reversal / 30-Day Guarantee -->
+  <section class="guarantee-block">
+    <div class="guarantee-card">
+      <div class="guarantee-eyebrow"><span class="check-icon">&#10003;</span> Risk-Reversal Guarantee</div>
+      <div class="guarantee-number">30 days</div>
+      <div class="guarantee-headline">Full refund. No questions. Reply to cancel.</div>
+      <p class="guarantee-body">If the first month's lead reports don't put real, callable contractors in front of you, email <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a> within 30 days and you get every dollar back. No phone calls, no retention scripts, no contract to terminate &mdash; one reply ends it.</p>
+      <div class="guarantee-row">
+        <span><span class="check-icon">&#10003;</span> 30-day full refund</span>
+        <span><span class="check-icon">&#10003;</span> Cancel by reply</span>
+        <span><span class="check-icon">&#10003;</span> No long-term contract</span>
+        <span><span class="check-icon">&#10003;</span> Founding rate locked 12 mo</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing -->
   <section class="pricing" id="pricing">
     <div class="section-inner" style="text-align:center;">
@@ -1190,8 +1252,13 @@
       <div class="founder-avatar">N</div>
       <div class="founder-info">
         <h4>Nick Kaufman</h4>
-        <p>Founder of RigBrain. Building the lead generation infrastructure the equipment industry never had.</p>
-        <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
+        <div class="founder-role">Founder &middot; Austin, TX</div>
+        <p class="founder-bio">I built RigBrain after watching equipment dealers chase leads from contractor lists that were already a year old. Public permit data was sitting there &mdash; nobody was turning it into ready-to-call leads. So I did. The Austin scraper that powers this is <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">open-source on GitHub</a>. If a lead looks wrong or a metro you cover isn't live yet, my inbox is below.</p>
+        <div class="founder-links">
+          <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
+          <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">GitHub &rarr;</a>
+          <a href="https://cal.com/nicholas-kro38m/15min" target="_blank" rel="noopener">Book 15 min &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
