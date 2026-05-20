@@ -1,0 +1,45 @@
+# RigBrain — Weekly Austin dashboard refresh
+# Pulls fresh Socrata permits and rewrites the leads in /austin/index.html.
+# Runs Mondays 12:30 UTC (30 min after the existing weekly-permit-pull.yml,
+# to avoid commit-race against that job's push).
+#
+# What this commits:
+#   austin/index.html  (5 fresh permit rows + updated stats + last-updated stamp)
+
+name: Refresh Austin dashboard
+
+on:
+  schedule:
+    # Mondays 12:30 UTC — 7:30 am CST / 8:30 am CDT
+    - cron: '30 12 * * 1'
+  workflow_dispatch:    # manual trigger from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild /austin/index.html from Socrata
+        run: python scripts/build_austin_dashboard.py
+
+      - name: Commit if dashboard changed
+        run: |
+          git config user.name  "rigbrain-bot"
+          git config user.email "bot@rigbrain.io"
+          git add austin/index.html
+          if git diff --cached --quiet; then
+            echo "No dashboard changes this week."
+          else
+            git commit -m "Auto: refresh Austin dashboard ($(date -u +%Y-%m-%d))"
+            git push
+          fi
