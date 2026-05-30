@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're in — RigBrain</title>
+
+  <!-- GA4 + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HVLEN2MZHD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HVLEN2MZHD');
+    gtag('config', 'AW-18140173483');
+    // Purchase conversion — fires once when buyer lands here from Stripe
+    gtag('event', 'purchase', {
+      currency: 'USD',
+      value: 299.00,
+      transaction_id: 'stripe_' + Date.now(),
+      items: [{ item_id: 'founding-dealer', item_name: 'RigBrain Founding Dealer', price: 299.00, quantity: 1 }]
+    });
+  </script>
+
+  <!-- Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wpybbbt1vi");
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --amber: #f59e0b;
+      --green: #10b981;
+      --bg: #0a0a0a;
+      --card: #161616;
+      --border: #262626;
+      --text: #e8e8e8;
+      --muted: #a0a0a0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 2.5rem; text-decoration: none;
+    }
+    .logo-mark {
+      width: 32px; height: 32px; background: var(--amber);
+      border-radius: 6px; display: flex; align-items: center;
+      justify-content: center; color: #000; font-weight: 900;
+      font-size: 1.1rem;
+    }
+    .logo-text { font-size: 1.3rem; font-weight: 900; color: #fff; }
+    .checkmark {
+      width: 64px; height: 64px; background: rgba(16,185,129,0.12);
+      border: 2px solid var(--green); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; font-size: 1.75rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 900; letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    h1 span { color: var(--amber); }
+    .subtitle {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 480px; margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+    .next-steps {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem 2rem;
+      max-width: 480px; width: 100%; text-align: left;
+      margin-bottom: 2rem;
+    }
+    .next-steps h2 {
+      font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--amber);
+      font-weight: 800; margin-bottom: 1.25rem;
+    }
+    .step {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 24px; height: 24px; min-width: 24px;
+      background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 0.72rem;
+      font-weight: 800; color: var(--amber); margin-top: 1px;
+    }
+    .step-text { font-size: 0.92rem; color: var(--text); line-height: 1.5; }
+    .step-text strong { color: #fff; }
+    .step-text .muted { color: var(--muted); font-size: 0.82rem; }
+    .cta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: var(--amber); color: #000; font-weight: 700;
+      padding: 0.85rem 1.75rem; border-radius: 8px;
+      text-decoration: none; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #d97706; }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); font-weight: 600;
+      padding: 0.85rem 1.75rem; border-radius: 8px;
+      text-decoration: none; font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
+    .footer-note {
+      margin-top: 2rem; font-size: 0.8rem; color: var(--muted);
+    }
+    .footer-note a { color: var(--muted); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <a class="logo" href="/">
+    <div class="logo-mark">R</div>
+    <span class="logo-text">RigBrain</span>
+  </a>
+
+  <div class="checkmark">&#10003;</div>
+
+  <h1>You're a <span>Founding Dealer.</span></h1>
+
+  <p class="subtitle">
+    Subscription confirmed. Your first permit report lands in your inbox Monday morning.
+    Here's what happens next.
+  </p>
+
+  <div class="next-steps">
+    <h2>What to expect</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>Confirmation email incoming</strong>
+        <div class="muted">Nick will email you within a few hours to confirm your market, equipment focus, and preferred delivery format.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>First report: this Monday</strong>
+        <div class="muted">Your first curated permit list — scored, matched to your equipment lines, with GC contact info — hits your inbox Monday morning.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Founding rate locked 12 months</strong>
+        <div class="muted">$299/mo locked through your first 12 months. Cancel anytime by reply — no forms, no hold music.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn-primary" href="mailto:nick@rigbrain.io?subject=RigBrain%20Founding%20Dealer%20-%20Market%20Setup">Email Nick now &rarr;</a>
+    <a class="btn-secondary" href="/austin/">View live Austin dashboard</a>
+  </div>
+
+  <p class="footer-note">
+    Questions? Reply to your confirmation email or reach Nick directly at
+    <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
+  </p>
+
+</body>
+</html>
