@@ -26,15 +26,8 @@
 </script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
-    color: #1a1a2e;
-    background: #f7f7fa;
-    line-height: 1.5;
-    padding: 24px 16px;
-  }
+  body { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #f7f7fa; line-height: 1.5; padding: 24px 16px; }
   .container { max-width: 920px; margin: 0 auto; background: white; padding: 32px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-
   .header { border-bottom: 3px solid #F59E0B; padding-bottom: 20px; margin-bottom: 24px; }
   .brand { font-size: 0.85rem; color: #6B7280; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
   .brand a { color: #6B7280; text-decoration: none; }
@@ -42,28 +35,21 @@
   h1 { font-size: 1.95rem; color: #1a1a2e; margin-top: 4px; font-weight: 700; }
   .subtitle { color: #4B5563; margin-top: 8px; font-size: 1rem; }
   .updated { font-size: 0.78rem; color: #6B7280; margin-top: 8px; }
-
   .explainer { background: #fffbeb; border-left: 4px solid #F59E0B; padding: 16px 20px; margin: 24px 0; border-radius: 4px; font-size: 0.95rem; }
   .explainer p { margin-bottom: 8px; }
   .explainer p:last-child { margin-bottom: 0; }
   .explainer a { color: #B45309; font-weight: 600; }
-
   .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; padding: 22px; background: #f7f7fa; border-radius: 6px; }
   .summary-item .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #6B7280; font-weight: 600; }
   .summary-item .value { font-size: 1.55rem; font-weight: 700; color: #F59E0B; margin-top: 4px; }
-
   .section-heading { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #E5E7EB; }
-
   .lead { border: 1px solid #E5E7EB; border-radius: 6px; padding: 16px 18px; margin-bottom: 14px; }
   .lead-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
   .rank { font-weight: 700; color: #6B7280; font-size: 0.95rem; }
   .score { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.3px; }
   .score-high { background: rgba(16,185,129,0.15); color: #047857; }
   .score-mid { background: rgba(245,158,11,0.15); color: #B45309; }
-  .score-low { background: rgba(107,114,128,0.15); color: #4B5563; }
   .proj-name { font-weight: 700; color: #1a1a2e; font-size: 1rem; }
-  .val { font-weight: 700; color: #047857; }
-  .issue-date { color: #6B7280; font-size: 0.8rem; margin-left: auto; }
   .meta { font-size: 0.85rem; color: #4B5563; margin-bottom: 8px; }
   .data-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; padding: 10px 0; border-top: 1px solid #F3F4F6; border-bottom: 1px solid #F3F4F6; margin-bottom: 10px; }
   .data-row > div { display: flex; flex-direction: column; gap: 2px; }
@@ -73,43 +59,31 @@
   .contractor-row { font-size: 0.85rem; color: #4B5563; }
   .phone { color: #047857; font-weight: 600; }
   .phone-none { color: #9CA3AF; font-style: italic; }
-
   .more-leads { background: #f7f7fa; border: 1px dashed #D1D5DB; border-radius: 6px; padding: 20px; text-align: center; margin: 20px 0; color: #6B7280; font-size: 0.95rem; }
   .more-leads strong { color: #1a1a2e; }
-
   .cta-block { background: #1a1a2e; border-radius: 8px; padding: 28px 28px 24px; margin: 32px 0 0; color: white; }
   .cta-block h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; }
   .cta-block p { color: #9CA3AF; font-size: 0.95rem; margin-bottom: 1.5rem; }
   .cta-btn { display: inline-block; background: #F59E0B; color: #1a1a2e; font-weight: 800; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.2s; }
   .cta-btn:hover { background: #D97706; }
   .cta-note { font-size: 0.82rem; color: #6B7280; margin-top: 0.75rem; }
-
   .or-divider { text-align: center; color: #6B7280; font-size: 0.85rem; margin: 1.5rem 0; }
-
-  form { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0; }
+  form { display: flex; flex-direction: column; gap: 0.85rem; }
   form label { font-size: 0.82rem; color: #9CA3AF; font-weight: 600; margin-bottom: 3px; display: block; }
   form input, form select { width: 100%; background: #262636; border: 1px solid #3a3a4e; color: #e8e8e8; padding: 0.8rem 1rem; border-radius: 6px; font-size: 0.9rem; font-family: inherit; }
-  form input:focus, form select:focus { outline: none; border-color: #F59E0B; box-shadow: 0 0 0 3px rgba(245,158,11,0.15); }
+  form input:focus, form select:focus { outline: none; border-color: #F59E0B; }
   form input::placeholder { color: #6B7280; }
   form select option { background: #1a1a2e; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   form button { background: transparent; border: 2px solid #F59E0B; color: #F59E0B; font-weight: 700; padding: 0.85rem 2rem; border-radius: 6px; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }
   form button:hover { background: #F59E0B; color: #1a1a2e; }
-
   .rubric { background: #f7f7fa; border-radius: 6px; padding: 18px 22px; margin: 28px 0 0; font-size: 0.88rem; }
-  .rubric h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+  .rubric h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
   .rubric ul { margin-left: 20px; margin-top: 6px; }
   .rubric li { margin-bottom: 3px; color: #4B5563; }
-
   footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #E5E7EB; color: #6B7280; font-size: 0.85rem; }
   footer a { color: #F59E0B; font-weight: 600; text-decoration: none; }
-
-  @media (max-width: 640px) {
-    .summary { grid-template-columns: 1fr 1fr; }
-    .data-row { grid-template-columns: 1fr 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .container { padding: 20px 16px; }
-  }
+  @media (max-width: 640px) { .summary { grid-template-columns: 1fr 1fr; } .data-row { grid-template-columns: 1fr 1fr; } .form-row { grid-template-columns: 1fr; } .container { padding: 20px 16px; } }
 </style>
 </head>
 <body>
@@ -119,7 +93,7 @@
     <div class="brand"><a href="/">&#8592; RigBrain</a> &middot; Orlando Permit Pulse</div>
     <h1>Orlando Permit Pulse</h1>
     <div class="subtitle">$1M+ commercial permit applications, City of Orlando. Scored for equipment-purchase intent. Refreshed every Monday.</div>
-    <div class="updated">Last pull: May 2026 &middot; Data: <a href="https://data.cityoforlando.net" target="_blank" rel="noopener">data.cityoforlando.net</a> (Socrata) &middot; <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">Open-source puller</a></div>
+    <div class="updated">Last pull: May 2026 &middot; Data: <a href="https://data.cityoforlando.net" target="_blank" rel="noopener">data.cityoforlando.net</a> &middot; <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">Open-source puller</a></div>
   </div>
 
   <div class="summary">
@@ -130,18 +104,14 @@
   </div>
 
   <div class="explainer">
-    <p><strong>What you're looking at:</strong> Real permit applications filed with the City of Orlando, pulled live from <code>data.cityoforlando.net</code>. Application-stage data surfaces earlier than issued permits &mdash; before the GC starts calling around for equipment. Orlando's feed exposes contractor name on ~70% of records; phone on ~13% (Austin exposes both on most).</p>
-    <p>RigBrain pulls this every Monday morning, scores by equipment-purchase intent, and delivers to subscribing dealers before the lead aggregators catch up. <a href="/">Subscribe for weekly delivery &rarr;</a></p>
+    <p><strong>What you're looking at:</strong> Real permit applications filed with the City of Orlando, pulled live from <code>data.cityoforlando.net</code>. Application-stage data surfaces earlier than issued permits &mdash; before the GC starts calling around for equipment.</p>
+    <p>RigBrain pulls this every Monday, scores by equipment-purchase intent, and delivers to subscribing dealers weekly. <a href="/">Subscribe for full weekly delivery &rarr;</a></p>
   </div>
 
-  <div class="section-heading">This Week's Top Leads &mdash; Orlando</div>
+  <div class="section-heading">This Week's Top Leads &mdash; Orlando, FL</div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#1</span>
-      <span class="score score-high">HIGH</span>
-      <strong class="proj-name">OUC Lake Highland Substation</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#1</span><span class="score score-high">HIGH</span><strong class="proj-name">OUC Lake Highland Substation</strong></div>
     <div class="meta">1020 Highland Ave &middot; North Quarter</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$16.5M</span></div>
@@ -153,11 +123,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#2</span>
-      <span class="score score-high">HIGH</span>
-      <strong class="proj-name">4 Roots Stone Barn</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#2</span><span class="score score-high">HIGH</span><strong class="proj-name">4 Roots Stone Barn</strong></div>
     <div class="meta">1101 N John Young Pkwy &middot; Princeton/Silver Star</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$15.0M</span></div>
@@ -165,15 +131,11 @@
       <div><span class="field-label">Type</span><span class="field-val">New Construction</span></div>
       <div><span class="field-label">Filed</span><span class="field-val">2026-05-06</span></div>
     </div>
-    <div class="contractor-row">Jack Jennings and Sons Inc &middot; Permit BLD2026-14032 &middot; <span class="phone-none">phone: in full report</span></div>
+    <div class="contractor-row">Jack Jennings and Sons Inc &middot; Permit BLD2026-14032</div>
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#3</span>
-      <span class="score score-mid">MID</span>
-      <strong class="proj-name">Camping World Stadium</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#3</span><span class="score score-mid">MID</span><strong class="proj-name">Camping World Stadium Renovation</strong></div>
     <div class="meta">1610 W Church St &middot; Lorna Doone</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$9.6M</span></div>
@@ -185,11 +147,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#4</span>
-      <span class="score score-high">HIGH</span>
-      <strong class="proj-name">The EMI on 50 (Multi-Family)</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#4</span><span class="score score-high">HIGH</span><strong class="proj-name">The EMI on 50 (Multi-Family, 580K sqft)</strong></div>
     <div class="meta">650 N Hampton Ave &middot; Colonialtown South</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$7.6M</span></div>
@@ -201,11 +159,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#5</span>
-      <span class="score score-high">HIGH</span>
-      <strong class="proj-name">Morning Star New Classroom Building</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#5</span><span class="score score-high">HIGH</span><strong class="proj-name">Morning Star New Classroom Building</strong></div>
     <div class="meta">930 Leigh Ave &middot; College Park</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$5.6M</span></div>
@@ -217,11 +171,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#6</span>
-      <span class="score score-mid">MID</span>
-      <strong class="proj-name">Universal Studios &mdash; Interior Enhancement B261</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#6</span><span class="score score-mid">MID</span><strong class="proj-name">Universal Studios — Interior Enhancement B261</strong></div>
     <div class="meta">6100 Universal Blvd &middot; Florida Center</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$6.0M</span></div>
@@ -233,11 +183,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#7</span>
-      <span class="score score-mid">MID</span>
-      <strong class="proj-name">Southeastern Oaks Village Center &mdash; Build-to-Rent</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#7</span><span class="score score-mid">MID</span><strong class="proj-name">Southeastern Oaks Village Center — Build-to-Rent</strong></div>
     <div class="meta">14901 Narcoossee Rd &middot; Southeastern Oaks</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$3.2M</span></div>
@@ -249,11 +195,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#8</span>
-      <span class="score score-mid">MID</span>
-      <strong class="proj-name">AdventHealth Lake Nona Medical Office Bldg 4th</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#8</span><span class="score score-mid">MID</span><strong class="proj-name">AdventHealth Lake Nona Medical Office Bldg</strong></div>
     <div class="meta">10925 Narcoossee Rd &middot; Lake Nona Estates</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$3.0M</span></div>
@@ -265,11 +207,7 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#9</span>
-      <span class="score score-mid">MID</span>
-      <strong class="proj-name">OMD Grassland Commerce Loop Industrial</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#9</span><span class="score score-mid">MID</span><strong class="proj-name">OMD Grassland Commerce Loop Industrial</strong></div>
     <div class="meta">3754 Commerce Loop &middot; Princeton/Silver Star</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$3.0M</span></div>
@@ -281,15 +219,11 @@
   </div>
 
   <div class="lead">
-    <div class="lead-header">
-      <span class="rank">#10</span>
-      <span class="score score-mid">MID</span>
-      <strong class="proj-name">Beachline II &amp; III Industrial Warehouse</strong>
-    </div>
+    <div class="lead-header"><span class="rank">#10</span><span class="score score-mid">MID</span><strong class="proj-name">Beachline II &amp; III — New Construction</strong></div>
     <div class="meta">6942 Innovation Way &middot; Sunbridge/ICP</div>
     <div class="data-row">
       <div><span class="field-label">Cost</span><span class="field-val money">$2.3M</span></div>
-      <div><span class="field-label">Size</span><span class="field-val">11,620 sqft</span></div>
+      <div><span class="field-label">Size</span><span class="field-val">&mdash;</span></div>
       <div><span class="field-label">Type</span><span class="field-val">New Construction</span></div>
       <div><span class="field-label">Filed</span><span class="field-val">2026-04-23</span></div>
     </div>
@@ -297,34 +231,22 @@
   </div>
 
   <div class="more-leads">
-    <strong>14 more leads in this week's full report</strong> &mdash; including OIA terminal fit-outs, healthcare expansions, and warehouse shells. Contractor phones included where available. Subscribe for the complete weekly delivery.
+    <strong>14 more leads in this week's full report</strong> &mdash; OIA terminal fit-outs, healthcare expansions, warehouse shells. Contractor phones included where available.
   </div>
 
-  <!-- CTA Block -->
   <div class="cta-block">
     <h2>Get Weekly Orlando Leads &mdash; $299/mo</h2>
     <p>Every Monday: scored, ranked, contractor-ready. First 10 dealers nationwide lock the Founding rate for 12 months. List price moves to $499/mo after the cohort closes.</p>
-    <a class="cta-btn" href="https://buy.stripe.com/9B67sM1Gj0clc993Tc4wM00" target="_blank" rel="noopener" onclick="gtag('event','begin_checkout',{currency:'USD',value:299,items:[{item_id:'founding-dealer',item_name:'PermitMatch Founding Dealer',price:299}]});">Lock Founding Rate &rarr; $299/mo</a>
+    <a class="cta-btn" href="https://buy.stripe.com/9B67sM1Gj0clc993Tc4wM00" target="_blank" rel="noopener" onclick="gtag('event','begin_checkout',{currency:'USD',value:299,items:[{item_id:'founding-dealer',item_name:'PermitMatch Founding Dealer',price:299}]);">Lock Founding Rate &rarr; $299/mo</a>
     <div class="cta-note">30-day full refund &middot; cancel by reply &middot; secure checkout via Stripe</div>
-
-    <div class="or-divider" style="color:#6B7280;margin:1.5rem 0;">— or get a sample report first —</div>
-
+    <div class="or-divider">&mdash; or get a free sample first &mdash;</div>
     <form id="orlando-form" method="POST" action="https://formspree.io/f/mykoobvw">
       <input type="hidden" name="metro" value="Orlando">
       <input type="hidden" name="source" value="orlando-dashboard">
-      <div>
-        <label for="email">Work Email *</label>
-        <input type="email" id="email" name="email" placeholder="you@dealership.com" required>
-      </div>
+      <div><label for="email">Work Email *</label><input type="email" id="email" name="email" placeholder="you@dealership.com" required></div>
       <div class="form-row">
-        <div>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="John Doe">
-        </div>
-        <div>
-          <label for="company">Dealership</label>
-          <input type="text" id="company" name="company" placeholder="Acme Equipment">
-        </div>
+        <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="John Doe"></div>
+        <div><label for="company">Dealership</label><input type="text" id="company" name="company" placeholder="Acme Equipment"></div>
       </div>
       <div>
         <label for="equipment">Primary Equipment</label>
@@ -348,22 +270,17 @@
     <h3>Scoring rubric</h3>
     <ul>
       <li><strong>HIGH:</strong> New construction $5M+, equipment-heavy project type (substation, school, multi-family, warehouse)</li>
-      <li><strong>MID:</strong> Alteration or renovation $1M+, established contractor, or new construction under $5M</li>
-      <li><strong>LOW:</strong> Alteration under $2M or specialty trade permit — lower equipment intensity</li>
+      <li><strong>MID:</strong> Alteration $1M+, established contractor on record, or new construction under $5M</li>
     </ul>
-    <p style="margin-top:10px;color:#6B7280;">Orlando's open-data feed exposes application-stage permits &mdash; earlier intent than issued permits, which is when equipment decisions happen. Contractor phone is in the feed on ~13% of records; RigBrain supplements where available in the paid weekly report.</p>
+    <p style="margin-top:10px;color:#6B7280;">Orlando's feed exposes application-stage permits &mdash; earlier intent than issued permits. Contractor phone in feed on ~13% of records; RigBrain supplements in the paid weekly report.</p>
   </div>
 
   <footer>
-    <a href="/">&#8592; RigBrain home</a> &middot;
-    <a href="/austin/">Austin dashboard</a> &middot;
-    <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">Open-source puller</a> &middot;
-    <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
+    <a href="/">&#8592; RigBrain home</a> &middot; <a href="/austin/">Austin dashboard</a> &middot; <a href="https://github.com/rigbrain/austin-permit-puller" target="_blank" rel="noopener">Open-source puller</a> &middot; <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
     <p style="margin-top:8px;">Data: City of Orlando open data portal &middot; Last updated May 2026</p>
   </footer>
 
 </div>
-
 <script>
   const form = document.getElementById('orlando-form');
   const success = document.getElementById('orlando-success');
