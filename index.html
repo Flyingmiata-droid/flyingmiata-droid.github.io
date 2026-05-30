@@ -749,8 +749,8 @@
     <h1>Every commercial permit is a lead<br>you're <span class="strike">probably</span> <em>definitely</em> missing.</h1>
     <p class="hero-sub">We curate commercial construction permit leads for heavy equipment dealers in <strong>your market</strong> &mdash; scored, matched to your inventory, with full contractor contact info delivered to your inbox every week. <strong>Austin and Orlando live today.</strong> Tell us your market and we'll confirm coverage within 24 hours. First 10 dealers nationwide lock $299/mo for 12 months.</p>
     <div class="hero-cta-row">
-      <a class="btn-primary" href="https://buy.stripe.com/9B67sM1Gj0clc993Tc4wM00" target="_blank" rel="noopener" onclick="gtag('event','begin_checkout',{'currency':'USD','value':299})">Lock Founding Rate &mdash; $299/mo &rarr;</a>
-      <a class="btn-secondary" href="#waitlist-1">Send Me A Sample First</a>
+      <a class="btn-primary" href="#waitlist-1" onclick="gtag('event','generate_lead',{'currency':'USD','value':0})">Get a Free Sample Report &rarr;</a>
+      <a class="btn-secondary" href="https://buy.stripe.com/9B67sM1Gj0clc993Tc4wM00" target="_blank" rel="noopener" onclick="gtag('event','begin_checkout',{'currency':'USD','value':299})">Lock Founding Rate &mdash; $299/mo</a>
     </div>
     <p class="hero-note">
       <span><span class="check-icon">&#10003;</span> $299/month</span>
@@ -758,6 +758,7 @@
       <span><span class="check-icon">&#10003;</span> Cancel by reply</span>
       <span><span class="check-icon">&#10003;</span> First 10 lock $299/mo for 12 mo</span>
     </p>
+    <p style="font-size:0.82rem;color:var(--text-dim);margin-top:-0.5rem;margin-bottom:1.5rem;">&#9679; Founding-dealer cohort open &mdash; <strong style="color:var(--text);">7 of 10 slots remaining</strong></p>
 
     <p class="hero-fit"><strong>Best fit:</strong> generator, sweeper, mini-excavator, skid-steer, and aerial-lift rental shops &mdash; the equipment categories that actually trigger commercial permits.</p>
 
@@ -1371,6 +1372,10 @@
           if (response.ok) {
             form.style.display = 'none';
             successMsg.classList.add('show');
+            // Fire GA4 lead event — imported into Google Ads as a conversion
+            if (typeof gtag === 'function') {
+              gtag('event', 'generate_lead', { currency: 'USD', value: 0 });
+            }
             setTimeout(() => {
               form.style.display = 'flex';
               successMsg.classList.remove('show');
@@ -1400,4 +1405,3 @@
 
 </body>
 </html>
-                                                                                                                                                    
