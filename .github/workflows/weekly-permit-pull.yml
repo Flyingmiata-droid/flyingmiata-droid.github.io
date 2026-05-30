@@ -56,8 +56,11 @@ jobs:
 
       - name: Copy timestamped output to "latest" for stable URL
         run: |
-          cp out/austin_permits_*.csv  out/austin_permits_latest.csv  || true
-          cp out/austin_permits_*.json out/austin_permits_latest.json || true
+          # Use ls -t to get the newest timestamped file (glob fails silently when multiple files exist)
+          newest_csv=$(ls -t out/austin_permits_2*.csv 2>/dev/null | head -1)
+          newest_json=$(ls -t out/austin_permits_2*.json 2>/dev/null | head -1)
+          [ -n "$newest_csv" ]  && cp "$newest_csv"  out/austin_permits_latest.csv
+          [ -n "$newest_json" ] && cp "$newest_json" out/austin_permits_latest.json
 
       - name: Commit regenerated files
         run: |
