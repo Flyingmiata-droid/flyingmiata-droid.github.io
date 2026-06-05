@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RigBrain Sample Lead Report — San Antonio June 2026</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif; color:#1a1a2e; background:#f7f7fa; line-height:1.45; padding:24px; }
+  .container { max-width:880px; margin:0 auto; background:white; padding:36px; border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .header { border-bottom:3px solid #F59E0B; padding-bottom:18px; margin-bottom:24px; }
+  .brand { font-size:0.85rem; color:#6B7280; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; }
+  h1 { font-size:1.85rem; margin-top:4px; font-weight:700; }
+  .subtitle { color:#4B5563; margin-top:6px; font-size:0.95rem; }
+  .summary { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:24px 0 32px; padding:20px; background:#f7f7fa; border-radius:6px; }
+  .summary-item .label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.5px; color:#6B7280; font-weight:600; }
+  .summary-item .value { font-size:1.5rem; font-weight:700; color:#F59E0B; margin-top:4px; }
+  .note { background:#FEF3C7; padding:14px 18px; border-radius:6px; margin-bottom:20px; font-size:0.9rem; color:#78350F; border-left:3px solid #F59E0B; }
+  .lead { border:1px solid #E5E7EB; border-radius:6px; padding:16px 18px; margin-bottom:14px; }
+  .lead-header { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+  .rank { font-weight:700; color:#6B7280; font-size:0.95rem; }
+  .score { display:inline-block; padding:3px 10px; border-radius:4px; font-size:0.7rem; font-weight:700; letter-spacing:0.3px; }
+  .score-high { background:rgba(16,185,129,0.15); color:#047857; }
+  .score-mid { background:rgba(245,158,11,0.15); color:#B45309; }
+  .score-low { background:rgba(107,114,128,0.15); color:#4B5563; }
+  .proj { font-size:1.05rem; color:#1a1a2e; }
+  .meta { color:#6B7280; font-size:0.88rem; margin-bottom:10px; }
+  .row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:10px 0; border-top:1px solid #F3F4F6; border-bottom:1px solid #F3F4F6; margin-bottom:10px; }
+  .row > div { display:flex; flex-direction:column; gap:2px; }
+  .label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.4px; color:#9CA3AF; font-weight:600; }
+  .val { font-size:0.9rem; color:#1a1a2e; font-weight:600; }
+  .cost { color:#047857; }
+  .contractor { font-size:0.85rem; color:#4B5563; }
+  .contractor .label { display:inline; margin-right:4px; }
+  .contractor .val { display:inline; font-weight:600; }
+  .phone-none { color:#9CA3AF; font-style:italic; }
+  .footer { margin-top:32px; padding-top:18px; border-top:1px solid #E5E7EB; color:#6B7280; font-size:0.85rem; }
+  .footer a { color:#F59E0B; text-decoration:none; font-weight:600; }
+</style></head><body>
+<div class="container">
+  <div class="header">
+    <div class="brand">RigBrain · San Antonio</div>
+    <h1>San Antonio Commercial Permit Report — Sample</h1>
+    <div class="subtitle">24 commercial permits over $1M, City of San Antonio, issued in the last ~90 days. Deduplicated to one row per project.</div>
+  </div>
+  <div class="summary">
+    <div class="summary-item"><div class="label">Projects</div><div class="value">24</div></div>
+    <div class="summary-item"><div class="label">Total Value</div><div class="value">$539.4M</div></div>
+    <div class="summary-item"><div class="label">Total Sqft</div><div class="value">5,426,196</div></div>
+    <div class="summary-item"><div class="label">New Construction</div><div class="value">23</div></div>
+  </div>
+  <div class="note">
+    <strong>What you're looking at:</strong> Real commercial permits pulled live from <code>data.sanantonio.gov</code>, deduplicated to one row per project (San Antonio splits big projects into many sub-permits at the same value). RigBrain pulls this weekly, scores by equipment-purchase intent, and delivers to subscribing dealers. San Antonio's feed exposes the primary applicant (often the architect or developer) and council district, but not GC phone — we cross-reference that. San Antonio also publishes an application-stage feed for even earlier intent.
+  </div>
+  
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#1</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">ECISD New High School — Package 2</strong>
+      </div>
+      <div class="meta"><span class="addr">12415 Old Corpus Christi Rd</span> · <span class="hood">San Antonio · Council Dist 3</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$114.1M</span></div>
+        <div><span class="label">Size</span><span class="val">695,945 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-15</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Pegah Giovannetti</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200147</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#2</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">15407 Lookout Rd — Multi-Building Development</strong>
+      </div>
+      <div class="meta"><span class="addr">15407 Lookout Rd</span> · <span class="hood">San Antonio · Council Dist 10</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$66.6M</span></div>
+        <div><span class="label">Size</span><span class="val">266,646 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-26</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Investwell Architects LLC</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200019</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#3</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Bulverde Rd — Commercial Building 10</strong>
+      </div>
+      <div class="meta"><span class="addr">17626 Bulverde Rd</span> · <span class="hood">San Antonio · Council Dist 10</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$54.3M</span></div>
+        <div><span class="label">Size</span><span class="val">836,514 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-12</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Derek Morgan</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT23-40201090</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#4</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Central at Commerce</strong>
+      </div>
+      <div class="meta"><span class="addr">1231 E Commerce St</span> · <span class="hood">San Antonio · Council Dist 2</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$52.0M</span></div>
+        <div><span class="label">Size</span><span class="val">828,426 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-16</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Maria Reynoso, Evolve Architects</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200126</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#5</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">La Cantera Pkwy — Pool / Courtyard / Dog Park</strong>
+      </div>
+      <div class="meta"><span class="addr">15711 La Cantera Pkwy</span> · <span class="hood">San Antonio · Council Dist 8</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$45.2M</span></div>
+        <div><span class="label">Size</span><span class="val">721,408 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-28</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Marissa Robinson</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200279</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#6</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Scala at Eilan</strong>
+      </div>
+      <div class="meta"><span class="addr">18710 La Cantera Terr</span> · <span class="hood">San Antonio · Council Dist 8</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$37.4M</span></div>
+        <div><span class="label">Size</span><span class="val">815,507 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-14</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Amanda Flores, PDI</span> · <span class="phone-none">no phone in feed</span> · permit COM-SIT-PMT25-40100029</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#7</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Oakwell Court — Pool House</strong>
+      </div>
+      <div class="meta"><span class="addr">3310 Oakwell Court</span> · <span class="hood">San Antonio · Council Dist 10</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$36.4M</span></div>
+        <div><span class="label">Size</span><span class="val">402,820 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-01</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">WDG Architecture</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT23-40200637</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#8</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">5590 Tezel Express</strong>
+      </div>
+      <div class="meta"><span class="addr">5590 Tezel Rd</span> · <span class="hood">San Antonio · Council Dist 6</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$17.7M</span></div>
+        <div><span class="label">Size</span><span class="val">156,110 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-28</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Diana Rodriguez</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200255</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#9</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Texas Biomedical Research Institute — Building 72</strong>
+      </div>
+      <div class="meta"><span class="addr">8715 W Military Dr</span> · <span class="hood">San Antonio · Council Dist 6</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$16.0M</span></div>
+        <div><span class="label">Size</span><span class="val">36,840 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-12</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Flad Architects</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT25-40200008</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#10</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Marbach Lofts</strong>
+      </div>
+      <div class="meta"><span class="addr">1611 Pinn Rd</span> · <span class="hood">San Antonio · Council Dist 6</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$12.8M</span></div>
+        <div><span class="label">Size</span><span class="val">205,814 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-09</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Diana Rodriguez</span> · <span class="phone-none">no phone in feed</span> · permit COM-SIT-PMT26-40100088</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#11</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">University Health Palo Alto MOB — Tenant Build-Outs</strong>
+      </div>
+      <div class="meta"><span class="addr">11106 S Zarzamora St</span> · <span class="hood">San Antonio · Council Dist 4</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$12.7M</span></div>
+        <div><span class="label">Size</span><span class="val">32,808 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-09</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Meghan Ruffo</span> · <span class="phone-none">no phone in feed</span> · permit COM-IFO-PMT26-40500026</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#12</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Stonewall Pkwy — Building 7</strong>
+      </div>
+      <div class="meta"><span class="addr">22039 Stonewall Pkwy</span> · <span class="hood">San Antonio · Council Dist 8</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$11.6M</span></div>
+        <div><span class="label">Size</span><span class="val">61,552 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-08</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Melissa Gonzales</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200254</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#13</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Ruidosa St — New Building</strong>
+      </div>
+      <div class="meta"><span class="addr">11030 Ruidosa St</span> · <span class="hood">San Antonio · Council Dist 3</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$8.9M</span></div>
+        <div><span class="label">Size</span><span class="val">24,242 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-04-13</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Marmon Mok Architecture</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200177</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#14</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">COSA Emergency Services Warehouse</strong>
+      </div>
+      <div class="meta"><span class="addr">230 S Callaghan Rd</span> · <span class="hood">San Antonio · Council Dist 6</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$6.6M</span></div>
+        <div><span class="label">Size</span><span class="val">18,000 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">Other</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-18</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Hector Machado</span> · <span class="phone-none">no phone in feed</span> · permit COM-FEN-PMT26-40600043</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#15</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Nacogdoches Rd — Building 14</strong>
+      </div>
+      <div class="meta"><span class="addr">11300 Nacogdoches Rd</span> · <span class="hood">San Antonio · Council Dist 10</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$6.3M</span></div>
+        <div><span class="label">Size</span><span class="val">16,950 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-12</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Amanda Flores</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200192</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#16</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">Aero St — New Building</strong>
+      </div>
+      <div class="meta"><span class="addr">9023 Aero St</span> · <span class="hood">San Antonio · Council Dist 10</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$6.2M</span></div>
+        <div><span class="label">Size</span><span class="val">41,064 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-03-30</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Joseph Smith, JMS Architects</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200145</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#17</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">N Coker Loop — Townhomes (TH-1)</strong>
+      </div>
+      <div class="meta"><span class="addr">811 N Coker Loop</span> · <span class="hood">San Antonio · Council Dist 9</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$5.5M</span></div>
+        <div><span class="label">Size</span><span class="val">16,951 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-04-21</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Melissa Gonzales</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200175</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#18</span>
+        <span class="score score-high">HIGH</span>
+        <strong class="proj">SEA ROTC CTE — Addition (Package 2)</strong>
+      </div>
+      <div class="meta"><span class="addr">7611 Marbach Rd</span> · <span class="hood">San Antonio · Council Dist 6</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$5.2M</span></div>
+        <div><span class="label">Size</span><span class="val">37,912 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-13</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Glenn McGuyre</span> · <span class="phone-none">no phone in feed</span> · permit COM-ADD-PMT25-39900069</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#19</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">Classen-Steubing Ranch Park — Phase 2</strong>
+      </div>
+      <div class="meta"><span class="addr">20202 Hardy Oak Blvd</span> · <span class="hood">San Antonio · Council Dist 9</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$4.7M</span></div>
+        <div><span class="label">Size</span><span class="val">sqft not in feed</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-01</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Kimley-Horn</span> · <span class="phone-none">no phone in feed</span> · permit COM-SHD-PMT26-41200019</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#20</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">ACCD SPC Watson — Blackbox (Package 1)</strong>
+      </div>
+      <div class="meta"><span class="addr">1801 Martin Luther King Dr</span> · <span class="hood">San Antonio · Council Dist 2</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$4.4M</span></div>
+        <div><span class="label">Size</span><span class="val">45,900 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-26</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Chris Fincke</span> · <span class="phone-none">no phone in feed</span> · permit COM-FND-PMT25-40300006</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#21</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">Shady Oaks</strong>
+      </div>
+      <div class="meta"><span class="addr">8246 Fredericksburg Rd</span> · <span class="hood">San Antonio · Council Dist 8</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$4.2M</span></div>
+        <div><span class="label">Size</span><span class="val">69,704 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-05-22</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Villa Park Architecture</span> · <span class="phone-none">no phone in feed</span> · permit COM-RW-PMT26-41100027</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#22</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">7310 N 1604 W — Building 3</strong>
+      </div>
+      <div class="meta"><span class="addr">7310 N 1604 W</span> · <span class="hood">San Antonio · Council Dist 8</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$4.1M</span></div>
+        <div><span class="label">Size</span><span class="val">10,172 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-04-23</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Mayse &amp; Associates, Inc.</span> · <span class="phone-none">no phone in feed</span> · permit COM-BLG-PMT26-40200188</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#23</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">Holiday Inn Express &amp; Suites</strong>
+      </div>
+      <div class="meta"><span class="addr">6470 Historic Old Hwy 90</span> · <span class="hood">San Antonio · Council Dist 6</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$3.4M</span></div>
+        <div><span class="label">Size</span><span class="val">84,911 sqft</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-04-18</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">Arash Fallahi, Extend Architect</span> · <span class="phone-none">no phone in feed</span> · permit COM-SIT-PMT26-40100139</div>
+    </div>
+    <div class="lead">
+      <div class="lead-header">
+        <span class="rank">#24</span>
+        <span class="score score-mid">MID</span>
+        <strong class="proj">Blanco Apartments</strong>
+      </div>
+      <div class="meta"><span class="addr">906 W Huisache Ave</span> · <span class="hood">San Antonio · Council Dist 1</span></div>
+      <div class="row">
+        <div><span class="label">Value</span><span class="val cost">$3.2M</span></div>
+        <div><span class="label">Size</span><span class="val">sqft not in feed</span></div>
+        <div><span class="label">Type</span><span class="val">New</span></div>
+        <div><span class="label">Issued</span><span class="val">2026-04-28</span></div>
+      </div>
+      <div class="contractor"><span class="label">Primary contact</span> <span class="val">KCI Technologies</span> · <span class="phone-none">no phone in feed</span> · permit COM-SIT-PMT26-40100141</div>
+    </div>
+  <div class="footer">
+    Sample generated 2026-06-05. Live URL: <a href="https://rigbrain.io/out/sample_lead_sanantonio.html">rigbrain.io/out/sample_lead_sanantonio.html</a><br>
+    Full subscription: $299/mo, weekly delivery, scored + ranked, 30-day money back. First 10 dealers nationwide lock founding rate for 12 months.<br>
+    <a href="https://rigbrain.io">rigbrain.io</a> · <a href="mailto:nick@rigbrain.io">nick@rigbrain.io</a>
+  </div>
+</div></body></html>
