@@ -146,6 +146,22 @@
       pointer-events: none;
     }
     .hero > * { position: relative; z-index: 1; }
+    /* Animated flow-field background (adapted from BackgroundPaths, recolored to brand) */
+    .hero-paths { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .hero > .hero-paths { z-index: 0; }
+    .hero-paths svg { width: 100%; height: 100%; display: block; }
+    .hero-paths path {
+      fill: none; stroke: var(--hi-vis);
+      animation-name: pathflow; animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+    @keyframes pathflow {
+      0%, 100% { stroke-opacity: 0.10; }
+      50%      { stroke-opacity: 0.42; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-paths path { animation: none; stroke-opacity: 0.18; }
+    }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: rgba(245,158,11,0.10); color: var(--hi-vis);
@@ -742,12 +758,13 @@
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-paths" aria-hidden="true"></div>
     <div class="hero-eyebrow">
       <span class="live-dot"></span>
       Austin &amp; Orlando Live &middot; Your Market Next
     </div>
-    <h1>Every commercial permit is a lead<br>you're <span class="strike">probably</span> <em>definitely</em> missing.</h1>
-    <p class="hero-sub">We curate commercial construction permit leads for heavy equipment dealers in <strong>your market</strong> &mdash; scored, matched to your inventory, with full contractor contact info delivered to your inbox every week. <strong>Austin and Orlando live today.</strong> Tell us your market and we'll confirm coverage within 24 hours. First 10 dealers nationwide lock $299/mo for 12 months.</p>
+    <h1>Turn every commercial permit into a<br><span class="strike">cold call</span> <em>scored, contractor-ready lead</em>.</h1>
+    <p class="hero-sub">Scored permit leads for equipment dealers &mdash; matched to your inventory, full contractor contact info, delivered weekly. <strong>Austin and Orlando live.</strong></p>
     <div class="hero-cta-row">
       <a class="btn-primary" href="#waitlist-1" onclick="gtag('event','generate_lead',{'currency':'USD','value':0})">Get a Free Sample Report &rarr;</a>
       <a class="btn-secondary" href="https://buy.stripe.com/9B67sM1Gj0clc993Tc4wM00" target="_blank" rel="noopener" onclick="gtag('event','begin_checkout',{'currency':'USD','value':299})">Lock Founding Rate &mdash; $299/mo</a>
@@ -756,11 +773,10 @@
       <span><span class="check-icon">&#10003;</span> $299/month</span>
       <span><span class="check-icon">&#10003;</span> 30-day full refund</span>
       <span><span class="check-icon">&#10003;</span> Cancel by reply</span>
-      <span><span class="check-icon">&#10003;</span> First 10 lock $299/mo for 12 mo</span>
     </p>
     <p style="font-size:0.82rem;color:var(--text-dim);margin-top:-0.5rem;margin-bottom:1.5rem;">&#9679; Founding-dealer cohort open &mdash; <strong style="color:var(--text);">7 of 10 slots remaining</strong></p>
 
-    <p class="hero-fit"><strong>Best fit:</strong> generator, sweeper, mini-excavator, skid-steer, and aerial-lift rental shops &mdash; the equipment categories that actually trigger commercial permits.</p>
+    <p class="hero-fit"><strong>Best fit:</strong> generator, sweeper, mini-excavator, skid-steer, and aerial-lift rental shops.</p>
 
     <div class="sample-lead">
       <div class="sample-lead-header">
@@ -793,6 +809,40 @@
       </div>
     </div>
   </section>
+
+  <script>
+    /* Build the animated hero flow-field. Background only — hero text/CTA render without JS. */
+    (function () {
+      var host = document.querySelector('.hero-paths');
+      if (!host) return;
+      var count = window.matchMedia('(max-width: 700px)').matches ? 14 : 26;
+      function buildSet(position) {
+        var ns = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('viewBox', '0 0 696 316');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+        for (var i = 0; i < count; i++) {
+          var p = document.createElementNS(ns, 'path');
+          var d = 'M-' + (380 - i * 5 * position) + ' -' + (189 + i * 6) +
+            'C-' + (380 - i * 5 * position) + ' -' + (189 + i * 6) +
+            ' -' + (312 - i * 5 * position) + ' ' + (216 - i * 6) +
+            ' ' + (152 - i * 5 * position) + ' ' + (343 - i * 6) +
+            'C' + (616 - i * 5 * position) + ' ' + (470 - i * 6) +
+            ' ' + (684 - i * 5 * position) + ' ' + (875 - i * 6) +
+            ' ' + (684 - i * 5 * position) + ' ' + (875 - i * 6);
+          p.setAttribute('d', d);
+          p.setAttribute('stroke-width', (0.5 + i * 0.05).toFixed(2));
+          p.style.animationDuration = (18 + Math.random() * 12).toFixed(1) + 's';
+          p.style.animationDelay = '-' + (Math.random() * 12).toFixed(1) + 's';
+          svg.appendChild(p);
+        }
+        host.appendChild(svg);
+      }
+      buildSet(1);
+      buildSet(-1);
+    })();
+  </script>
 
   <div class="hazard-stripe"></div>
 
